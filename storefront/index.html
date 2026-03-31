@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +17,10 @@
         <div class="row position-relative">
             
             <div class="col-md-3">
-                <div id="side-menu-container" class="list-group list-group-flush border rounded shadow-sm side-menu bg-white"></div>
+                <div id="side-menu-container" class="list-group list-group-flush border rounded shadow-sm bg-white py-2 side-menu"></div>
             </div>
 
-            <div class="col-md-9" id="megamenu-content-area">
+            <div class="col-md-9 position-relative" id="megamenu-content-area">
                 
                 <div id="initial-content" class="h-100 d-flex align-items-center justify-content-center bg-light border rounded">
                     <div class="text-center p-5">
@@ -27,7 +29,11 @@
                     </div>
                 </div>
                 
+                <div id="megamenu-content-card" class="megamenu-content-card">
+                    <div id="megamenu-panels-container"></div>
                 </div>
+
+            </div>
             
         </div>
     </div> 
@@ -36,3 +42,4 @@
     <script src="js/megamenudata.js"></script>
     <script src="js/common.js"></script>
 </body>
+</html>

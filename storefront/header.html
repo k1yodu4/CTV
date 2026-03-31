@@ -1,6 +1,6 @@
 <div id="menu-overlay"></div>
 
-<header class="py-3" style="background-color: #e50000;">
+<header class="py-3 ttg-red-bg">
     <div class="container d-flex align-items-center gap-3 position-relative">
         
         <a class="text-white text-decoration-none fw-bold fs-3" href="index.html">BAO SHOP</a>
@@ -21,21 +21,15 @@
             <i class="bi bi-cart3 fs-5"></i>
         </a>
 
-        <div id="megamenu-wrapper" class="row bg-light shadow-lg rounded position-absolute w-100 p-2" style="top: 100%; left: 0; z-index: 1000; display: none; margin-top: 20px; ">
-            
-            <div class="col-md-3 p-1">
-                <div class="card border-0 shadow-sm h-100">
-                    <div id="side-menu-container" class="list-group list-group-flush side-menu py-2"></div>
-                </div>
+        <div id="megamenu-wrapper" class="row position-absolute w-100 g-2" style="top: 100%; left: 0; z-index: 1000; display: none;">
+            <div class="col-md-3">
+                <div id="header-side-menu-container" class="list-group list-group-flush border rounded shadow-sm bg-white py-2 h-100"></div>
             </div>
-            
-            <div class="col-md-9 p-1">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body" id="megamenu-panels-container">
-                        </div>
-                </div>
+        <div class="col-md-9 position-relative">
+            <div id="header-megamenu-content-card" class="megamenu-content-card" style="display: none;">
+                <div id="header-megamenu-panels-container"></div>
             </div>
-
+        </div>
         </div>
     </div>
 </header>

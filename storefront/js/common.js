@@ -1,20 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // 2. HÀM TẢI HEADER (TRUNG TÂM ĐIỀU KHIỂN)
-    // Giả sử bạn ĐÃ có file header.html và có thẻ <div id="header-placeholder"></div> trong file chính
+    
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+
+    // 1. TẢI HEADER
     async function loadHeader() {
         try {
-            // NẾU BẠN CHƯA DÙNG HEADER.HTML TÁCH RỜI MÀ VẪN DÙNG HTML CŨ, BẠN CÓ THỂ BỎ QUA ĐOẠN FETCH NÀY
-            // VÀ CHỈ CẦN GỌI HÀM setupHeaderEvents() LÀ ĐƯỢC.
-            
-             // Bỏ comment đoạn này nếu bạn dùng header.html
             const response = await fetch('header.html');
             const headerHTML = await response.text();
             document.getElementById('header-placeholder').innerHTML = headerHTML;
-            
 
-            // CHỈ CHẠY CÁC HÀM NÀY SAU KHI HTML ĐÃ SẴN SÀNG
-            renderSideMenu();
-            renderMegamenuPanels();
+            renderSideMenu(); 
+            renderMegamenuPanels(); 
+            setupMegamenuEvents(); 
             setupHeaderEvents(); 
 
         } catch (error) {
@@ -22,67 +19,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // 3. HÀM VẼ MENU DỌC BÊN TRÁI
+    // 2. VẼ MENU DỌC
     function renderSideMenu() {
-        const menuContainer = document.getElementById('side-menu-container');
-        if (menuContainer) {
-            menuContainer.innerHTML = menuData.map(item => `
-                <a href="#" 
-                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
-                   ${item.target ? `data-megamenu-target="${item.target}"` : ''}>
-                    <span class="d-flex align-items-center">
-                        <i class="bi ${item.icon} me-3"></i>${item.name}
-                    </span>
-                    <i class="bi bi-chevron-right small small-chevron"></i>
-                </a>
-            `).join('');
-        }
+        const menuHTML = menuData.map(item => `
+            <a href="#" 
+               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center side-menu-item" 
+               ${item.target ? `data-megamenu-target="${item.target}"` : ''}>
+                <span class="d-flex align-items-center">
+                    <i class="bi ${item.icon} me-3"></i>${item.name}
+                </span>
+                <i class="bi bi-chevron-right small small-chevron"></i>
+            </a>
+        `).join('');
+
+        const headerMenuContainer = document.getElementById('header-side-menu-container');
+        if (headerMenuContainer) headerMenuContainer.innerHTML = menuHTML;
+
+        const sideMenuContainer = document.getElementById('side-menu-container');
+        if (sideMenuContainer) sideMenuContainer.innerHTML = menuHTML;
     }
 
-    // 4. HÀM VẼ CÁC BẢNG PANEL BÊN PHẢI
+    // 3. VẼ RUỘT MEGAMENU
     function renderMegamenuPanels() {
-
-        // Logic cho nút "Danh mục" và Overlay
-    const btnToggle = document.getElementById('btn-toggle-menu');
-    const megamenuWrapper = document.getElementById('megamenu-wrapper');
-    const menuOverlay = document.getElementById('menu-overlay'); // Gọi Overlay ra
-
-    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
-
-    if (megamenuWrapper) {
-        if (isHomePage) {
-            // Nếu là trang chủ: Luôn hiện menu, không cần lớp phủ tối
-            megamenuWrapper.style.display = 'flex';
-            if (menuOverlay) menuOverlay.style.display = 'none';
-        } else {
-            // Các trang khác (như category.html): Mặc định ẩn
-            megamenuWrapper.style.display = 'none';
-        }
-    }    
-
-    if (btnToggle && megamenuWrapper) {
-        btnToggle.addEventListener('click', function (e) {
-            e.stopPropagation(); 
-            const isHidden = megamenuWrapper.style.display === 'none' || megamenuWrapper.style.display === '';
-            
-            // Hiện/ẩn Menu
-            megamenuWrapper.style.display = isHidden ? 'flex' : 'none';
-            // Hiện/ẩn Overlay nền đen
-            if (menuOverlay) menuOverlay.style.display = isHidden ? 'block' : 'none';
-        });
-
-        // Click ra ngoài hoặc click vào nền đen thì đóng tất cả
-        document.addEventListener('click', function (e) {
-            if (!megamenuWrapper.contains(e.target) && e.target !== btnToggle) {
-                megamenuWrapper.style.display = 'none';
-                if (menuOverlay) menuOverlay.style.display = 'none';
-            }
-        });
-    }
-
-        const contentArea = document.getElementById('megamenu-panels-container');
-        if (!contentArea) return;
-
         let allPanelsHTML = '';
         for (let key in megamenuData) {
             let columnsHTML = '';
@@ -91,22 +49,95 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="col-md-4 mb-3">
                         <h6 class="fw-bold text-ttg">${col.title}</h6>
                         <ul class="list-unstyled">
-                            ${col.links.map(link => `<li><a href="category.html?q=${link}" class="text-decoration-none text-dark small">${link}</a></li>`).join('')}
+                            ${col.links.map(link => `<li><a href="category.html?name=${link}" class="text-decoration-none text-dark small">${link}</a></li>`).join('')}
                         </ul>
                     </div>`;
             });
 
+            // SỬA LỖI 2 & 3: Dùng data-panel thay vì class để tra cứu chính xác 100%
             allPanelsHTML += `
-                <div class="megamenu-panel p-4" id="megamenu-${key}" style="display: none;">
+                <div class="megamenu-panel p-4" data-panel="megamenu-${key}" style="display: none;">
                     <div class="row">${columnsHTML}</div>
                 </div>`;
         }
-        contentArea.insertAdjacentHTML('beforeend', allPanelsHTML);
+
+        // SỬA LỖI 1: Cập nhật đúng ID container của cả 2 nơi
+        const headerContentArea = document.getElementById('header-megamenu-panels-container');
+        if (headerContentArea) headerContentArea.innerHTML = allPanelsHTML;
+
+        const mainContentArea = document.getElementById('megamenu-panels-container');
+        if (mainContentArea) mainContentArea.innerHTML = allPanelsHTML;
     }
 
-    // 5. CÀI ĐẶT SỰ KIỆN (SEARCH & HOVER)
+    // 3.5 THIẾT LẬP SỰ KIỆN HOVER
+    function setupMegamenuEvents() {
+        const menuItems = document.querySelectorAll('.side-menu-item[data-megamenu-target]');
+        let leaveTimer;
+
+        if (menuItems.length === 0) return;
+
+        function hideAllPanels() {
+            document.querySelectorAll('.megamenu-panel').forEach(panel => {
+                panel.style.display = 'none';
+                panel.classList.remove('show');
+            });
+            menuItems.forEach(item => item.classList.remove('active'));
+            
+            // SỬA LỖI 4: Gọi trực tiếp bằng ID thay vì class để tránh thiếu sót trong HTML
+            const cards = [
+                document.getElementById('header-megamenu-content-card'), 
+                document.getElementById('megamenu-content-card')
+            ];
+            cards.forEach(card => { if(card) card.classList.remove('active'); });
+        }
+
+        menuItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                clearTimeout(leaveTimer);
+                hideAllPanels(); 
+                
+                // Lấy ID gốc (vd: #megamenu-pc-gvn) và bỏ dấu # đi (thành megamenu-pc-gvn)
+                const targetAttr = this.getAttribute('data-megamenu-target');
+                const targetData = targetAttr ? targetAttr.replace('#', '') : ''; 
+                
+                const isHeaderMenu = this.closest('#megamenu-wrapper') !== null;
+                
+                const activeCard = isHeaderMenu 
+                    ? document.getElementById('header-megamenu-content-card')
+                    : document.getElementById('megamenu-content-card');
+
+                if (activeCard && targetData) {
+                    this.classList.add('active'); 
+                    activeCard.classList.add('active'); 
+                    
+                    // Tìm đúng panel dựa trên data-panel
+                    const targetPanel = activeCard.querySelector(`[data-panel="${targetData}"]`);
+                    if (targetPanel) {
+                        targetPanel.classList.add('show');
+                        targetPanel.style.display = 'block'; 
+                    }
+                }
+            });
+
+            item.addEventListener('mouseleave', function () {
+                leaveTimer = setTimeout(() => hideAllPanels(), 100);
+            });
+        });
+
+        // Giữ menu khi hover vào Card
+        const cards = [document.getElementById('header-megamenu-content-card'), document.getElementById('megamenu-content-card')];
+        cards.forEach(card => {
+            if (card) {
+                card.addEventListener('mouseenter', () => clearTimeout(leaveTimer));
+                card.addEventListener('mouseleave', () => {
+                    leaveTimer = setTimeout(() => hideAllPanels(), 100);
+                });
+            }
+        });
+    }
+
+    // 4. THIẾT LẬP NÚT DANH MỤC & TÌM KIẾM
     function setupHeaderEvents() {
-        // --- Xử lý form search ---
         const searchForm = document.getElementById('searchForm');
         if (searchForm) {
             searchForm.addEventListener('submit', function (e) {
@@ -116,55 +147,32 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // --- Xử lý Hover Megamenu ---
-        const menuItems = document.querySelectorAll('.side-menu .list-group-item[data-megamenu-target]');
-        const megamenuPanels = document.querySelectorAll('.megamenu-panel');
-        const initialContent = document.getElementById('initial-content');
-        let leaveTimer;
+        const btnToggle = document.getElementById('btn-toggle-menu');
+        const megamenuWrapper = document.getElementById('megamenu-wrapper');
+        const menuOverlay = document.getElementById('menu-overlay');
 
-        function hideAllPanels() {
-            megamenuPanels.forEach(panel => {
-                panel.classList.remove('show');
-                panel.style.display = 'none'; // Đảm bảo ẩn hẳn
+        // SỬA LỖI 5: Cho phép nút Toggle hoạt động bình thường trên mọi trang
+        if (megamenuWrapper) {
+            megamenuWrapper.style.display = 'none'; // Luôn ẩn mặc định
+        }    
+
+        if (btnToggle && megamenuWrapper) {
+            btnToggle.addEventListener('click', function (e) {
+                e.stopPropagation(); 
+                const isHidden = megamenuWrapper.style.display === 'none' || megamenuWrapper.style.display === '';
+                megamenuWrapper.style.display = isHidden ? 'flex' : 'none';
+                if (menuOverlay) menuOverlay.style.display = isHidden ? 'block' : 'none';
             });
-            menuItems.forEach(item => item.classList.remove('active'));
-            if (initialContent) initialContent.style.setProperty('display', 'flex', 'important'); 
-        }
 
-        menuItems.forEach(item => {
-            item.addEventListener('mouseenter', function () {
-                clearTimeout(leaveTimer);
-                hideAllPanels(); 
-                
-                const targetId = this.getAttribute('data-megamenu-target');
-                const targetPanel = document.querySelector(targetId);
-
-                if (targetPanel) {
-                    this.classList.add('active'); 
-                    targetPanel.classList.add('show'); 
-                    targetPanel.style.display = 'block'; // Hiện bảng lên
-                    if (initialContent) initialContent.style.setProperty('display', 'none', 'important');
-
-                    targetPanel.addEventListener('mouseenter', function() {
-                        clearTimeout(leaveTimer);
-                    });
-
-                    targetPanel.addEventListener('mouseleave', function() {
-                        leaveTimer = setTimeout(() => {
-                            hideAllPanels();
-                        }, 100); 
-                    });
+            document.addEventListener('click', function (e) {
+                if (!megamenuWrapper.contains(e.target) && e.target !== btnToggle) {
+                    megamenuWrapper.style.display = 'none';
+                    if (menuOverlay) menuOverlay.style.display = 'none';
                 }
             });
-
-            item.addEventListener('mouseleave', function () {
-                leaveTimer = setTimeout(() => {
-                    hideAllPanels();
-                }, 100);
-            });
-        });
+        }
     }
 
-    // KHỞI ĐỘNG HỆ THỐNG
+    // KHỞI ĐỘNG
     loadHeader(); 
 });

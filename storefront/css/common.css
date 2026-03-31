@@ -1,18 +1,15 @@
 :root {
     --ttg-red: #e50000;
 }
-.ttg-red-bg { background-color: var(--ttg-red); }
-.text-ttg { color: var(--ttg-red); }
+.ttg-red-bg { background-color: var(--ttg-red) !important; }
+.text-ttg { color: var(--ttg-red) !important; }
 
 #menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Đen mờ 60% */
-    z-index: 990; /* Nằm dưới header (1000) nhưng đè lên thân trang */
-    display: none; /* Mặc định ẩn */
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 990; 
+    display: none; 
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -21,36 +18,48 @@ header {
     z-index: 1000;
 }
 
-#side-menu-container .list-group-item {
-    font-size: 0.9rem; /* Chữ nhỏ lại một chút */
-    padding: 10px 15px; /* Ép khoảng cách các dòng hẹp lại */
-    border: none; /* Bỏ viền cho thanh thoát */
+/* CSS Đồng bộ cho Menu Dọc */
+.side-menu-item {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    border: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
-#side-menu-container .bi {
-    font-size: 1.1rem; /* Icon to hơn chữ một tí cho đẹp */
+.side-menu-item:hover,
+.side-menu-item.active {
+    color: var(--ttg-red) !important;
+    background-color: #f8f9fa !important;
+    font-weight: 600;
 }
 
-/* Container tổng của Megamenu */
-#megamenu-wrapper {
-    z-index: 1000;
-    transition: opacity 0.2s ease;
+.side-menu-item .small-chevron {
+    transition: transform 0.2s ease;
 }
 
-/* Cố định độ rộng Menu dọc (Cột 3) */
-#megamenu-wrapper .col-md-3 {
-    width: 260px; /* Bạn có thể chỉnh con số này */
-    flex: 0 0 auto;
+.side-menu-item:hover .small-chevron,
+.side-menu-item.active .small-chevron {
+    transform: translateX(5px);
 }
 
-/* Phần nội dung Megamenu (Cột 9) */
-#megamenu-wrapper .col-md-9 {
-    flex: 1 1 auto;
-    /* Mặc định ẩn nội dung chi tiết để không tạo vùng trắng */
-    display: none; 
+/* CSS Đồng bộ cho Card Megamenu Đè Banner */
+.megamenu-content-card {
+    display: none;
+    position: absolute; 
+    top: 0; left: 0; width: 100%; min-height: 100%;
+    z-index: 100; 
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Khi có panel nào được show thì mới hiện cột 9 */
-#megamenu-wrapper.has-panel-active .col-md-9 {
+.megamenu-content-card.active {
     display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
 }
