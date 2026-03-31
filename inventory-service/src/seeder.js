@@ -64,6 +64,177 @@ const pcMarketData = [
         },
         rating: { rate: 5, count: 15 }
     },
+    
+    {
+        "title": "Laptop ASUS ROG Zephyrus G14 GA403UI-QS063W",
+        "price": 54990000,
+        "oldPrice": 59990000,
+        "discount": 8,
+        "description": "Laptop gaming 14 inch mạnh mẽ nhất thế giới, thiết kế nhôm nguyên khối",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Ryzen 9 8945HS",
+            "ram": "32GB LPDDR5X",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4070 8GB",
+            "screen": "14\" 3K OLED 120Hz"
+        },
+        "rating": { "rate": 4.9, "count": 12 }
+    },
+    {
+        "title": "Laptop Razer Blade 16 (2024)",
+        "price": 95000000,
+        "oldPrice": 99000000,
+        "discount": 4,
+        "description": "Đẳng cấp Gaming vương giả, màn hình OLED 240Hz đầu tiên trên thế giới",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Core i9-14900HX",
+            "ram": "32GB DDR5",
+            "storage": "2TB SSD Gen4",
+            "gpu": "RTX 4080 12GB",
+            "screen": "16\" QHD+ OLED 240Hz"
+        },
+        "rating": { "rate": 5, "count": 8 }
+    },
+    {
+        "title": "Laptop MSI Stealth 16 AI Studio A1V",
+        "price": 62990000,
+        "oldPrice": 68000000,
+        "discount": 7,
+        "description": "Sự kết hợp hoàn hảo giữa laptop doanh nhân và sức mạnh gaming",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Ultra 9 185H",
+            "ram": "32GB DDR5",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4070 8GB",
+            "screen": "16\" QHD+ OLED 240Hz"
+        },
+        "rating": { "rate": 4.7, "count": 10 }
+    },
+    {
+        "title": "Laptop Lenovo Legion Slim 7i Gen 8",
+        "price": 48500000,
+        "oldPrice": 52000000,
+        "discount": 6,
+        "description": "Thiết kế tinh tế, build quality xuất sắc, tản nhiệt cực mát",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Core i9-13900H",
+            "ram": "32GB DDR5",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4070 8GB",
+            "screen": "16\" 3.2K IPS 165Hz"
+        },
+        "rating": { "rate": 4.8, "count": 20 }
+    },
+    {
+        "title": "Laptop Dell Alienware x16 R2",
+        "price": 88000000,
+        "oldPrice": 92000000,
+        "discount": 4,
+        "description": "Thiết kế tương lai Alienware Legend 3.0, mỏng nhẹ vượt trội",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Ultra 9 185H",
+            "ram": "32GB LPDDR5X",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4080 12GB",
+            "screen": "16\" QHD+ 240Hz"
+        },
+        "rating": { "rate": 4.6, "count": 5 }
+    },
+    {
+        "title": "Laptop HP Omen Transcend 14",
+        "price": 45990000,
+        "oldPrice": 49990000,
+        "discount": 8,
+        "description": "Laptop gaming 14 inch mỏng nhẹ nhất của HP, màn hình OLED rực rỡ",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Ultra 7 155H",
+            "ram": "16GB LPDDR5X",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4060 8GB",
+            "screen": "14\" 2.8K OLED 120Hz"
+        },
+        "rating": { "rate": 4.5, "count": 14 }
+    },
+    {
+        "title": "Laptop Acer Predator Triton Neo 16",
+        "price": 42000000,
+        "oldPrice": 45000000,
+        "discount": 6,
+        "description": "Dòng Triton mới tối ưu cho sáng tạo nội dung và chơi game",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Ultra 7 155H",
+            "ram": "16GB LPDDR5",
+            "storage": "512GB SSD Gen4",
+            "gpu": "RTX 4060 8GB",
+            "screen": "16\" 3.2K IPS 165Hz"
+        },
+        "rating": { "rate": 4.4, "count": 9 }
+    },
+    {
+        "title": "Laptop Gigabyte AORUS 16X (2024)",
+        "price": 51000000,
+        "oldPrice": 55000000,
+        "discount": 7,
+        "description": "Tối ưu hóa AI, hiệu năng đồ họa cực mạnh trong thân máy mỏng",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Core i7-14650HX",
+            "ram": "16GB DDR5",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4070 8GB",
+            "screen": "16\" QHD+ 165Hz"
+        },
+        "rating": { "rate": 4.3, "count": 7 }
+    },
+    {
+        "title": "Laptop Apple MacBook Pro 16 M3 Max",
+        "price": 92990000,
+        "oldPrice": 99990000,
+        "discount": 7,
+        "description": "Đỉnh cao đồ họa chuyên nghiệp và thời lượng pin vô đối",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Apple M3 Max (14-Core)",
+            "ram": "36GB Unified Memory",
+            "storage": "1TB SSD",
+            "gpu": "30-Core GPU",
+            "screen": "16.2\" Liquid Retina XDR"
+        },
+        "rating": { "rate": 5, "count": 25 }
+    },
+    {
+        "title": "Laptop Lenovo Yoga Pro 9i Gen 9",
+        "price": 56000000,
+        "oldPrice": 60000000,
+        "discount": 6,
+        "description": "Màn hình Mini-LED siêu sáng, chuẩn màu cho designer",
+        "category": "Laptop",
+        "image": "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_6__4_24.png",
+        "specs": {
+            "cpu": "Core i9-13905H",
+            "ram": "32GB LPDDR5X",
+            "storage": "1TB SSD Gen4",
+            "gpu": "RTX 4060 8GB",
+            "screen": "16\" 3.2K Mini-LED 165Hz"
+        },
+        "rating": { "rate": 4.8, "count": 11 }
+    },
     {
         title: "Màn hình ZOWIE XL2566K 24.5 inch TN 360Hz DyAc+",
         price: 16490000,
