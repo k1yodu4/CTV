@@ -17,58 +17,108 @@
                         <label class="form-label">Tên sản phẩm</label>
                         <input type="text" id="title" class="form-control" required placeholder="VD: Chuột Logitech G Pro">
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label">Giá (VNĐ)</label>
                         <input type="number" id="price" class="form-control" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label">Danh mục</label>
-                        <select id="category" class="form-select">
+                        <select id="category" class="form-select" required>
+                            <option value="">-- Chọn danh mục --</option>
                             <option value="Laptop">Laptop</option>
-                            <option value="Desktop">Desktop</option>
-                            <option value="CaseNguonTan">Case,Nguồn,Tản</option>
-                            <option value="OCungRamTheNho">Ổ Cứng,Ram,Thẻ nhớ</option>
-                            <option value="LoaMicroWebCam">Loa,Micro,Webcam</option>
+                            <option value="Desktop">Desktop (PC Build sẵn)</option>
                             <option value="ManHinh">Màn hình</option>
-                            <option value="TaiNghe">Tai Nghe</option>
-                            <option value="GheBan">Ghế, Bàn</option>
-                            <option value="PhanMemMang">Phần mềm, Mạng</option>
-                            <option value="PhuKien">Phụ kiện</option>
-                            <option value="VGA">VGA</option>
-                            <option value="Mouse">Mouse</option>
-                            <option value="Keyboard">Keyboard</option>
-                        </select>
+                            <option value="VGA">Card Màn Hình (VGA)</option>
+                            </select>
                     </div>
+
+                    <div id="dynamicSpecsContainer" class="p-3 mb-3 bg-light border rounded d-none">
+                        <h6 class="text-danger border-bottom pb-2 mb-3">Thông số kỹ thuật (Gõ để tìm & chọn)</h6>
+                        <div id="specsFields" class="row g-3"></div>
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label">Link ảnh (URL)</label>
                         <input type="text" id="image" class="form-control" required placeholder="https://...">
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label">Mô tả ngắn</label>
                         <textarea id="description" class="form-control" rows="3"></textarea>
                     </div>
+                    
                     <button type="submit" class="btn btn-danger w-100">Thêm sản phẩm</button>
                 </form>
             </div>
         </div>
     </div>
 
+    <script src="js/specs-config.js"></script>
+
     <script>
+        const categorySelect = document.getElementById('category');
+        const dynamicContainer = document.getElementById('dynamicSpecsContainer');
+        const specsFields = document.getElementById('specsFields');
+
+        // XỬ LÝ KHI CHỌN DANH MỤC
+        categorySelect.addEventListener('change', function() {
+            const selectedCat = this.value;
+            
+            // Kiểm tra xem file specs-config.js đã load thành công chưa
+            if (typeof categorySpecsConfig === 'undefined') {
+                console.error("Lỗi: Không tìm thấy file js/specs-config.js");
+                return;
+            }
+
+            const requiredSpecs = categorySpecsConfig[selectedCat];
+            specsFields.innerHTML = '';
+
+            if (requiredSpecs) {
+                dynamicContainer.classList.remove('d-none');
+                
+                requiredSpecs.forEach(spec => {
+                    // Tạo danh sách các tùy chọn (Datalist)
+                    const optionsHTML = spec.options.map(opt => `<option value="${opt}">`).join('');
+                    
+                    specsFields.innerHTML += `
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-secondary">${spec.label}</label>
+                            <input type="text" class="form-control spec-input" data-key="${spec.key}" list="datalist-${spec.key}" placeholder="Chọn hoặc gõ...">
+                            <datalist id="datalist-${spec.key}">
+                                ${optionsHTML}
+                            </datalist>
+                        </div>
+                    `;
+                });
+            } else {
+                dynamicContainer.classList.add('d-none');
+            }
+        });
+
+        // XỬ LÝ LƯU SẢN PHẨM
         document.getElementById('productForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // 1. Thu thập dữ liệu từ form
+            // Gói gọn các thông số vào 1 Object
+            const specsData = {};
+            document.querySelectorAll('.spec-input').forEach(input => {
+                if (input.value.trim() !== '') {
+                    specsData[input.dataset.key] = input.value.trim();
+                }
+            });
+
             const productData = {
                 title: document.getElementById('title').value,
                 price: Number(document.getElementById('price').value),
                 description: document.getElementById('description').value,
                 category: document.getElementById('category').value,
                 image: document.getElementById('image').value,
-                // Tạm thời để mặc định cho rating để không bị lỗi layout
-                rating: { rate: 5, count: 0 } 
+                rating: { rate: 5, count: 0 },
+                specs: specsData
             };
 
-            // 2. Gửi dữ liệu lên Backend qua API
             try {
                 const response = await fetch('http://localhost:3000/api/products', {
                     method: 'POST',
@@ -77,13 +127,16 @@
                 });
 
                 if (response.ok) {
-                    alert("✅ Thêm thành công! Ra trang category xem thử đi.");
+                    alert("✅ Thêm thành công! Dữ liệu cực chuẩn!");
                     document.getElementById('productForm').reset();
+                    dynamicContainer.classList.add('d-none');
                 } else {
-                    alert("❌ Lỗi rồi: " + (await response.json()).error);
+                    const errorData = await response.json();
+                    alert("❌ Lỗi rồi: " + errorData.error);
                 }
             } catch (error) {
                 console.error("Lỗi kết nối:", error);
+                alert("❌ Không kết nối được với Server. Hãy kiểm tra xem Backend đã chạy chưa!");
             }
         });
     </script>

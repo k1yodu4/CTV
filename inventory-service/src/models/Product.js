@@ -1,15 +1,20 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    id: Number,             // ID gốc từ API
-    title: String,          // Tên sản phẩm
-    price: Number,          // Giá
-    description: String,    // Mô tả chi tiết
-    category: String,       // Danh mục (điện tử, quần áo...)
-    image: String,          // Link ảnh sản phẩm
+    id: Number,
+    title: String,
+    price: Number,
+    description: String,
+    category: String,
+    image: String,
     rating: {
         rate: Number,
         count: Number
+    },
+    // THÊM TRƯỜNG NÀY: Chứa thông số kỹ thuật động
+    specs: {
+        type: Object, 
+        default: {}
     }
 });
 
