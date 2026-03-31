@@ -1,0 +1,41 @@
+<div id="menu-overlay"></div>
+
+<header class="py-3" style="background-color: #e50000;">
+    <div class="container d-flex align-items-center gap-3 position-relative">
+        
+        <a class="text-white text-decoration-none fw-bold fs-3" href="index.html">BAO SHOP</a>
+
+        <button id="btn-toggle-menu" class="btn text-white d-flex align-items-center gap-2 border-0" style="background-color: rgba(0,0,0,0.15); padding: 10px 15px;">
+            <i class="bi bi-list fs-5"></i>
+            <span class="fw-bold">Danh mục</span>
+        </button>
+
+        <form id="searchForm" class="d-flex flex-grow-1 bg-white rounded overflow-hidden">
+            <input class="form-control border-0 shadow-none px-3" type="text" id="searchInput" placeholder="Bạn cần tìm gì?">
+            <button class="btn bg-white border-0 text-dark px-3" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+
+        <a class="btn text-white d-flex align-items-center gap-1 ms-2" href="#">
+            <i class="bi bi-cart3 fs-5"></i>
+        </a>
+
+        <div id="megamenu-wrapper" class="row bg-light shadow-lg rounded position-absolute w-100 p-2" style="top: 100%; left: 0; z-index: 1000; display: none; margin-top: 20px; ">
+            
+            <div class="col-md-3 p-1">
+                <div class="card border-0 shadow-sm h-100">
+                    <div id="side-menu-container" class="list-group list-group-flush side-menu py-2"></div>
+                </div>
+            </div>
+            
+            <div class="col-md-9 p-1">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body" id="megamenu-panels-container">
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

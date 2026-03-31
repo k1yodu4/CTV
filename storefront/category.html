@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục Sản phẩm - BAO SHOP</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="css/common.css">
+    
+    <style>
+        body { background-color: #f5f5f5; }
+        .product-card { transition: transform 0.2s, box-shadow 0.2s; border: none; border-radius: 8px; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; z-index: 10; }
+        .product-title { font-size: 14px; font-weight: bold; color: #333; text-decoration: none; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-title:hover { color: #d32f2f; }
+        .product-specs { background-color: #f8f9fa; border-radius: 5px; padding: 8px; font-size: 11px; color: #666; margin-bottom: 10px; }
+        .price-new { color: #d32f2f; font-weight: bold; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="py-4 bg-light">
+        <div class="container px-md-5"> 
+            <div class="card shadow-sm border-0 p-3 bg-white"> 
+                
+                <div id="search-header">
+                    <div class="d-flex flex-column mb-3">
+                        <h2 class="text-center fw-bold">TÌM KIẾM</h2>
+                        <p id="search-query-text" class="text-center text-muted">Đang tải...</p>
+                    </div>
+                
+                    <div id="filter-bar" class="d-flex flex-wrap gap-2 mb-4">
+                        <button class="btn btn-outline-secondary btn-sm"><i class="fas fa-filter me-1"></i> Bộ lọc</button>
+                        <select id="sortSelect" class="form-select form-select-sm w-auto">
+                            <option value="">Giá</option>
+                            <option value="asc">Giá: Thấp đến Cao</option>
+                            <option value="desc">Giá: Cao xuống Thấp</option>
+                        </select>
+                    </div>
+
+                    <div id="product-list" class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3">
+                        </div>
+                </div>
+
+                <div id="search-empty" class="text-center py-5" style="display:none;">
+                    <div class="my-4">
+                        <img src="https://img.icons8.com/puffy-filled/1200/nothing-found.jpg" alt="No results" style="width: 150px; opacity: 0.5;">
+                    </div>
+                    <p class="text-muted">Rất tiếc, chúng tôi không tìm thấy kết quả cho từ khóa của bạn</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/megamenudata.js"></script>
+    <script src="js/common.js"></script>
+
+    <script>
+        // Hiển thị từ khóa tìm kiếm
+        const keyword = new URLSearchParams(window.location.search).get('name') || '';
+        const queryText = document.getElementById('search-query-text');
+        if (queryText && keyword) {
+            queryText.innerHTML = `Kết quả tìm kiếm cho <span class="fw-bold">"${keyword}"</span>.`;
+        } else if (queryText) {
+            queryText.innerHTML = `Tất cả sản phẩm`;
+        }
+
+        // Xử lý Lọc giá
+        const sortSelect = document.getElementById('sortSelect');
+        if(sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                const sortValue = e.target.value;
+                const currentParams = new URLSearchParams(window.location.search);
+                if (sortValue) currentParams.set('sort', sortValue); // Sửa key sort theo API của bạn
+                else currentParams.delete('sort');
+                window.location.search = currentParams.toString();
+            });
+        }
+
+        // Gọi API lấy sản phẩm
+        async function loadProducts() {
+            const params = window.location.search; 
+            try {
+                const response = await fetch(`http://localhost:3000/api/products${params}`);
+                const products = await response.json();
+                const productGrid = document.getElementById('product-list');
+                
+                if (!productGrid) return;
+                productGrid.innerHTML = ''; 
+
+                if (products.length === 0) {
+                    document.getElementById('filter-bar').classList.replace('d-flex', 'd-none');
+                    document.getElementById('search-empty').style.display = 'block';
+                    return;
+                }
+
+                document.getElementById('filter-bar').classList.replace('d-none', 'd-flex');
+                document.getElementById('search-empty').style.display = 'none';
+
+                products.forEach(p => {
+                    productGrid.innerHTML += `
+                        <div class="col">
+                            <div class="card h-100 shadow-sm product-card p-2">
+                                <img src="${p.image}" class="card-img-top p-2" alt="${p.title}">
+                                <div class="card-body p-2 d-flex flex-column">
+                                    <a href="#" class="product-title mb-2 text-decoration-none text-dark fw-bold">${p.title}</a>
+                                    <div class="product-specs mt-auto">
+                                        <small class="text-muted" style="font-size: 12px;">${p.description}</small>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="price-new text-danger fw-bold">${Number(p.price).toLocaleString()}đ</div>
+                                        <div class="small text-warning">
+                                            <i class="fas fa-star"></i> ${p.rating?.rate || 5} (${p.rating?.count || 0})
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error("Lỗi gọi API:", error);
+            }
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>

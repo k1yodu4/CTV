@@ -1,0 +1,95 @@
+/* 2. KIỂU CHO MENU DỌC (Đổi từ .category-menu -> .side-menu) */
+.side-menu .list-group-item {
+    border: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 0.95rem;
+    position: relative; /* Cho mũi tên tam giác */
+    color: #333;
+    cursor: pointer;
+}
+
+/* Icon đồng nhất chiều rộng */
+.side-menu .list-group-item i:first-child {
+    width: 24px;
+    text-align: center;
+}
+
+/* Mũi tên nhỏ bên phải */
+.small-chevron {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+/* Trạng thái Active/Hover */
+.side-menu .list-group-item.active {
+    background-color: var(--ttg-red);
+    color: white !important;
+    z-index: 2;
+}
+
+/* Mũi tên tam giác đỏ nhô ra khi Active */
+.side-menu .list-group-item.active::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--ttg-red);
+}
+
+/* 3. KHU VỰC MEGAMENU (Nội dung hiển thị bên phải) */
+#megamenu-content-area {
+    position: relative;
+    min-height: 400px;
+}
+
+.megamenu-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10;
+    padding: 20px;
+    display: none; /* Mặc định ẩn */
+}
+
+.megamenu-panel.show {
+    display: block;
+}
+
+/* Tiêu đề và danh sách trong Megamenu */
+.megamenu-panel h6 {
+    color: var(--ttg-red);
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.megamenu-panel ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.megamenu-panel ul li a {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.megamenu-panel ul li a:hover {
+    color: var(--ttg-red);
+}
+
+/* Hỗ trợ màu chữ trắng cho các thành phần con khi menu active */
+.side-menu .list-group-item.active a,
+.side-menu .list-group-item.active span,
+.side-menu .list-group-item.active .small-chevron {
+    color: white !important;
+}

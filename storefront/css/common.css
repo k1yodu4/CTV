@@ -1,0 +1,56 @@
+:root {
+    --ttg-red: #e50000;
+}
+.ttg-red-bg { background-color: var(--ttg-red); }
+.text-ttg { color: var(--ttg-red); }
+
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Đen mờ 60% */
+    z-index: 990; /* Nằm dưới header (1000) nhưng đè lên thân trang */
+    display: none; /* Mặc định ẩn */
+    transition: opacity 0.3s ease-in-out;
+}
+
+header {
+    position: relative;
+    z-index: 1000;
+}
+
+#side-menu-container .list-group-item {
+    font-size: 0.9rem; /* Chữ nhỏ lại một chút */
+    padding: 10px 15px; /* Ép khoảng cách các dòng hẹp lại */
+    border: none; /* Bỏ viền cho thanh thoát */
+}
+
+#side-menu-container .bi {
+    font-size: 1.1rem; /* Icon to hơn chữ một tí cho đẹp */
+}
+
+/* Container tổng của Megamenu */
+#megamenu-wrapper {
+    z-index: 1000;
+    transition: opacity 0.2s ease;
+}
+
+/* Cố định độ rộng Menu dọc (Cột 3) */
+#megamenu-wrapper .col-md-3 {
+    width: 260px; /* Bạn có thể chỉnh con số này */
+    flex: 0 0 auto;
+}
+
+/* Phần nội dung Megamenu (Cột 9) */
+#megamenu-wrapper .col-md-9 {
+    flex: 1 1 auto;
+    /* Mặc định ẩn nội dung chi tiết để không tạo vùng trắng */
+    display: none; 
+}
+
+/* Khi có panel nào được show thì mới hiện cột 9 */
+#megamenu-wrapper.has-panel-active .col-md-9 {
+    display: block;
+}
