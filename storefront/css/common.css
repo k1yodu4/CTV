@@ -104,3 +104,111 @@ header {
         right: auto !important;
     }
 }
+
+/* --- TÙY CHỈNH HEADER ACCOUNT HOVER --- */
+.header-action-item {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 0; /* Tăng vùng nhận chuột */
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    width: 260px;
+    z-index: 1050;
+    padding: 15px;
+    color: #333;
+}
+
+/* Hiệu ứng mũi tên chỉ lên */
+.account-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 30px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+}
+
+/* Hover vào vùng .header-action-item thì hiện .account-dropdown */
+.header-action-item:hover .account-dropdown {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TÙY CHỈNH MODAL ĐĂNG NHẬP --- */
+.auth-modal .modal-content { border-radius: 12px; border: none; }
+.auth-modal .modal-header { border-bottom: none; padding-bottom: 0; }
+.auth-modal .nav-tabs { border-bottom: 2px solid #eee; margin-bottom: 20px; }
+.auth-modal .nav-tabs .nav-link { 
+    border: none; 
+    color: #666; 
+    font-weight: bold; 
+    padding: 10px 20px;
+}
+.auth-modal .nav-tabs .nav-link.active { 
+    color: #d32f2f; 
+    border-bottom: 2px solid #d32f2f; 
+    background: transparent;
+}
+
+/* --- HOVER ĐĂNG NHẬP HEADER --- */
+.login-hover-box {
+    position: relative;
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    width: 280px;
+    z-index: 1050;
+    padding: 15px;
+    cursor: default;
+}
+
+/* Tạo hình tam giác nhọn trỏ lên header */
+.account-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 25px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+}
+
+.login-hover-box:hover .account-dropdown {
+    display: block;
+    animation: dropDownFade 0.2s ease-in-out;
+}
+
+@keyframes dropDownFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- LÀM ĐẸP MODAL ĐĂNG NHẬP --- */
+.auth-modal .modal-content { border-radius: 12px; border: none; overflow: hidden; }
+.auth-modal .modal-header { border-bottom: none; padding-bottom: 0; }
+.auth-modal .nav-tabs { border-bottom: 1px solid #ddd; margin-bottom: 20px; }
+.auth-modal .nav-tabs .nav-link { border: none; color: #666; font-weight: bold; padding: 12px 20px; font-size: 15px; }
+.auth-modal .nav-tabs .nav-link.active { color: #d32f2f; border-bottom: 2px solid #d32f2f; background: transparent; }
+.auth-modal .form-control { padding: 12px 15px; background-color: #f8f9fa; border: 1px solid #ddd; }

@@ -24,9 +24,44 @@
             </button>
         </form>
 
-        <a class="btn text-white d-flex align-items-center gap-1 ms-2" href="#">
-            <i class="bi bi-cart3 fs-5"></i>
-        </a>
+        <div class="d-flex align-items-center gap-4 text-white ms-4">
+            
+            <a href="#" onclick="requireLogin(event, 'tracking')" class="text-white text-decoration-none d-flex align-items-center action-item">
+                <i class="bi bi-clipboard2-check fs-3 me-2"></i>
+                <span class="fw-bold" style="font-size: 13px; line-height: 1.2;">
+                    Tra cứu<br>
+                    đơn hàng
+                </span>
+            </a>
+
+            <a href="cart.html" class="text-white text-decoration-none d-flex align-items-center action-item position-relative">
+                <i class="bi bi-cart fs-3 me-2"></i>
+                <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill border border-light bg-warning text-dark" style="font-size: 11px; margin-left: 15px;">5</span>
+                <span class="fw-bold" style="font-size: 13px; line-height: 1.2;">
+                    Giỏ<br>
+                    hàng
+                </span>
+            </a>
+
+            <div class="login-hover-box d-flex align-items-center p-2 rounded" style="background-color: rgba(0,0,0,0.15); cursor: pointer;">
+                <i class="bi bi-person-circle fs-3 me-2"></i>
+                <span class="fw-bold" style="font-size: 13px; line-height: 1.2;">
+                    Đăng<br>
+                    nhập
+                </span>
+
+                <div class="account-dropdown text-dark text-center">
+                    <p class="mb-3 fw-bold fs-6">👋 Xin chào, vui lòng đăng nhập</p>
+                    <div class="d-flex gap-2 mb-3">
+                        <button class="btn btn-dark w-20 fw-bold" onclick="openAuthModal('login')">ĐĂNG NHẬP</button>
+                        <button class="btn btn-outline-dark w-20 fw-bold" onclick="openAuthModal('register')">ĐĂNG KÝ</button>
+                    </div>
+                    <a href="#" class="bi bi-question-circle">
+                        <i class="far fa-question-circle me-1"></i> Trợ giúp
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div id="megamenu-wrapper" class="row position-absolute w-100 g-2" style="top: 90%; left: 50px; z-index: 1000; display: none;">
             <div class="col-md-3">

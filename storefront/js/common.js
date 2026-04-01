@@ -176,6 +176,210 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
+    // 1. TẠO HTML CHO MODAL ĐĂNG NHẬP / ĐĂNG KÝ
+const authModalHTML = `
+<div class="modal fade auth-modal" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 text-center fw-bold text-uppercase fs-6">Đăng nhập hoặc Tạo tài khoản</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs justify-content-center" id="authTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-pane" type="button" role="tab">ĐĂNG NHẬP</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-pane" type="button" role="tab">ĐĂNG KÝ</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="authTabContent">
+                    <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Mật khẩu" required>
+                            </div>
+                            <div class="text-end mb-3">
+                                <a href="#" class="text-danger small text-decoration-none">Quên mật khẩu?</a>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100 fw-bold mb-3">ĐĂNG NHẬP</button>
+                            <div class="text-center text-muted small mb-3">hoặc đăng nhập bằng</div>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-outline-danger w-50"><i class="fab fa-google"></i> Google</button>
+                                <button type="button" class="btn btn-outline-primary w-50"><i class="fab fa-facebook-f"></i> Facebook</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="register-pane" role="tabpanel">
+                        <form id="registerForm">
+                            <div class="mb-3"><input type="text" class="form-control" placeholder="Họ và tên" required></div>
+                            <div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div>
+                            <div class="mb-3"><input type="password" class="form-control" placeholder="Mật khẩu" required></div>
+                            <button type="submit" class="btn btn-danger w-100 fw-bold">TẠO TÀI KHOẢN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+`;
+
+// Tự động chèn Modal vào thẻ body khi trang vừa load xong
+document.body.insertAdjacentHTML('beforeend', authModalHTML);
+
+// 2. TẠO HTML CHO NÚT HEADER (Thay thế vào phần Header của bạn)
+// Hãy gắn đoạn HTML này vào chỗ bạn đang vẽ thanh Header (cạnh thanh tìm kiếm)
+const headerActionsHTML = `
+<div class="d-flex align-items-center gap-4 text-white">
+    <div class="header-action-item d-flex align-items-center" onclick="requireLogin(event, 'tracking')">
+        <i class="fas fa-clipboard-list fs-4 me-2"></i>
+        <span style="font-size: 13px;">Tra cứu<br><b>đơn hàng</b></span>
+    </div>
+
+    <div class="header-action-item d-flex align-items-center">
+        <i class="far fa-user-circle fs-3 me-2"></i>
+        <span style="font-size: 13px;">Đăng<br><b>nhập</b></span>
+        
+        <div class="account-dropdown text-center">
+            <p class="mb-3 fw-bold">👋 Xin chào, vui lòng đăng nhập</p>
+            <div class="d-flex gap-2 mb-3">
+                <button class="btn btn-dark w-50" onclick="openAuthModal('login')">ĐĂNG NHẬP</button>
+                <button class="btn btn-outline-dark w-50" onclick="openAuthModal('register')">ĐĂNG KÝ</button>
+            </div>
+            <a href="#" class="text-muted small text-decoration-none d-block text-start border-top pt-2">
+                <i class="far fa-question-circle me-1"></i> Trợ giúp
+            </a>
+        </div>
+    </div>
+</div>
+`;
+
+// (Bạn tự điều chỉnh vị trí insert headerActionsHTML vào đúng div header của bạn)
+
+// 3. LOGIC XỬ LÝ
+// Giả lập trạng thái đăng nhập (Bạn sẽ thay bằng kiểm tra token thật sau này)
+let isLoggedIn = false; 
+
+function openAuthModal(tab) {
+    // Khởi tạo và mở Modal
+    const authModal = new bootstrap.Modal(document.getElementById('authModal'));
+    authModal.show();
+    
+    // Chuyển Tab tương ứng (Login hoặc Register)
+    if (tab === 'register') {
+        const registerTab = new bootstrap.Tab(document.getElementById('register-tab'));
+        registerTab.show();
+    } else {
+        const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+        loginTab.show();
+    }
+}
+
+function requireLogin(event, action) {
+    event.preventDefault(); // Ngăn chặn chuyển trang
+    
+    if (!isLoggedIn) {
+        // Nếu chưa đăng nhập -> Mở modal yêu cầu đăng nhập
+        openAuthModal('login');
+    } else {
+        // Nếu đã đăng nhập -> Thực hiện hành động
+        if(action === 'tracking') {
+            window.location.href = "tracking.html"; // Chuyển sang trang tra cứu
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. TẠO GIAO DIỆN MODAL ĐĂNG NHẬP/ĐĂNG KÝ
+    const authModalHTML = `
+    <div class="modal fade auth-modal" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header pt-4 px-4">
+                    <h5 class="modal-title w-100 text-center fw-bold text-uppercase fs-5">Đăng nhập hoặc Tạo tài khoản</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-4 pb-4">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab-login" data-bs-toggle="tab" data-bs-target="#pane-login" type="button" role="tab">ĐĂNG NHẬP</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-register" data-bs-toggle="tab" data-bs-target="#pane-register" type="button" role="tab">ĐĂNG KÝ</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pane-login" role="tabpanel">
+                            <form id="loginForm">
+                                <div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div>
+                                <div class="mb-3"><input type="password" class="form-control" placeholder="Mật khẩu" required></div>
+                                <div class="text-end mb-3"><a href="#" class="text-danger small text-decoration-none">Quên mật khẩu?</a></div>
+                                <button type="submit" class="btn btn-danger w-100 fw-bold py-2 mb-3">ĐĂNG NHẬP</button>
+                                
+                                <div class="text-center text-muted small border-bottom pb-2 mb-3" style="position:relative;">
+                                    <span class="bg-white px-2" style="position:absolute; top:-10px; left:50%; transform:translateX(-50%);">hoặc đăng nhập bằng</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-danger w-50 py-2"><i class="fab fa-google"></i> Google</button>
+                                    <button type="button" class="btn btn-outline-primary w-50 py-2"><i class="fab fa-facebook-f"></i> Facebook</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-register" role="tabpanel">
+                            <form id="registerForm">
+                                <div class="mb-3"><input type="text" class="form-control" placeholder="Họ và tên" required></div>
+                                <div class="mb-3"><input type="email" class="form-control" placeholder="Email" required></div>
+                                <div class="mb-3"><input type="password" class="form-control" placeholder="Mật khẩu" required></div>
+                                <button type="submit" class="btn btn-danger w-100 fw-bold py-2">ĐĂNG KÝ NGAY</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    // Chèn modal vào cuối body
+    document.body.insertAdjacentHTML('beforeend', authModalHTML);
+});
+
+// 3. HÀM MỞ MODAL ĐĂNG NHẬP
+window.openAuthModal = function(actionType) {
+    const authModal = new bootstrap.Modal(document.getElementById('authModal'));
+    authModal.show();
+    
+    // Tự động chuyển qua tab tương ứng
+    if (actionType === 'register') {
+        const tabTrigger = new bootstrap.Tab(document.getElementById('tab-register'));
+        tabTrigger.show();
+    } else {
+        const tabTrigger = new bootstrap.Tab(document.getElementById('tab-login'));
+        tabTrigger.show();
+    }
+};
+
+// 4. HÀM KIỂM TRA ĐĂNG NHẬP KHI BẤM "TRA CỨU ĐƠN HÀNG"
+window.requireLogin = function(event, action) {
+    event.preventDefault(); // Ngăn trình duyệt chuyển trang
+    
+    if (!isLoggedIn) {
+        openAuthModal('login'); // Trực tiếp bật popup đăng nhập lên
+    } else {
+        if(action === 'tracking') {
+            window.location.href = "tracking.html"; 
+        }
+    }
+};
 
     // KHỞI ĐỘNG
     loadHeader(); 
