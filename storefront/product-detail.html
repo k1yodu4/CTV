@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - KIET VA BAO PC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .product-title { font-size: 24px; font-weight: bold; color: #333; }
+        .product-price { font-size: 32px; font-weight: bold; color: #d32f2f; }
+        .product-price-old { font-size: 18px; text-decoration: line-through; color: #888; margin-left: 10px; }
+        .specs-table { font-size: 14px; }
+        .specs-table th { background-color: #f8f9fa; width: 30%; font-weight: normal; color: #555; }
+        .specs-table td { font-weight: 500; color: #333; }
+        .box-highlight { border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; }
+        .box-highlight-header { background-color: #d32f2f; color: white; padding: 10px 15px; font-weight: bold; text-transform: uppercase; font-size: 15px;}
+        .img-main { width: 100%; max-height: 400px; object-fit: contain; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div id="header-placeholder"></div>
+
+    <div class="container py-4">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-danger">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="category.html" class="text-decoration-none text-danger" id="bc-category">Danh mục</a></li>
+                <li class="breadcrumb-item active" aria-current="page" id="bc-title">Đang tải...</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-md-5 mb-4 mb-md-0 text-center">
+                        <img id="pd-image" src="" alt="Sản phẩm" class="img-main mb-3">
+                    </div>
+
+                    <div class="col-md-7">
+                        <h1 id="pd-title" class="product-title mb-2">Đang tải tên sản phẩm...</h1>
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="text-primary ms-2" style="font-size: 14px; cursor:pointer;">Xem đánh giá</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-baseline mb-4">
+                            <span id="pd-price" class="product-price">0đ</span>
+                            <span id="pd-old-price" class="product-price-old">0đ</span>
+                            <span class="badge bg-danger ms-3">-10%</span>
+                        </div>
+
+                        <div class="d-flex gap-2 mb-4">
+                            <button class="btn btn-danger btn-lg flex-grow-1 fw-bold text-uppercase">
+                                Mua ngay <br> <span class="fw-normal" style="font-size: 12px;">Giao tận nơi hoặc nhận tại cửa hàng</span>
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg fw-bold text-uppercase px-4">
+                                <i class="fas fa-phone-alt mb-1"></i> <br> <span class="fw-normal" style="font-size: 12px;">Tư vấn ngay</span>
+                            </button>
+                        </div>
+
+                        <div class="box-highlight">
+                            <div class="box-highlight-header">Điểm nổi bật</div>
+                            <div class="p-0">
+                                <table class="table table-bordered mb-0 specs-table">
+                                    <tbody id="pd-specs-table">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="pd-desc" class="mt-4 text-muted" style="font-size: 14px; line-height: 1.6;">
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Lấy ID sản phẩm từ URL (VD: product-detail.html?id=123)
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (!productId) {
+                alert("Không tìm thấy mã sản phẩm!");
+                window.location.href = 'category.html';
+                return;
+            }
+
+            try {
+                // 1. Tải từ điển Cấu hình (Để dịch key thành label)
+                const resConfig = await fetch('http://localhost:3000/api/specs-config');
+                const allSpecsConfig = await resConfig.json();
+                
+                let specsMap = {}; // Tạo từ điển { cpu: "CPU", vga: "Card màn hình", ... }
+                Object.values(allSpecsConfig).forEach(cat => {
+                    cat.forEach(s => specsMap[s.key] = s.label);
+                });
+
+                // 2. Tải dữ liệu Sản phẩm
+                const resProduct = await fetch(`http://localhost:3000/api/products/${productId}`);
+                if (!resProduct.ok) throw new Error("Sản phẩm không tồn tại");
+                const product = await resProduct.json();
+
+                // 3. Đổ dữ liệu lên giao diện
+                document.title = product.title + " - KIET VA BAO PC";
+                document.getElementById('bc-title').innerText = product.title;
+                document.getElementById('bc-category').innerText = product.category;
+                document.getElementById('bc-category').href = `category.html?category=${product.category}`;
+                
+                document.getElementById('pd-image').src = product.image;
+                document.getElementById('pd-title').innerText = product.title;
+                
+                // Hiển thị giá (Tạo giá cũ giả định cao hơn 10% để trang trí)
+                document.getElementById('pd-price').innerText = product.price.toLocaleString('vi-VN') + 'đ';
+                document.getElementById('pd-old-price').innerText = (product.price * 1.1).toLocaleString('vi-VN') + 'đ';
+                
+                if (product.description) {
+                    document.getElementById('pd-desc').innerHTML = `<strong>Mô tả:</strong> ${product.description}`;
+                }
+
+                // 4. VẼ BẢNG THÔNG SỐ (Ma thuật nằm ở đây)
+                const tbody = document.getElementById('pd-specs-table');
+                tbody.innerHTML = ''; // Xóa rỗng
+
+                if (product.specs && Object.keys(product.specs).length > 0) {
+                    for (const [key, value] of Object.entries(product.specs)) {
+                        // Tra từ điển xem 'key' này nhãn tiếng việt là gì, nếu không có thì viết hoa key đó
+                        const label = specsMap[key] || key.toUpperCase(); 
+                        
+                        tbody.innerHTML += `
+                            <tr>
+                                <th>${label}</th>
+                                <td>${value}</td>
+                            </tr>
+                        `;
+                    }
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="2" class="text-center text-muted">Đang cập nhật thông số chi tiết...</td></tr>`;
+                }
+
+            } catch (error) {
+                console.error("Lỗi:", error);
+                document.querySelector('.container').innerHTML = `<h3 class="text-center text-danger mt-5">Sản phẩm không tồn tại hoặc lỗi Server!</h3>`;
+            }
+        });
+    </script>
+</body>
+</html>

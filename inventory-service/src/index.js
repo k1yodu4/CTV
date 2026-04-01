@@ -70,6 +70,17 @@ app.get('/api/products', async (req, res) => {
     }
 });
 
+// API Lấy chi tiết 1 sản phẩm theo ID
+app.get('/api/products/:id', async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: "Lỗi Server" });
+    }
+});
+
 app.post('/api/products', async (req, res) => {
     try {
         const product = new Product(req.body);

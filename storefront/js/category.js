@@ -185,24 +185,34 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         emptyBox.style.display = 'none';
 
-        products.forEach(p => {
-            const specsHTML = formatSpecs(p);
-            productGrid.innerHTML += `
-                <div class="col">
-                    <div class="card h-100 shadow-sm product-card p-2 position-relative">
-                        <img src="${p.image}" class="card-img-top p-2" alt="${p.title}">
-                        <div class="card-body p-2 d-flex flex-column">
-                            <a href="product-detail.html?id=${p._id || p.id}" class="product-title mb-2 text-decoration-none text-dark">${p.title}</a>
-                            <div class="product-specs mt-auto">${specsHTML}</div>
-                            <div class="mt-1 d-flex justify-content-between align-items-center">
-                                <div class="price-new">${Number(p.price).toLocaleString('vi-VN')}đ</div>
-                                <div class="small text-warning"><i class="fas fa-star"></i> ${p.rating?.rate || 5}</div>
-                            </div>
-                        </div>
+products.forEach(p => {
+    const specsHTML = formatSpecs(p);
+    // Lấy ID chuẩn xác
+    const productId = p._id || p.id; 
+
+    productGrid.innerHTML += `
+        <div class="col">
+            <div class="card h-100 shadow-sm product-card p-2 position-relative">
+                
+                <img src="${p.image}" class="card-img-top p-2" alt="${p.title}">
+                
+                <div class="card-body p-2 d-flex flex-column flex-grow-1">
+                    <a href="product-detail.html?id=${productId}" class="product-title mb-2 text-decoration-none text-dark stretched-link">
+                        ${p.title}
+                    </a>
+                    
+                    <div class="product-specs mt-auto">${specsHTML}</div>
+                    
+                    <div class="mt-1 d-flex justify-content-between align-items-center position-relative" style="z-index: 2;">
+                        <div class="price-new">${Number(p.price).toLocaleString('vi-VN')}đ</div>
+                        <div class="small text-warning"><i class="fas fa-star"></i> ${p.rating?.rate || 5}</div>
                     </div>
                 </div>
-            `;
-        });
+
+            </div>
+        </div>
+    `;
+});
     }
 
     loadAndFilter();
