@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài khoản - KIET VA BAO PC</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/common.css">
+    
+    <style>
+        body { background-color: #f1f1f1; }
+        .profile-container { max-width: 1200px; margin: 30px auto; display: flex; gap: 20px; align-items: flex-start; }
+        
+        /* CỘT TRÁI: SIDEBAR */
+        .sidebar-menu { width: 280px; background: #fff; border-radius: 4px; padding: 20px 0; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .user-brief { padding: 0 20px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .user-avatar { width: 50px; height: 50px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; }
+        .menu-list { list-style: none; padding: 0; margin: 0; }
+        .menu-item { padding: 12px 20px; cursor: pointer; color: #333; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+        .menu-item:hover, .menu-item.active { color: #d32f2f; background-color: #fdf5f5; border-left: 3px solid #d32f2f; }
+        .menu-item i { width: 20px; text-align: center; color: #666; }
+        .menu-item.active i { color: #d32f2f; }
+
+        /* CỘT PHẢI: NỘI DUNG */
+        .content-area { flex-grow: 1; background: #fff; border-radius: 4px; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); min-height: 500px; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        .content-title { font-size: 20px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 25px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="profile-container">
+            
+            <div class="sidebar-menu">
+                <div class="user-brief">
+                    <div class="user-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <div class="fw-bold fs-6" id="sidebar-name">Đang tải...</div>
+                        <div class="small text-muted" id="sidebar-phone">...</div>
+                    </div>
+                </div>
+                <ul class="menu-list">
+                    <li class="menu-item active" onclick="switchTab('account', this)"><i class="fas fa-user-circle"></i> Thông tin tài khoản</li>
+                    <li class="menu-item" onclick="switchTab('address', this)"><i class="fas fa-map-marker-alt"></i> Số địa chỉ</li>
+                    <li class="menu-item" onclick="switchTab('orders', this)"><i class="fas fa-shopping-bag"></i> Quản lý đơn hàng</li>
+                    <li class="menu-item" onclick="switchTab('history', this)"><i class="fas fa-eye"></i> Sản phẩm đã xem</li>
+                    <li class="menu-item" onclick="logout(event)"><i class="fas fa-sign-out-alt"></i> Đăng xuất</li>
+                </ul>
+            </div>
+
+            <div class="content-area">
+                
+                <div id="tab-account" class="tab-pane active">
+                    <div class="content-title border-0 pb-0 mb-4">Thông tin tài khoản</div>
+                    
+                    <form style="max-width: 650px;">
+                        <div class="mb-3 row align-items-center">
+                            <label class="col-sm-3 col-form-label text-end text-muted">Họ Tên</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="profile-name">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row align-items-center">
+                            <label class="col-sm-3 col-form-label text-end text-muted">Giới tính</label>
+                            <div class="col-sm-9 d-flex gap-4 align-items-center">
+                                <div class="form-check m-0">
+                                    <input class="form-check-input" type="radio" name="profileGender" id="genderMale" value="Nam" checked>
+                                    <label class="form-check-label" for="genderMale">Nam</label>
+                                </div>
+                                <div class="form-check m-0">
+                                    <input class="form-check-input" type="radio" name="profileGender" id="genderFemale" value="Nữ">
+                                    <label class="form-check-label" for="genderFemale">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row align-items-center">
+                            <label class="col-sm-3 col-form-label text-end text-muted">Số điện thoại</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="profile-phone" placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row align-items-center">
+                            <label class="col-sm-3 col-form-label text-end text-muted">Email</label>
+                            <div class="col-sm-9 d-flex align-items-center gap-2">
+                                <span id="profile-email" class="fw-medium text-dark">email_cua_ban@gmail.com</span>
+                                <i class="bi bi-check-circle-fill text-success" style="font-size: 14px;" title="Đã xác thực"></i>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row align-items-center">
+                            <label class="col-sm-3 col-form-label text-end text-muted">Ngày sinh</label>
+                            <div class="col-sm-9 d-flex gap-2">
+                                <select class="form-select" id="profile-day">
+                                    <option value="">Ngày</option>
+                                </select>
+                                <select class="form-select" id="profile-month">
+                                    <option value="">Tháng</option>
+                                </select>
+                                <select class="form-select" id="profile-year">
+                                    <option value="">Năm</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="button" class="btn btn-danger px-4 fw-bold" style="background-color: #ed1b24; border: none; padding: 10px 20px;" onclick="updateUserProfile()">LƯU THAY ĐỔI</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="tab-address" class="tab-pane">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+                        <div class="content-title border-0 pb-0 mb-0">Sổ địa chỉ</div>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Thêm địa chỉ mới</button>
+                    </div>
+                    <div class="text-center py-5 text-muted">Bạn chưa lưu địa chỉ nào.</div>
+                </div>
+
+                <div id="tab-orders" class="tab-pane">
+                    <div class="content-title">Quản lý đơn hàng</div>
+                    <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item"><a class="nav-link active text-dark fw-bold" href="#">TẤT CẢ</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="#">CHỜ XÁC NHẬN</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="#">ĐANG VẬN CHUYỂN</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="#">HOÀN THÀNH</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="#">ĐÃ HỦY</a></li>
+                    </ul>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Trạng thái</th>
+                                    <th>Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-list-body">
+                                <tr><td colspan="4" class="text-center py-4 text-muted">Đang tải danh sách đơn hàng...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tab-history" class="tab-pane">
+                    <div class="content-title">Sản phẩm đã xem</div>
+                    <div class="text-center py-5 text-muted">Tính năng đang phát triển...</div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/megamenudata.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/tracking.js"></script>
+</body>
+</html>

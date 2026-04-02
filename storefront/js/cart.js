@@ -231,10 +231,8 @@ window.submitOrder = async function() {
     
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
     
-    // Lấy ID user nếu đã đăng nhập (Nếu dùng JWT để decode thì truyền vào đây, tạm thời để null cho khách vãng lai)
-    const token = localStorage.getItem('token'); 
-    let userId = null; 
-    // *Lưu ý: Thực tế Backend sẽ giải mã token để lấy userId, ở đây gửi lên tạm*
+    // Lấy token để gửi kèm (Backend sẽ giải mã token để lấy userId)
+    const token = localStorage.getItem('token');
 
     // Đổi trạng thái nút bấm chống click đúp
     const btnSubmit = document.getElementById('btn-submit-order');
@@ -242,15 +240,19 @@ window.submitOrder = async function() {
     btnSubmit.disabled = true;
 
     try {
-        // GỌI API ĐÃ VIẾT Ở BƯỚC TRƯỚC
+        // GỌI API - GỖI TOKEN TRONG HEADER ĐỂ BACKEND LẤY USERID
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+        
         const response = await fetch('http://localhost:3000/api/orders', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: headers,
             body: JSON.stringify({
                 customerInfo,
                 items: cart,
-                paymentMethod,
-                userId
+                paymentMethod
             })
         });
 
