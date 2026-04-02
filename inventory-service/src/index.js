@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 const CategorySpec = require('./models/CategorySpec');
 const Product = require('./models/Product');
 const User = require('./models/User');
+const Order = require('./models/Order');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -167,6 +168,45 @@ app.post('/api/login', async (req, res) => {
         res.json({ message: "Đăng nhập thành công!", token, role: user.role, fullname: user.fullname });
     } catch (err) {
         res.status(500).json({ error: "Lỗi Server" });
+    }
+});
+
+// --- API TẠO ĐƠN HÀNG ---
+app.post('/api/orders', async (req, res) => {
+    try {
+        const { customerInfo, items, paymentMethod, userId } = req.body;
+
+        // 1. Tính toán lại tổng tiền từ Server (Để chống hacker sửa giá ở Frontend)
+        let totalAmount = 0;
+        items.forEach(item => {
+            totalAmount += item.price * item.quantity;
+        });
+
+        // 2. Tạo mã đơn hàng duy nhất (Ví dụ: KVB-845219)
+        const orderCode = 'KVB-' + Math.floor(100000 + Math.random() * 900000);
+
+        // 3. Tạo và lưu đơn hàng vào MongoDB
+        const newOrder = new Order({
+            orderCode,
+            customerInfo,
+            items,
+            totalAmount,
+            paymentMethod,
+            userId: userId || null
+        });
+
+        await newOrder.save();
+
+        // 4. Trả kết quả về cho Frontend
+        res.status(201).json({ 
+            message: "Đặt hàng thành công!", 
+            orderCode: newOrder.orderCode,
+            totalAmount: newOrder.totalAmount
+        });
+
+    } catch (err) {
+        console.error("Lỗi tạo đơn hàng:", err);
+        res.status(500).json({ error: "Lỗi hệ thống khi đặt hàng!" });
     }
 });
 

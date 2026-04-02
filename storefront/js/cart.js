@@ -107,3 +107,120 @@ document.getElementById('btn-checkout')?.addEventListener('click', () => {
     alert("Tính năng Đặt hàng đang được hoàn thiện!");
     // Sau này có thể chuyển sang trang checkout.html tại đây
 });
+
+// ==========================================
+// XỬ LÝ LUỒNG ĐẶT HÀNG (SPA)
+// ==========================================
+window.checkLoginAndGoToStep = function(stepNumber) {
+    if (stepNumber === 2) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Vui lòng đăng nhập để tiếp tục đặt hàng!");
+            // Gọi modal đăng nhập ở header hiện lên
+            if (typeof window.openAuthModal === 'function') {
+                window.openAuthModal('login');
+            }
+            return; // Chặn không cho qua bước 2
+        }
+    }
+    
+    // Nếu đã đăng nhập (có token), cho phép chuyển bước bình thường
+    goToStep(stepNumber);
+};
+// 1. Hàm chuyển đổi giữa các bước (1, 2, 3)
+window.goToStep = function(stepNumber) {
+    // Ẩn tất cả các khối
+    document.getElementById('step-1-cart').style.display = 'none';
+    document.getElementById('step-2-info').style.display = 'none';
+    document.getElementById('step-3-payment').style.display = 'none';
+    
+    // Hiện khối được gọi
+    if(stepNumber === 1) document.getElementById('step-1-cart').style.display = 'block';
+    if(stepNumber === 2) document.getElementById('step-2-info').style.display = 'block';
+    if(stepNumber === 3) document.getElementById('step-3-payment').style.display = 'block';
+
+    // Cập nhật màu đỏ cho thanh tiến trình
+    const steps = document.querySelectorAll('.step-progress .step');
+    steps.forEach((step, index) => {
+        if (index < stepNumber) {
+            step.classList.add('active');
+        } else {
+            step.classList.remove('active');
+        }
+    });
+};
+
+// 2. Hàm kiểm tra form trước khi cho qua bước Thanh toán
+window.validateAndGoToPayment = function() {
+    const name = document.getElementById('cusName').value.trim();
+    const phone = document.getElementById('cusPhone').value.trim();
+    const address = document.getElementById('cusAddress').value.trim();
+
+    if (!name || !phone || !address) {
+        alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ nhận hàng!");
+        return;
+    }
+    
+    goToStep(3); // Nếu ok thì sang bước 3
+};
+
+// 3. Hàm gửi dữ liệu lên Backend
+window.submitOrder = async function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) return alert("Giỏ hàng trống!");
+
+    // Thu thập dữ liệu
+    const customerInfo = {
+        fullname: document.getElementById('cusName').value.trim(),
+        phone: document.getElementById('cusPhone').value.trim(),
+        email: document.getElementById('cusEmail').value.trim(),
+        address: document.getElementById('cusAddress').value.trim(),
+        note: document.getElementById('cusNote').value.trim()
+    };
+    
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+    
+    // Lấy ID user nếu đã đăng nhập (Nếu dùng JWT để decode thì truyền vào đây, tạm thời để null cho khách vãng lai)
+    const token = localStorage.getItem('token'); 
+    let userId = null; 
+    // *Lưu ý: Thực tế Backend sẽ giải mã token để lấy userId, ở đây gửi lên tạm*
+
+    // Đổi trạng thái nút bấm chống click đúp
+    const btnSubmit = document.getElementById('btn-submit-order');
+    btnSubmit.innerText = "ĐANG XỬ LÝ...";
+    btnSubmit.disabled = true;
+
+    try {
+        // GỌI API ĐÃ VIẾT Ở BƯỚC TRƯỚC
+        const response = await fetch('http://localhost:3000/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                customerInfo,
+                items: cart,
+                paymentMethod,
+                userId
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // Đặt hàng thành công -> Xóa giỏ hàng
+            localStorage.removeItem('cart');
+            if (typeof updateCartBadge === 'function') updateCartBadge();
+            
+            // CHUYỂN HƯỚNG SANG TRANG CẢM ƠN (KÈM DỮ LIỆU ĐỂ TẠO MÃ QR)
+            window.location.href = `success.html?orderCode=${data.orderCode}&method=${paymentMethod}&total=${data.totalAmount}`;
+        } else {
+            alert("❌ Lỗi: " + data.error);
+            btnSubmit.innerText = "HOÀN TẤT ĐẶT HÀNG";
+            btnSubmit.disabled = false;
+        }
+    } catch (error) {
+        console.error("Lỗi:", error);
+        alert("❌ Không thể kết nối đến Server!");
+        btnSubmit.innerText = "HOÀN TẤT ĐẶT HÀNG";
+        btnSubmit.disabled = false;
+    }
+};
