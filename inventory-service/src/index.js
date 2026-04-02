@@ -5,17 +5,19 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+
+const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI; 
+
 const CategorySpec = require('./models/CategorySpec');
 const Product = require('./models/Product');
 const User = require('./models/User');
 const Order = require('./models/Order');
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI; 
-
-app.use(cors());
-app.use(express.json());
 
 app.get('/test', (req, res) => {
     res.send("Server đang chạy và nhận diện được Route này!");

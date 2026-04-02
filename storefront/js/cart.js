@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('📄 cart.html loaded - running initialization');
     renderCart();
+    initDebugUI();
 });
 
 // Hàm chính: Vẽ toàn bộ giỏ hàng
 function renderCart() {
+    console.log('🔍 renderCart() được gọi');
     const cartWrapper = document.getElementById('cart-items-wrapper');
+    console.log('📦 cartWrapper element:', cartWrapper);
     const totalPriceEl = document.getElementById('cart-total-price');
     const btnCheckout = document.getElementById('btn-checkout');
     
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log('🛒 Dữ liệu giỏ hàng từ localStorage:', cart);
+    console.log('📊 Số lượng item:', cart.length);
     
     // Nếu giỏ hàng trống
 if (cart.length === 0) {
@@ -62,9 +68,53 @@ if (cart.length === 0) {
     cartWrapper.innerHTML = html;
     totalPriceEl.innerText = totalPrice.toLocaleString('vi-VN') + 'đ';
     
+    const step2Total = document.getElementById('step-2-total-price');
+    if (step2Total) step2Total.innerText = totalPrice.toLocaleString('vi-VN') + 'đ';
+    
     // Cập nhật lại số trên Header
     if (typeof window.updateCartBadge === 'function') {
         window.updateCartBadge();
+    }
+}
+
+// DEBUG: Thêm sản phẩm test và hiển thị button nếu cart trống
+function initDebugUI() {
+    console.log('🧪 Khởi tạo Debug UI');
+    
+    // Hiển thị button test nếu cart trống
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const btnTest = document.getElementById('btn-test-add');
+    
+    if (btnTest) {
+        if (cart.length === 0) {
+            btnTest.style.display = 'block';
+            console.log('✅ Button test đã hiển thị');
+        }
+        
+        btnTest.addEventListener('click', () => {
+            console.log('🧪 Thêm sản phẩm test');
+            const testCart = [
+                {
+                    id: '1',
+                    title: 'PC Gaming Pro - Test',
+                    price: 15000000,
+                    image: 'https://img.icons8.com/color/96/000000/computer.png',
+                    quantity: 1
+                },
+                {
+                    id: '2',
+                    title: 'Màn hình 4K - Test',
+                    price: 8000000,
+                    image: 'https://img.icons8.com/color/96/000000/monitor.png',
+                    quantity: 2
+                }
+            ];
+            
+            localStorage.setItem('cart', JSON.stringify(testCart));
+            console.log('💾 Test data saved to localStorage:', testCart);
+            renderCart();
+            btnTest.style.display = 'none';
+        });
     }
 }
 
@@ -102,11 +152,6 @@ window.removeCartItem = function(id) {
     }
 };
 
-// Xử lý nút Đặt hàng
-document.getElementById('btn-checkout')?.addEventListener('click', () => {
-    alert("Tính năng Đặt hàng đang được hoàn thiện!");
-    // Sau này có thể chuyển sang trang checkout.html tại đây
-});
 
 // ==========================================
 // XỬ LÝ LUỒNG ĐẶT HÀNG (SPA)
@@ -154,9 +199,12 @@ window.goToStep = function(stepNumber) {
 window.validateAndGoToPayment = function() {
     const name = document.getElementById('cusName').value.trim();
     const phone = document.getElementById('cusPhone').value.trim();
-    const address = document.getElementById('cusAddress').value.trim();
+    const city = document.getElementById('cusCity').value;
+    const district = document.getElementById('cusDistrict').value;
+    const ward = document.getElementById('cusWard').value;
+    const street = document.getElementById('cusStreet').value.trim();
 
-    if (!name || !phone || !address) {
+    if (!name || !phone || !city || !district || !ward || !street) {
         alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ nhận hàng!");
         return;
     }
@@ -169,13 +217,16 @@ window.submitOrder = async function() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cart.length === 0) return alert("Giỏ hàng trống!");
 
-    // Thu thập dữ liệu
+    // Thu thập dữ liệu theo giao diện mới
     const customerInfo = {
+        gender: document.querySelector('input[name="cusGender"]:checked').value,
         fullname: document.getElementById('cusName').value.trim(),
         phone: document.getElementById('cusPhone').value.trim(),
-        email: document.getElementById('cusEmail').value.trim(),
-        address: document.getElementById('cusAddress').value.trim(),
-        note: document.getElementById('cusNote').value.trim()
+        address: `${document.getElementById('cusStreet').value.trim()}, ${document.getElementById('cusWard').value}, ${document.getElementById('cusDistrict').value}, ${document.getElementById('cusCity').value}`,
+        note: document.getElementById('cusNote').value.trim(),
+        requireInvoice: document.getElementById('requireInvoice').checked,
+        receiveMethod: document.querySelector('input[name="receiveMethod"]:checked').value,
+        shippingService: document.querySelector('input[name="shippingService"]:checked').value
     };
     
     const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
@@ -224,3 +275,41 @@ window.submitOrder = async function() {
         btnSubmit.disabled = false;
     }
 };
+
+// ==========================================
+// HIỂN THỊ MÃ QR VIETQR KHI CHỌN NGÂN HÀNG
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const radioButtons = document.querySelectorAll('input[name="paymentMethod"]');
+    const qrContainer = document.getElementById('qr-container');
+    const qrImage = document.getElementById('qr-image');
+    const qrMessage = document.getElementById('qr-message');
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'BANK') {
+                // 1. Lấy thông tin (Tổng tiền, SĐT)
+                const totalString = document.getElementById('step-2-total-price').innerText;
+                const totalAmount = parseInt(totalString.replace(/\D/g, '')) || 0;
+                const phone = document.getElementById('cusPhone').value || 'KhachHang';
+
+                // 2. Điền thông tin ngân hàng của bạn vào đây
+                const bankId = 'MB'; // Mã ngân hàng (VD: VCB, TCB, MB, ACB...)
+                const accountNo = '0979541020'; // Số tài khoản
+                const accountName = 'BUI VU GIA BAO'; // Tên chủ tài khoản
+                const addInfo = `Thanh toan don hang ${phone}`; // Lời nhắn
+
+                // 3. Tạo link API VietQR
+                const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact2.png?amount=${totalAmount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(accountName)}`;
+
+                // 4. Hiển thị
+                qrImage.src = qrUrl;
+                qrMessage.innerText = addInfo;
+                qrContainer.style.display = 'block';
+            } else {
+                // Ẩn đi nếu chọn COD
+                qrContainer.style.display = 'none';
+            }
+        });
+    });
+});

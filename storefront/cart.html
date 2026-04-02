@@ -83,6 +83,11 @@
                     <div id="cart-items-wrapper">
                         </div>
                     
+                    <!-- DEBUG BUTTON - Test rendering -->
+                    <button id="btn-test-add" style="display: none; margin: 10px 0; padding: 8px 12px; background: #666; color: white; border: none; cursor: pointer;">
+                        [DEBUG] Thêm sản phẩm test
+                    </button>
+                    
                     <div class="mt-3 discount-box">
                         <i class="fas fa-ticket-alt me-2"></i> Sử dụng mã giảm giá <i class="fas fa-caret-down ms-2"></i>
                     </div>
@@ -92,22 +97,104 @@
                             <span class="fw-bold fs-6 text-dark">Tổng tiền:</span>
                             <span class="total-price" id="cart-total-price">0đ</span>
                         </div>
-                        <button class="btn-checkout" onclick="checkLoginAndGoToStep(2)">TIẾP TỤC ĐẶT HÀNG</button>
+                        <button id="btn-checkout" class="btn-checkout" onclick="checkLoginAndGoToStep(2)">TIẾP TỤC ĐẶT HÀNG</button>
                     </div>
                 </div>
 
                 <div id="step-2-info" class="step-section" style="display: none;">
-                    <h5 class="fw-bold mb-3 border-bottom pb-2">Thông tin nhận hàng</h5>
+                    <h5 class="fw-bold mb-3 border-bottom pb-2">Thông tin khách mua hàng</h5>
                     <form id="infoForm">
-                        <div class="mb-3"><input type="text" id="cusName" class="form-control" placeholder="Họ và tên người nhận" required></div>
-                        <div class="mb-3"><input type="tel" id="cusPhone" class="form-control" placeholder="Số điện thoại" required></div>
-                        <div class="mb-3"><input type="text" id="cusAddress" class="form-control" placeholder="Địa chỉ nhận hàng chi tiết" required></div>
-                        <div class="mb-3"><textarea id="cusNote" class="form-control" rows="2" placeholder="Ghi chú thêm (VD: Giao ngoài giờ hành chính)"></textarea></div>
-                        
-                        <div class="d-flex gap-2 mt-4">
-                            <button type="button" class="btn btn-secondary w-50 fw-bold py-2" onclick="goToStep(1)">QUAY LẠI</button>
-                            <button type="button" class="btn-checkout w-50 m-0" onclick="validateAndGoToPayment()">CHỌN THANH TOÁN</button>
+                        <div class="d-flex gap-4 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cusGender" id="genderMale" value="Anh" checked>
+                                <label class="form-check-label" for="genderMale">Anh</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cusGender" id="genderFemale" value="Chị">
+                                <label class="form-check-label" for="genderFemale">Chị</label>
+                            </div>
                         </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-6">
+                                <input type="text" id="cusName" class="form-control" placeholder="Nhập họ tên" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" id="cusPhone" class="form-control" placeholder="Nhập số điện thoại" required>
+                            </div>
+                        </div>
+
+                        <h6 class="fw-bold mt-4 mb-2">Chọn cách nhận hàng</h6>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="receiveMethod" id="delivery" value="Giao hàng tận nơi" checked>
+                            <label class="form-check-label fw-bold" for="delivery">Giao hàng tận nơi</label>
+                        </div>
+
+                        <div class="bg-light p-3 rounded mb-3 border">
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-6">
+                                    <select class="form-select" id="cusCity" required>
+                                        <option value="">Chọn Tỉnh, Thành phố</option>
+                                        <option value="Hà Nội">Hà Nội</option>
+                                        <option value="TP HCM">TP. Hồ Chí Minh</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select" id="cusDistrict" required>
+                                        <option value="">Chọn Quận, Huyện</option>
+                                        <option value="Quận 1">Quận 1</option>
+                                        <option value="Cầu Giấy">Cầu Giấy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <select class="form-select" id="cusWard" required>
+                                        <option value="">Chọn Phường, Xã</option>
+                                        <option value="Phường 1">Phường 1</option>
+                                        <option value="Dịch Vọng">Dịch Vọng</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="cusStreet" class="form-control" placeholder="Số nhà, tên đường" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" id="cusNote" class="form-control" placeholder="Lưu ý, yêu cầu khác (Không bắt buộc)">
+                        </div>
+                        <div class="form-check mb-4 border-bottom pb-3">
+                            <input class="form-check-input" type="checkbox" id="requireInvoice">
+                            <label class="form-check-label" for="requireInvoice">Xuất hoá đơn cho đơn hàng</label>
+                        </div>
+
+                        <h6 class="fw-bold mb-2">Dịch vụ giao hàng</h6>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="shippingService" id="shipStandard" value="Miễn phí vận chuyển" checked>
+                            <label class="form-check-label d-flex justify-content-between w-100" for="shipStandard">
+                                <span>Miễn phí vận chuyển (Giao hành tiêu chuẩn)</span>
+                                <span>0đ</span>
+                            </label>
+                        </div>
+                        <div class="form-check mb-4 border-bottom pb-3">
+                            <input class="form-check-input" type="radio" name="shippingService" id="shipStore" value="Nhận tại cửa hàng">
+                            <label class="form-check-label d-flex justify-content-between w-100" for="shipStore">
+                                <span>Nhận tại cửa hàng</span>
+                                <span>0đ</span>
+                            </label>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="fw-bold">Tổng tiền:</span>
+                            <span class="fw-bold text-danger fs-5" id="step-2-total-price">0đ</span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-secondary w-25 fw-bold" onclick="goToStep(1)">TRỞ VỀ</button>
+                            <button type="button" class="btn-checkout w-75 m-0 text-uppercase fw-bold" onclick="validateAndGoToPayment()">ĐẶT HÀNG NGAY</button>
+                        </div>
+                        <div class="text-center mt-2 small text-muted">Bạn có thể chọn hình thức thanh toán sau khi đặt hàng</div>
                     </form>
                 </div>
 
@@ -127,6 +214,11 @@
                                 Chuyển khoản qua ngân hàng (VietQR)
                                 <div class="text-muted fw-normal small mt-1">Quét mã QR tự động bằng App ngân hàng. Nhanh chóng và chính xác 100%.</div>
                             </label>
+                            
+                            <div id="qr-container" class="mt-3 text-center bg-white border rounded p-3" style="display: none; max-width: 250px;">
+                                <img id="qr-image" src="" alt="Mã QR" class="img-fluid mb-2">
+                                <div class="small">Nội dung CK: <br><strong id="qr-message" class="text-danger"></strong></div>
+                            </div>
                         </div>
                     </div>
                     
