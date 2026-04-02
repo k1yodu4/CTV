@@ -6,6 +6,8 @@
     <title>Chi tiết sản phẩm - KIET VA BAO PC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/common.css">
     <style>
         .product-title { font-size: 24px; font-weight: bold; color: #333; }
@@ -53,7 +55,7 @@
                         </div>
 
                         <div class="d-flex gap-2 mb-4">
-                            <button class="btn btn-danger btn-lg flex-grow-1 fw-bold text-uppercase">
+                            <button id="btn-buy-now" class="btn btn-danger btn-lg flex-grow-1 fw-bold text-uppercase">
                                 Mua ngay <br> <span class="fw-normal" style="font-size: 12px;">Giao tận nơi hoặc nhận tại cửa hàng</span>
                             </button>
                             <button class="btn btn-outline-primary btn-lg fw-bold text-uppercase px-4">
@@ -80,10 +82,10 @@
         </div>
     </div>
 
+    <script src="js/megamenudata.js"></script>
     <script src="js/common.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            // Lấy ID sản phẩm từ URL (VD: product-detail.html?id=123)
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
 
@@ -94,11 +96,11 @@
             }
 
             try {
-                // 1. Tải từ điển Cấu hình (Để dịch key thành label)
+                // 1. Tải từ điển Cấu hình
                 const resConfig = await fetch('http://localhost:3000/api/specs-config');
                 const allSpecsConfig = await resConfig.json();
                 
-                let specsMap = {}; // Tạo từ điển { cpu: "CPU", vga: "Card màn hình", ... }
+                let specsMap = {}; 
                 Object.values(allSpecsConfig).forEach(cat => {
                     cat.forEach(s => specsMap[s.key] = s.label);
                 });
@@ -106,7 +108,7 @@
                 // 2. Tải dữ liệu Sản phẩm
                 const resProduct = await fetch(`http://localhost:3000/api/products/${productId}`);
                 if (!resProduct.ok) throw new Error("Sản phẩm không tồn tại");
-                const product = await resProduct.json();
+                const product = await resProduct.json(); // <-- CHÚNG TA ĐÃ CÓ DATA GỐC Ở ĐÂY
 
                 // 3. Đổ dữ liệu lên giao diện
                 document.title = product.title + " - KIET VA BAO PC";
@@ -116,8 +118,6 @@
                 
                 document.getElementById('pd-image').src = product.image;
                 document.getElementById('pd-title').innerText = product.title;
-                
-                // Hiển thị giá (Tạo giá cũ giả định cao hơn 10% để trang trí)
                 document.getElementById('pd-price').innerText = product.price.toLocaleString('vi-VN') + 'đ';
                 document.getElementById('pd-old-price').innerText = (product.price * 1.1).toLocaleString('vi-VN') + 'đ';
                 
@@ -125,25 +125,54 @@
                     document.getElementById('pd-desc').innerHTML = `<strong>Mô tả:</strong> ${product.description}`;
                 }
 
-                // 4. VẼ BẢNG THÔNG SỐ (Ma thuật nằm ở đây)
+                // 4. VẼ BẢNG THÔNG SỐ
                 const tbody = document.getElementById('pd-specs-table');
-                tbody.innerHTML = ''; // Xóa rỗng
+                tbody.innerHTML = ''; 
 
                 if (product.specs && Object.keys(product.specs).length > 0) {
                     for (const [key, value] of Object.entries(product.specs)) {
-                        // Tra từ điển xem 'key' này nhãn tiếng việt là gì, nếu không có thì viết hoa key đó
                         const label = specsMap[key] || key.toUpperCase(); 
-                        
-                        tbody.innerHTML += `
-                            <tr>
-                                <th>${label}</th>
-                                <td>${value}</td>
-                            </tr>
-                        `;
+                        tbody.innerHTML += `<tr><th>${label}</th><td>${value}</td></tr>`;
                     }
                 } else {
                     tbody.innerHTML = `<tr><td colspan="2" class="text-center text-muted">Đang cập nhật thông số chi tiết...</td></tr>`;
                 }
+
+                // 5. XỬ LÝ NÚT MUA NGAY (Nằm ngay đây là an toàn nhất)
+                // Đưa logic này vào ngay sau bước hiển thị dữ liệu sản phẩm thành công
+document.getElementById('btn-buy-now').addEventListener('click', () => {
+    // 1. Lấy giỏ hàng hiện tại
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // 2. Kiểm tra xem sản phẩm đã có trong giỏ chưa
+    const existingItem = cart.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        // 'product' là biến chứa data từ API ở đoạn code phía trên
+        cart.push({
+            id: productId,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+
+    // 3. Lưu vào localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // 4. CẬP NHẬT CON SỐ TRÊN HEADER NGAY LẬP TỨC
+    if (typeof window.updateCartBadge === 'function') {
+        window.updateCartBadge();
+    }
+
+    // 5. Thông báo cho người dùng - Hiển thị popup
+    if (typeof window.showCartPopup === 'function') {
+        window.showCartPopup(product.image, product.title);
+    }
+});
 
             } catch (error) {
                 console.error("Lỗi:", error);

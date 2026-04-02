@@ -2,9 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const CategorySpec = require('./models/CategorySpec');
 const Product = require('./models/Product');
+const User = require('./models/User');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -117,6 +120,53 @@ app.delete('/api/products/:id', async (req, res) => {
         res.json({ message: "Xóa sản phẩm thành công!" });
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+const JWT_SECRET = process.env.JWT_SECRET || "BaoKietPC_Secret_Key_123";
+
+// API ĐĂNG KÝ
+app.post('/api/register', async (req, res) => {
+    try {
+        const { fullname, email, password } = req.body;
+        
+        // Kiểm tra trùng email
+        const existingUser = await User.findOne({ email });
+        if (existingUser) return res.status(400).json({ error: "Email đã được sử dụng!" });
+
+        // Băm mật khẩu
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        // Lưu DB
+        const newUser = new User({ fullname, email, password: hashedPassword });
+        await newUser.save();
+
+        res.status(201).json({ message: "Đăng ký thành công!" });
+    } catch (err) {
+        res.status(500).json({ error: "Lỗi Server" });
+    }
+});
+
+// API ĐĂNG NHẬP
+app.post('/api/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        
+        // Kiểm tra User có tồn tại?
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ error: "Email không tồn tại!" });
+
+        // So sánh mật khẩu băm
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ error: "Mật khẩu không đúng!" });
+
+        // Tạo vé (Token)
+        const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
+
+        res.json({ message: "Đăng nhập thành công!", token, role: user.role, fullname: user.fullname });
+    } catch (err) {
+        res.status(500).json({ error: "Lỗi Server" });
     }
 });
 

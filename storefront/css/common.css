@@ -136,6 +136,16 @@ header {
     border-right: 8px solid transparent;
     border-bottom: 8px solid #fff;
 }
+/* TẠO CẦU NỐI TÀNG HÌNH ĐỂ CHUỘT KHÔNG BỊ RƠI XUỐNG KHE TRỐNG */
+.account-dropdown::after {
+    content: "";
+    position: absolute;
+    top: -20px; /* Kéo dài vùng nhận chuột lên trên 20px */
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent; /* Hoàn toàn trong suốt */
+}
 
 /* Hover vào vùng .header-action-item thì hiện .account-dropdown */
 .header-action-item:hover .account-dropdown {
@@ -212,3 +222,47 @@ header {
 .auth-modal .nav-tabs .nav-link { border: none; color: #666; font-weight: bold; padding: 12px 20px; font-size: 15px; }
 .auth-modal .nav-tabs .nav-link.active { color: #d32f2f; border-bottom: 2px solid #d32f2f; background: transparent; }
 .auth-modal .form-control { padding: 12px 15px; background-color: #f8f9fa; border: 1px solid #ddd; }
+
+/* --- POPUP THÔNG BÁO GIỎ HÀNG --- */
+.cart-popup-notification {
+    position: absolute;
+    top: 130%; /* Cách icon giỏ hàng một đoạn */
+    right: -20px;
+    width: 320px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 15px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng trượt lên và hiện ra */
+.cart-popup-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Tạo mũi tên nhọn chỉ lên header */
+.cart-popup-notification::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 40px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+}
+
+.cart-popup-title { color: #28a745; font-size: 16px; font-weight: bold; text-align: center; margin-bottom: 15px; }
+.cart-popup-item { display: flex; align-items: center; margin-bottom: 15px; }
+.cart-popup-item img { width: 60px; height: 60px; object-fit: contain; border: 1px solid #eee; margin-right: 12px; }
+.cart-popup-item-title { font-size: 13px; color: #333; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.btn-view-cart { background-color: #f39c12; color: #fff; font-weight: bold; width: 100%; border: none; padding: 10px 0; border-radius: 4px; transition: 0.2s; }
+.btn-view-cart:hover { background-color: #e67e22; color: #fff; }
