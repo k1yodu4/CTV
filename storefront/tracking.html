@@ -128,12 +128,13 @@
 
                 <div id="tab-orders" class="tab-pane">
                     <div class="content-title">Quản lý đơn hàng</div>
-                    <ul class="nav nav-tabs mb-4">
-                        <li class="nav-item"><a class="nav-link active text-dark fw-bold" href="#">TẤT CẢ</a></li>
-                        <li class="nav-item"><a class="nav-link text-muted" href="#">CHỜ XÁC NHẬN</a></li>
-                        <li class="nav-item"><a class="nav-link text-muted" href="#">ĐANG VẬN CHUYỂN</a></li>
-                        <li class="nav-item"><a class="nav-link text-muted" href="#">HOÀN THÀNH</a></li>
-                        <li class="nav-item"><a class="nav-link text-danger" href="#">ĐÃ HỦY</a></li>
+                    <ul class="nav nav-tabs mb-4" id="order-filter-tabs">
+                        <li class="nav-item"><a class="nav-link active text-dark fw-bold" href="javascript:void(0)" onclick="filterMyOrders('Tất cả', this)">TẤT CẢ</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="javascript:void(0)" onclick="filterMyOrders('Chờ xác nhận', this)">CHỜ XÁC NHẬN</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="javascript:void(0)" onclick="filterMyOrders('Đang xử lý', this)">ĐANG XỬ LÝ</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="javascript:void(0)" onclick="filterMyOrders('Đang vận chuyển', this)">ĐANG VẬN CHUYỂN</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="javascript:void(0)" onclick="filterMyOrders('Hoàn tất', this)">HOÀN TẤT</a></li>
+                        <li class="nav-item"><a class="nav-link text-muted" href="javascript:void(0)" onclick="filterMyOrders('Đã hủy', this)">ĐÃ HỦY</a></li>
                     </ul>
                     
                     <div class="table-responsive">

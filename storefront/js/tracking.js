@@ -38,6 +38,9 @@ window.switchTab = function(tabId, element) {
     }
 };
 
+// Biến toàn cục để lưu lại danh sách đơn hàng đã tải về
+let allMyOrdersList = [];
+
 // Hàm kéo dữ liệu đơn hàng từ Backend
 window.loadMyOrders = async function() {
     const tbody = document.getElementById('order-list-body');
@@ -53,36 +56,65 @@ window.loadMyOrders = async function() {
         const orders = await res.json();
 
         if (res.ok) {
-            if (orders.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">Bạn chưa có đơn hàng nào.</td></tr>';
-                return;
-            }
-
-            let html = '';
-            orders.forEach(order => {
-                const date = new Date(order.createdAt).toLocaleDateString('vi-VN');
-                
-                // Chọn màu sắc cho trạng thái
-                let badgeClass = 'bg-secondary';
-                if (order.status === 'Đang giao') badgeClass = 'bg-primary';
-                if (order.status === 'Hoàn tất') badgeClass = 'bg-success';
-                if (order.status === 'Đã hủy') badgeClass = 'bg-danger';
-
-                html += `
-                    <tr>
-                        <td class="fw-bold text-danger">${order.orderCode}</td>
-                        <td>${date}</td>
-                        <td><span class="badge ${badgeClass}">${order.status}</span></td>
-                        <td class="fw-bold">${order.totalAmount.toLocaleString('vi-VN')}đ</td>
-                    </tr>
-                `;
-            });
-            tbody.innerHTML = html;
+            allMyOrdersList = orders; // Lưu lại để dùng cho bộ lọc
+            renderMyOrdersTable(allMyOrdersList); // Mặc định vẽ tất cả
         } else {
             tbody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Lỗi: ${orders.error}</td></tr>`;
         }
     } catch (error) {
         tbody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Không thể kết nối Server!</td></tr>';
+    }
+};
+
+// Hàm vẽ bảng (Tách riêng để tái sử dụng)
+function renderMyOrdersTable(ordersToRender) {
+    const tbody = document.getElementById('order-list-body');
+    
+    if (ordersToRender.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">Không có đơn hàng nào ở trạng thái này.</td></tr>';
+        return;
+    }
+
+    let html = '';
+    ordersToRender.forEach(order => {
+        const date = new Date(order.createdAt).toLocaleDateString('vi-VN');
+        
+        // Chọn màu sắc cho trạng thái
+        let badgeClass = 'bg-secondary'; // Chờ xác nhận
+        if (order.status === 'Đang xử lý') badgeClass = 'bg-info text-dark';
+        if (order.status === 'Đang vận chuyển') badgeClass = 'bg-primary';
+        if (order.status === 'Hoàn tất') badgeClass = 'bg-success';
+        if (order.status === 'Đã hủy') badgeClass = 'bg-danger';
+
+        html += `
+            <tr>
+                <td class="fw-bold text-danger">${order.orderCode}</td>
+                <td>${date}</td>
+                <td><span class="badge ${badgeClass}">${order.status || 'Chờ xác nhận'}</span></td>
+                <td class="fw-bold">${order.totalAmount.toLocaleString('vi-VN')}đ</td>
+            </tr>
+        `;
+    });
+    tbody.innerHTML = html;
+}
+
+// Hàm lọc đơn hàng khi bấm vào các Tab
+window.filterMyOrders = function(status, element) {
+    // Đổi style của các Tab
+    const tabs = document.querySelectorAll('#order-filter-tabs .nav-link');
+    tabs.forEach(tab => {
+        tab.classList.remove('active', 'text-dark', 'fw-bold');
+        tab.classList.add('text-muted');
+    });
+    element.classList.remove('text-muted');
+    element.classList.add('active', 'text-dark', 'fw-bold');
+
+    // Lọc dữ liệu
+    if (status === 'Tất cả') {
+        renderMyOrdersTable(allMyOrdersList);
+    } else {
+        const filtered = allMyOrdersList.filter(o => o.status === status);
+        renderMyOrdersTable(filtered);
     }
 };
 

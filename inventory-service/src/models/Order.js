@@ -22,7 +22,7 @@ const orderSchema = new mongoose.Schema({
     paymentMethod: { type: String, enum: ['COD', 'BANK'], default: 'COD' },
     status: { 
         type: String, 
-        enum: ['Chờ xác nhận', 'Đang xử lý', 'Đang giao', 'Hoàn tất', 'Đã hủy'], 
+        enum: ['Chờ xác nhận', 'Đang xử lý', 'Đang vận chuyển', 'Hoàn tất', 'Đã hủy'], 
         default: 'Chờ xác nhận' 
     },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null } // Lưu ID nếu khách đã đăng nhập

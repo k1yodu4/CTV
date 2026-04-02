@@ -110,9 +110,10 @@
             </div>
 
             <div id="tab-orders" class="admin-tab">
-                <div class="card shadow-sm mx-auto">
+                
+                <div class="card shadow-sm mx-auto mb-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Quản Lý Đơn Hàng Của Khách</h5>
+                        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Đơn Hàng Cần Xử Lý</h5>
                         <button class="btn btn-sm btn-light fw-bold" onclick="loadAllOrders()"><i class="fas fa-sync-alt"></i> Làm mới</button>
                     </div>
                     <div class="card-body p-0">
@@ -128,13 +129,38 @@
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody id="admin-order-list">
-                                    <tr><td colspan="6" class="text-center py-4 text-muted">Đang tải dữ liệu...</td></tr>
+                                <tbody id="admin-order-active">
+                                    <tr><td colspan="6" class="text-center py-4 text-muted">Đang tải...</td></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+
+                <div class="card shadow-sm mx-auto">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0"><i class="fas fa-history me-2"></i>Lịch Sử Đơn Hàng (Đã đóng)</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Mã ĐH</th>
+                                        <th>Khách hàng</th>
+                                        <th>SĐT / Địa chỉ</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-order-history">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -336,28 +362,34 @@
         // MODULE 2: QUẢN LÝ ĐƠN HÀNG
         // ==========================================
         async function loadAllOrders() {
-            const tbody = document.getElementById('admin-order-list');
-            tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">Đang tải dữ liệu đơn hàng...</td></tr>';
+            const tbodyActive = document.getElementById('admin-order-active');
+            const tbodyHistory = document.getElementById('admin-order-history');
+            
+            tbodyActive.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">Đang tải dữ liệu...</td></tr>';
+            tbodyHistory.innerHTML = '';
+
             try {
                 const res = await fetch('http://localhost:3000/api/admin/orders');
                 const orders = await res.json();
 
                 if (orders.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4">Chưa có đơn hàng nào.</td></tr>';
+                    tbodyActive.innerHTML = '<tr><td colspan="6" class="text-center py-4">Chưa có đơn hàng nào.</td></tr>';
                     return;
                 }
 
-                let html = '';
+                let htmlActive = '';
+                let htmlHistory = '';
+
                 orders.forEach(order => {
                     const customer = order.customerInfo || {};
                     const date = new Date(order.createdAt).toLocaleDateString('vi-VN') + ' ' + new Date(order.createdAt).toLocaleTimeString('vi-VN');
                     
-                    const statuses = ['Chờ xác nhận', 'Đang xử lý', 'Đang giao', 'Hoàn tất', 'Đã hủy'];
+                    const statuses = ['Chờ xác nhận', 'Đang xử lý', 'Đang vận chuyển', 'Hoàn tất', 'Đã hủy'];
                     let statusOptions = statuses.map(s => 
                         `<option value="${s}" ${order.status === s ? 'selected' : ''}>${s}</option>`
                     ).join('');
 
-                    html += `
+                    const rowHtml = `
                         <tr>
                             <td>
                                 <div class="fw-bold text-danger">${order.orderCode}</div>
@@ -384,10 +416,19 @@
                             </td>
                         </tr>
                     `;
+
+                    // Phân loại đơn hàng
+                    if (order.status === 'Hoàn tất' || order.status === 'Đã hủy') {
+                        htmlHistory += rowHtml;
+                    } else {
+                        htmlActive += rowHtml;
+                    }
                 });
-                tbody.innerHTML = html;
+
+                tbodyActive.innerHTML = htmlActive || '<tr><td colspan="6" class="text-center py-4 text-muted">Không có đơn hàng cần xử lý.</td></tr>';
+                tbodyHistory.innerHTML = htmlHistory || '<tr><td colspan="6" class="text-center py-4 text-muted">Lịch sử trống.</td></tr>';
             } catch (error) {
-                tbody.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Lỗi kết nối Server!</td></tr>';
+                tbodyActive.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Lỗi kết nối Server!</td></tr>';
             }
         }
 
@@ -402,6 +443,7 @@
 
                 if (res.ok) {
                     alert("✅ Đã cập nhật trạng thái đơn hàng!");
+                    loadAllOrders(); // Load lại ngay lập tức để đơn hàng tự động "nhảy" sang bảng lịch sử nếu cần
                 } else {
                     const data = await res.json();
                     alert("❌ Lỗi: " + data.error);
