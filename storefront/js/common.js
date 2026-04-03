@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    const isHomePage = window.location.pathname.endsWith('home.html') || window.location.pathname === '/';
-    let isLoggedIn = !!localStorage.getItem('token'); // Kiểm tra ngay lập tức xem có token không
+    // Kiểm tra xem có đang ở trang chủ hay không (home.html hoặc ở root /)
+    const isHomePage = window.location.pathname.endsWith('home.html') || 
+                       window.location.pathname === '/' || 
+                       window.location.pathname.endsWith('/') ||
+                       window.location.pathname.split('/').pop().indexOf('.') === -1;
+    
+    const htmlPath = isHomePage ? 'html/' : '';
+    let isLoggedIn = !!localStorage.getItem('token'); 
 
     // ==========================================
     // 1. TẠO VÀ CHÈN MODAL ĐĂNG NHẬP VÀO BODY
@@ -23,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-pane" type="button" role="tab">ĐĂNG KÝ</button>
                         </li>
                     </ul>
-
                     <div class="tab-content" id="authTabContent">
                         <div class="tab-pane fade show active" id="login-pane" role="tabpanel">
                             <form id="loginForm">
@@ -50,27 +55,21 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.insertAdjacentHTML('beforeend', authModalHTML);
 
     // ==========================================
-    // 2. GẮN SỰ KIỆN CHO FORM ĐĂNG KÝ / ĐĂNG NHẬP
+    // 2. GẮN SỰ KIỆN CHO FORM (Rút gọn)
     // ==========================================
     const regForm = document.getElementById('registerForm');
     if (regForm) {
         regForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const fullname = e.target[0].value;
-            const email = e.target[1].value;
-            const password = e.target[2].value;
-
+            const fullName = e.target[0].value, email = e.target[1].value, password = e.target[2].value;
             try {
                 const res = await fetch('http://localhost:3000/api/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ fullname, email, password })
+                    body: JSON.stringify({ fullname: fullName, email, password })
                 });
-                const data = await res.json();
-                if (res.ok) {
-                    alert("✅ Đăng ký thành công! Vui lòng đăng nhập.");
-                    openAuthModal('login'); // Chuyển tab đăng nhập
-                } else alert("❌ Lỗi: " + data.error);
+                if (res.ok) { alert("✅ Đăng ký thành công!"); openAuthModal('login'); } 
+                else { const d = await res.json(); alert("❌ Lỗi: " + d.error); }
             } catch (err) { alert("❌ Lỗi kết nối Server"); }
         });
     }
@@ -79,9 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (logForm) {
         logForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = e.target[0].value;
-            const password = e.target[1].value;
-
+            const email = e.target[0].value, password = e.target[1].value;
             try {
                 const res = await fetch('http://localhost:3000/api/login', {
                     method: 'POST',
@@ -89,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify({ email, password })
                 });
                 const data = await res.json();
-                
                 if (res.ok) {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userRole', data.role);
@@ -102,118 +98,94 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ==========================================
-    // 3. TẢI HEADER BẤT ĐỒNG BỘ
+    // 3. TẢI HEADER BẤT ĐỒNG BỘ & FIX PATHS
     // ==========================================
     async function loadHeader() {
         try {
-            const response = await fetch('header.html?v=' + new Date().getTime());
-            const headerHTML = await response.text();
-            document.getElementById('header-placeholder').innerHTML = headerHTML;
+            const headerFile = isHomePage ? 'html/header.html' : 'header.html';
+            const response = await fetch(headerFile + '?v=' + new Date().getTime());
+            let headerHTML = await response.text();
+            
+            // Xử lý lại đường dẫn trong Header dựa theo vị trí trang hiện tại
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = headerHTML;
+            const links = tempDiv.querySelectorAll('a');
+            links.forEach(a => {
+                const href = a.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#') && href !== 'javascript:void(0)') {
+                    if (isHomePage) {
+                        if (href !== 'home.html') a.href = 'html/' + href;
+                    } else {
+                        if (href === 'home.html') a.href = '../home.html';
+                    }
+                }
+            });
+            
+            document.getElementById('header-placeholder').innerHTML = tempDiv.innerHTML;
 
-            // Chạy các hàm vẽ UI sau khi Header ĐÃ NẰM TRONG DOM
             renderSideMenu(); 
             renderMegamenuPanels(); 
             setupMegamenuEvents(); 
             setupHeaderEvents(); 
-
-            // Cập nhật giao diện Đăng nhập
             updateUserUI(); 
-            
-            // QUAN TRỌNG: Gọi hàm này ở đây để đảm bảo Header đã load xong
-            if (typeof window.updateCartBadge === 'function') {
-                window.updateCartBadge();
-            }
-
+            if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
         } catch (error) {
             console.error('Lỗi khi tải Header:', error);
         }
     }
 
     // ==========================================
-    // 4. CẬP NHẬT GIAO DIỆN HEADER (Auth UI & Cart)
+    // 4. CẬP NHẬT GIAO DIỆN HEADER
     // ==========================================
     function updateUserUI() {
         const token = localStorage.getItem('token');
-        if (token) {
-            const userName = localStorage.getItem('userName');
-            const userRole = localStorage.getItem('userRole');
+        const userRole = localStorage.getItem('userRole');
+        const userName = localStorage.getItem('userName');
 
+        if (token) {
             const loginText = document.querySelector('.login-hover-box span');
             if (loginText) loginText.innerHTML = `Xin chào,<br><span class="fw-bold fs-6">${userName}</span>`;
 
-            let adminHtml = '';
-            if (userRole === 'admin') {
-                adminHtml = `
-                    <a href="admin.html" class="btn btn-warning w-100 fw-bold mb-2">
-                        <i class="fas fa-cog"></i> QUẢN TRỊ ADMIN
-                    </a>
-                `;
-            }
+            let adminHtml = (userRole === 'admin') ? `
+                <a href="${htmlPath}admin.html" class="btn btn-warning w-100 fw-bold mb-2">
+                    <i class="fas fa-cog"></i> QUẢN TRỊ ADMIN
+                </a>` : '';
 
             const dropdown = document.querySelector('.account-dropdown');
-            if (dropdown) {
-                dropdown.innerHTML = `
-                    ${adminHtml}
-                    <a href="#" class="btn btn-outline-danger w-100 fw-bold" onclick="logout(event)">ĐĂNG XUẤT</a>
-                `;
-            }
+            if (dropdown) dropdown.innerHTML = `${adminHtml}<a href="#" class="btn btn-outline-danger w-100 fw-bold" onclick="logout(event)">ĐĂNG XUẤT</a>`;
 
-            // Hiển thị nút Admin Panel ở Header nếu là Admin
             const btnAdmin = document.getElementById('btn-admin-panel');
             if (btnAdmin) {
                 btnAdmin.style.display = (userRole === 'admin') ? 'inline-block' : 'none';
-            }
-        } else {
-            // Nếu chưa đăng nhập, ẩn nút Admin Panel
-            const btnAdmin = document.getElementById('btn-admin-panel');
-            if (btnAdmin) {
-                btnAdmin.style.display = 'none';
+                btnAdmin.href = `${htmlPath}admin.html`;
             }
         }
     }
 
-    // Hàm đếm số Giỏ hàng - ĐỊNH NGHĨA GLOBAL
     window.updateCartBadge = function() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        
-        // Tìm đúng cái ID đã đặt
+        const total = cart.reduce((sum, item) => sum + item.quantity, 0);
         const badge = document.getElementById('cart-badge');
-        if (badge) {
-            badge.innerText = totalItems;
-        }
+        if (badge) badge.innerText = total;
     };
+
+    window.openAuthModal = (type) => {
+        const m = new bootstrap.Modal(document.getElementById('authModal'));
+        m.show();
+        if (type === 'register') new bootstrap.Tab(document.getElementById('register-tab')).show();
+        else new bootstrap.Tab(document.getElementById('login-tab')).show();
+    };
+
+    window.requireLogin = (e, action) => {
+        e.preventDefault(); 
+        if (!isLoggedIn) openAuthModal('login'); 
+        else if(action === 'tracking') window.location.href = `${htmlPath}tracking.html`; 
+    };
+
+    window.logout = (e) => { e.preventDefault(); localStorage.clear(); window.location.reload(); };
 
     // ==========================================
-    // 5. CÁC HÀM GLOBAL (Dùng ở thẻ HTML onclick="")
-    // ==========================================
-    window.openAuthModal = function(actionType) {
-        const authModal = new bootstrap.Modal(document.getElementById('authModal'));
-        authModal.show();
-        if (actionType === 'register') {
-            new bootstrap.Tab(document.getElementById('register-tab')).show();
-        } else {
-            new bootstrap.Tab(document.getElementById('login-tab')).show();
-        }
-    };
-
-    window.requireLogin = function(event, action) {
-        event.preventDefault(); 
-        if (!isLoggedIn) {
-            openAuthModal('login'); 
-        } else {
-            if(action === 'tracking') window.location.href = "tracking.html"; 
-        }
-    };
-
-    window.logout = function(e) {
-        e.preventDefault();
-        localStorage.clear();
-        window.location.reload();
-    };
-
-    // ==========================================
-    // 6. CÁC HÀM VẼ MEGAMENU (Giữ nguyên của bạn)
+    // 6. RENDER MENU / MEGAMENU
     // ==========================================
     function renderSideMenu() {
         const menuHTML = menuData.map(item => `
@@ -222,173 +194,120 @@ document.addEventListener('DOMContentLoaded', function () {
                 <i class="bi bi-chevron-right small small-chevron"></i>
             </a>
         `).join('');
-
-        const headerMenuContainer = document.getElementById('header-side-menu-container');
-        if (headerMenuContainer) headerMenuContainer.innerHTML = menuHTML;
-        const sideMenuContainer = document.getElementById('side-menu-container');
-        if (sideMenuContainer) sideMenuContainer.innerHTML = menuHTML;
+        ['header-side-menu-container', 'side-menu-container'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = menuHTML;
+        });
     }
 
     function renderMegamenuPanels() {
         let allPanelsHTML = '';
         for (let key in megamenuData) {
-            let columnsHTML = '';
+            let cols = '';
             megamenuData[key].forEach(col => {
-                columnsHTML += `
+                cols += `
                     <div class="col-md-4 mb-3">
                         <h6 class="fw-bold text-ttg">${col.title}</h6>
                         <ul class="list-unstyled">
                             ${col.links.map(link => {
-                                const url = typeof link === 'string' ? `category.html?name=${link}` : link.url;
+                                const url = typeof link === 'string' ? `${htmlPath}category.html?name=${link}` : (link.url.startsWith('http') ? link.url : htmlPath + link.url);
                                 const label = typeof link === 'string' ? link : link.label;
                                 return `<li><a href="${url}" class="text-decoration-none text-dark small">${label}</a></li>`;
                             }).join('')}
                         </ul>
                     </div>`;
             });
-            allPanelsHTML += `<div class="megamenu-panel p-4" data-panel="megamenu-${key}" style="display: none;"><div class="row">${columnsHTML}</div></div>`;
+            allPanelsHTML += `<div class="megamenu-panel p-4" data-panel="megamenu-${key}" style="display: none;"><div class="row">${cols}</div></div>`;
         }
-
-        const headerContentArea = document.getElementById('header-megamenu-panels-container');
-        if (headerContentArea) headerContentArea.innerHTML = allPanelsHTML;
-        const mainContentArea = document.getElementById('megamenu-panels-container');
-        if (mainContentArea) mainContentArea.innerHTML = allPanelsHTML;
+        ['header-megamenu-panels-container', 'megamenu-panels-container'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = allPanelsHTML;
+        });
     }
 
     function setupMegamenuEvents() {
-        const menuItems = document.querySelectorAll('.side-menu-item[data-megamenu-target]');
-        let leaveTimer;
-        if (menuItems.length === 0) return;
-
-        function hideAllPanels() {
-            document.querySelectorAll('.megamenu-panel').forEach(panel => {
-                panel.style.display = 'none';
-                panel.classList.remove('show');
-            });
-            menuItems.forEach(item => item.classList.remove('active'));
-            [document.getElementById('header-megamenu-content-card'), document.getElementById('megamenu-content-card')]
-                .forEach(card => { if(card) card.classList.remove('active'); });
-        }
-
-        menuItems.forEach(item => {
-            item.addEventListener('mouseenter', function () {
-                clearTimeout(leaveTimer);
-                hideAllPanels(); 
-                const targetAttr = this.getAttribute('data-megamenu-target');
-                const targetData = targetAttr ? targetAttr.replace('#', '') : ''; 
-                const isHeaderMenu = this.closest('#megamenu-wrapper') !== null;
-                const activeCard = isHeaderMenu ? document.getElementById('header-megamenu-content-card') : document.getElementById('megamenu-content-card');
-
-                if (activeCard && targetData) {
-                    this.classList.add('active'); 
-                    activeCard.classList.add('active'); 
-                    const targetPanel = activeCard.querySelector(`[data-panel="${targetData}"]`);
-                    if (targetPanel) {
-                        targetPanel.classList.add('show');
-                        targetPanel.style.display = 'block'; 
-                    }
+        const items = document.querySelectorAll('.side-menu-item[data-megamenu-target]');
+        let timer;
+        const hide = () => {
+            document.querySelectorAll('.megamenu-panel').forEach(p => { p.style.display = 'none'; p.classList.remove('show'); });
+            items.forEach(i => i.classList.remove('active'));
+            ['header-megamenu-content-card', 'megamenu-content-card'].forEach(id => { const c = document.getElementById(id); if(c) c.classList.remove('active'); });
+        };
+        items.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                clearTimeout(timer); hide();
+                const target = this.getAttribute('data-megamenu-target').replace('#', '');
+                const isH = this.closest('#megamenu-wrapper') !== null;
+                const card = isH ? document.getElementById('header-megamenu-content-card') : document.getElementById('megamenu-content-card');
+                if (card && target) {
+                    this.classList.add('active'); card.classList.add('active');
+                    const p = card.querySelector(`[data-panel="${target}"]`);
+                    if (p) { p.classList.add('show'); p.style.display = 'block'; }
                 }
             });
-            item.addEventListener('mouseleave', () => leaveTimer = setTimeout(() => hideAllPanels(), 100));
+            item.addEventListener('mouseleave', () => timer = setTimeout(hide, 100));
         });
-
-        [document.getElementById('header-megamenu-content-card'), document.getElementById('megamenu-content-card')].forEach(card => {
-            if (card) {
-                card.addEventListener('mouseenter', () => clearTimeout(leaveTimer));
-                card.addEventListener('mouseleave', () => leaveTimer = setTimeout(() => hideAllPanels(), 100));
-            }
+        ['header-megamenu-content-card', 'megamenu-content-card'].forEach(id => {
+            const c = document.getElementById(id);
+            if (c) { c.addEventListener('mouseenter', () => clearTimeout(timer)); c.addEventListener('mouseleave', () => timer = setTimeout(hide, 100)); }
         });
     }
 
     function setupHeaderEvents() {
-        const searchForm = document.getElementById('searchForm');
-        if (searchForm) {
-            searchForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const keyword = document.getElementById('searchInput').value;
-                if (keyword) window.location.href = `category.html?name=${keyword}`;
+        const f = document.getElementById('searchForm');
+        if (f) f.addEventListener('submit', e => { e.preventDefault(); const k = document.getElementById('searchInput').value; if(k) window.location.href = `${htmlPath}category.html?name=${k}`; });
+        
+        const btn = document.getElementById('btn-toggle-menu'), wrap = document.getElementById('megamenu-wrapper'), ov = document.getElementById('menu-overlay');
+        if (wrap) wrap.style.display = 'none';
+        if (btn && wrap) {
+            btn.addEventListener('click', e => {
+                e.stopPropagation();
+                const show = wrap.style.display === 'none';
+                wrap.style.display = show ? 'flex' : 'none';
+                if(ov) ov.style.display = show ? 'block' : 'none';
             });
-        }
-        const btnToggle = document.getElementById('btn-toggle-menu');
-        const megamenuWrapper = document.getElementById('megamenu-wrapper');
-        const menuOverlay = document.getElementById('menu-overlay');
-
-        if (megamenuWrapper) megamenuWrapper.style.display = 'none'; 
-
-        if (btnToggle && megamenuWrapper) {
-            btnToggle.addEventListener('click', function (e) {
-                e.stopPropagation(); 
-                const isHidden = megamenuWrapper.style.display === 'none' || megamenuWrapper.style.display === '';
-                megamenuWrapper.style.display = isHidden ? 'flex' : 'none';
-                if (menuOverlay) menuOverlay.style.display = isHidden ? 'block' : 'none';
-            });
-            document.addEventListener('click', function (e) {
-                if (!megamenuWrapper.contains(e.target) && e.target !== btnToggle) {
-                    megamenuWrapper.style.display = 'none';
-                    if (menuOverlay) menuOverlay.style.display = 'none';
-                }
-            });
+            document.addEventListener('click', e => { if(!wrap.contains(e.target) && e.target !== btn) { wrap.style.display = 'none'; if(ov) ov.style.display = 'none'; } });
         }
     }
 
-    // Biến đếm ngược thời gian để tắt popup
-// Biến đếm ngược thời gian để tắt popup
-let cartPopupTimeout;
+    window.showCartPopup = (img, title) => {
+        const p = document.getElementById('cart-popup-notification');
+        if (!p) return;
+        p.innerHTML = `
+            <div class="cart-popup-title text-success fw-bold text-center mb-2">Thêm vào giỏ hàng thành công <i class="bi bi-check-circle-fill"></i></div>
+            <div class="cart-popup-item d-flex align-items-center mb-3">
+                <img src="${img}" alt="Product" style="width: 60px; height: 60px; object-fit: contain; border: 1px solid #eee; margin-right: 12px;">
+                <div class="cart-popup-item-title" style="font-size: 13px; color: #333; overflow: hidden;">${title}</div>
+            </div>
+            <a href="${htmlPath}cart.html" class="btn btn-warning w-100 fw-bold text-dark text-center" style="padding: 10px 0;">XEM GIỎ HÀNG</a>
+        `;
+        p.classList.add('show');
+        setTimeout(() => p.classList.remove('show'), 3500);
+    };
 
-window.showCartPopup = function(image, title) {
-    const popup = document.getElementById('cart-popup-notification');
-    if (!popup) return;
-
-    // Đã thêm CSS trực tiếp vào đây để đẹp như GearVN
-    popup.innerHTML = `
-        <div class="cart-popup-title text-success fw-bold text-center mb-2">Thêm vào giỏ hàng thành công <i class="bi bi-check-circle-fill"></i></div>
-        <div class="cart-popup-item d-flex align-items-center mb-3">
-            <img src="${image}" alt="Product" style="width: 60px; height: 60px; object-fit: contain; border: 1px solid #eee; margin-right: 12px;">
-            <div class="cart-popup-item-title" style="font-size: 13px; color: #333; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${title}</div>
-        </div>
-        <a href="cart.html" class="btn btn-warning w-100 fw-bold text-dark text-decoration-none text-center" style="background-color: #f39c12; border: none; padding: 10px 0;">XEM GIỎ HÀNG</a>
-    `;
-
-    popup.classList.add('show');
-
-    clearTimeout(cartPopupTimeout);
-    
-    cartPopupTimeout = setTimeout(() => {
-        popup.classList.remove('show');
-    }, 3500);
-};
-
-    // ==========================================
-    // 7. KHỞI CHẠY TẤT CẢ
-    // ==========================================
     loadHeader(); 
 });
 
-// Hàm vẽ danh sách sản phẩm đã xem (Đẩy ra ngoài DOMContentLoaded để gọi được từ bất kỳ đâu)
-window.renderRecentlyViewed = function(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    let viewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
-    if (viewed.length === 0) {
-        container.innerHTML = '<div class="text-center text-muted py-4">Bạn chưa xem sản phẩm nào.</div>';
-        return;
-    }
-
+window.renderRecentlyViewed = (id) => {
+    const c = document.getElementById(id);
+    if (!c) return;
+    const isH = window.location.pathname.endsWith('home.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/') || window.location.pathname.split('/').pop().indexOf('.') === -1;
+    const h = isH ? 'html/' : '';
+    let v = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    if (v.length === 0) { c.innerHTML = '<div class="text-center text-muted py-4">Bạn chưa xem sản phẩm nào.</div>'; return; }
     let html = '<div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3">';
-    viewed.forEach(p => {
+    v.forEach(p => {
         html += `
             <div class="col">
-                <a href="product-detail.html?id=${p.id}" class="card h-100 shadow-sm text-decoration-none">
+                <a href="${h}product-detail.html?id=${p.id}" class="card h-100 shadow-sm text-decoration-none">
                     <img src="${p.image}" class="card-img-top p-3" style="height: 150px; object-fit: contain;" alt="${p.title}">
                     <div class="card-body d-flex flex-column">
-                        <h6 class="card-title text-dark" style="font-size: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${p.title}</h6>
+                        <h6 class="card-title text-dark" style="font-size: 14px; overflow: hidden;">${p.title}</h6>
                         <div class="mt-auto text-danger fw-bold">${p.price.toLocaleString('vi-VN')}đ</div>
                     </div>
                 </a>
-            </div>
-        `;
+            </div>`;
     });
     html += '</div>';
-    container.innerHTML = html;
+    c.innerHTML = html;
 };
