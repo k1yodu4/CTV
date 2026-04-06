@@ -11,7 +11,7 @@ Hệ thống này chạy trên nền tảng **Docker**. Docker giúp bạn khôn
 ## 🛠 Bước 2: **Tạo file cấu hình môi trường (.env)**
 MONGO_INITDB_ROOT_USERNAME=nhap_ten_user_vao_day
 MONGO_INITDB_ROOT_PASSWORD=nhap_mat_khau_vao_day
-MONGO_URI=mongodb://[user]:[password]@mongodb:27017/inventory_db?authSource=admin
+MONGO_URI=mongodb://user:password@mongodb:27017/inventory_db?authSource=admin
 REDIS_PASSWORD=nhap_mat_khau_redis
 PORT=3000
 MEILI_HOST=http://meilisearch:7700
