@@ -22,12 +22,12 @@ const menuData = [
     {
         title: "PC THEO GIÁ",
         links: [
-            { label: "PC DƯỚI 30 TRIỆU", url: "category.html?category=Desktop&maxPrice=30000000" },
-            { label: "PC TỪ 30 - 50 TRIỆU", url: "category.html?category=Desktop&minPrice=30000000&maxPrice=50000000" },
-            { label: "PC TỪ 50 - 70 TRIỆU", url: "category.html?category=Desktop&minPrice=50000000&maxPrice=70000000" },
-            { label: "PC TỪ 70 - 100 TRIỆU", url: "category.html?category=Desktop&minPrice=70000000&maxPrice=100000000" },
-            { label: "PC TỪ 100 - 200 TRIỆU", url: "category.html?category=Desktop&minPrice=100000000&maxPrice=200000000" },
-            { label: "PC TRÊN 200 TRIỆU", url: "category.html?category=Desktop&minPrice=200000000" }
+            { label: "PC DƯỚI 30 TRIỆU", url: "category.html?category=PC&maxPrice=30000000" },
+            { label: "PC TỪ 30 - 50 TRIỆU", url: "category.html?category=PC&minPrice=30000000&maxPrice=50000000" },
+            { label: "PC TỪ 50 - 70 TRIỆU", url: "category.html?category=PC&minPrice=50000000&maxPrice=70000000" },
+            { label: "PC TỪ 70 - 100 TRIỆU", url: "category.html?category=PC&minPrice=70000000&maxPrice=100000000" },
+            { label: "PC TỪ 100 - 200 TRIỆU", url: "category.html?category=PC&minPrice=100000000&maxPrice=200000000" },
+            { label: "PC TRÊN 200 TRIỆU", url: "category.html?category=PC&minPrice=200000000" }
         ]
     },
     {
@@ -612,7 +612,7 @@ const menuData = [
     {
         title: "Phụ kiện màn hình",
         links: [
-            { label: "Giá treo màn hình (Arm)", url: "category.html?name=Monitor Stand" },
+            { label: "Giá treo màn hình (Arm)", url: "category.html?name=Arm" },
             { label: "Dây cáp HDMI / DisplayPort", url: "category.html?name=HDMI Cable" },
             { label: "Bộ vệ sinh màn hình", url: "category.html?name=Monitor Cleaner" }
         ]

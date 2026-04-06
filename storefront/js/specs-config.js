@@ -21,7 +21,7 @@ const categorySpecsConfig = {
         { key: 'screen', label: 'Màn hình', options: ['13.3 inch', '14 inch', '15.6 inch', '16 inch', '17.3 inch'] },
         { key: 'weight', label: 'Trọng lượng', options: ['Dưới 1.5 kg', '1.5 - 2.0 kg', 'Trên 2.0 kg'] }
     ],
-    Desktop: [
+    PC: [
         { key: 'cpu', label: 'CPU', options: predefinedData.cpus },
         { key: 'ram', label: 'RAM', options: predefinedData.rams },
         { key: 'vga', label: 'Card đồ họa (VGA)', options: predefinedData.vgas },

@@ -95,6 +95,7 @@ async function syncDataToMeili() {
             "màn hình": ["monitor", "màn", "display"],
             "monitor": ["màn hình", "màn"],
             "màn": ["màn hình", "monitor"],
+            "màn hình đồ họa": ["designer monitor"],
 
             "bàn phím": ["keyboard", "phím"],
             "keyboard": ["bàn phím", "phím"],
