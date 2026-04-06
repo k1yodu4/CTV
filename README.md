@@ -22,5 +22,6 @@ Hãy đảm bảo Docker Desktop đang được mở. Sau đó, tại cửa sổ
 docker-compose up --build
 
 ## 🛠 Bước 4:
+Frontend: http://127.0.0.1:5500/storefront/home.html
 Backend API: http://localhost:3000
 Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")
