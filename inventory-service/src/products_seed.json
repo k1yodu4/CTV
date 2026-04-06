@@ -1,0 +1,2206 @@
+[{
+  "_id": {
+    "$oid": "69ccc74783b810a77f468c6b"
+  },
+  "title": "Laptop gaming Acer Nitro Lite NL16-71G-71FN",
+  "price": 29490000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-laptop-gaming-acer-nitro-lite-nl16-71g-71fn-1_cebbe117071d42b99f05427cebf47687_master.png",
+  "specs": {
+    "cpu": "Intel Core i7 1360P",
+    "ram": "16GB",
+    "vga": "NVIDIA GeForce RTX 4050",
+    "ssd": "512GB",
+    "inch": "16 inch",
+    "kg": "2,2kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ccc86b83b810a77f468c88"
+  },
+  "title": "Laptop Acer Swift Go 14 SFG14 73 57FZ",
+  "price": 23790000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/wift-go-ai-2024-gen-2-sfg14-73-71zx_1_ccc2cc55cf11451086e09eac92cae064_ed8a6356d9374b53a4c13abaea1658a8_master.png",
+  "specs": {
+    "cpu": "Intel Core i5 1250P",
+    "ram": "16GB",
+    "ssd": "512GB",
+    "inch": "14 inch",
+    "kg": "1.32kb"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ccc96083b810a77f468cd6"
+  },
+  "title": "Chuột Razer Không dây Viper V3 Pro Trắng",
+  "price": 3650000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://product.hstatic.net/200000722513/product/ci9f8k75_e9e8bebbbb164f648e7bf94d561919f7_master.png",
+  "specs": {
+    "Hz": "8000hz",
+    "DPI": "32000 DPI",
+    "cb": "Focus Pro"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cccd2f83b810a77f468dda"
+  },
+  "title": "Laptop Acer Aspire Go 15 AG15-72P-35X9",
+  "price": 12890000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/laptop-acer-aspire-go-15-ag15-72p-35x9-1_36da68f1c408407f96facd03e6a0308b_master.jpg",
+  "specs": {
+    "cpu": "Intel Core i5 13500",
+    "ram": "8GB",
+    "vga": "Intel UHD Graphics",
+    "ssd": "256GB",
+    "inch": "15 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf6d6b75a01a12e2d6f27b"
+  },
+  "title": "Bộ vi xử lý CPU Intel Core i9 14900KF / Turbo up to 6.0GHz / 24 Nhân 32 Luồng",
+  "price": 13990000,
+  "description": "",
+  "category": "CPU",
+  "image": "https://product.hstatic.net/200000722513/product/i9kf_0d8eca19326140198fc327f9ff699fb1_master.png",
+  "specs": {
+    "hang": "Intel",
+    "dongcpu": "Intel Core i9",
+    "socket": "LGA 1700",
+    "thehecpu": "Intel Gen 14 (Raptor Lake Refresh)",
+    "dohoatichhop": "Không"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf7d5b75a01a12e2d6f550"
+  },
+  "title": "PC GAMING 3060 12400F",
+  "price": 20869000,
+  "description": "",
+  "category": "PC",
+  "image": "https://pcmarket.vn/media/product/10689_pcm_dsc04132.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i5 12400f",
+    "ram": "16GB",
+    "vga": "NVIDIA GeForce RTX 3060",
+    "ssd": "512GB",
+    "psu": "650W"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf856e75a01a12e2d6fecd"
+  },
+  "title": "PC AMD R5-5600X/ VGA RTX 3050",
+  "price": 17490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/d_i_di_n_60039524489e4158b5ba991b0ea5ee63_master.jpg",
+  "specs": {
+    "mb": "A520M",
+    "cpu": "AMD Ryzen 5 5600x",
+    "ram": "8GB",
+    "vga": "NVIDIA GeForce RTX 3050",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8c5b75a01a12e2d70e0e"
+  },
+  "title": "PC AMD R5-5600X/ VGA RX 6500 XT",
+  "price": 15290000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27514-26672-vo-case-vitra-titan-r220-1.jpg",
+  "specs": {
+    "mb": "A520M",
+    "cpu": "AMD Ryzen 5 5600x",
+    "ram": "8GB",
+    "vga": "Radeon RX 6500 XT 4GB",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8c9d75a01a12e2d70e11"
+  },
+  "title": "PC Intel i5-14400F/ VGA RX 6500XT (H610)",
+  "price": 16690000,
+  "description": "",
+  "category": "PC",
+  "image": "https://product.hstatic.net/200000722513/product/pc_case_xigmatek_-_26_e36ac54740974ec88f65ca6eedfd10a2_master.png",
+  "specs": {
+    "mb": "H610M",
+    "cpu": "Intel Core i5-14400F",
+    "ram": "8 GB",
+    "vga": "RX 6500XT 4GB",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8cee75a01a12e2d70e14"
+  },
+  "title": "PC Intel i5-14400F/ VGA RTX 3050 (Main H)",
+  "price": 18490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://product.hstatic.net/200000722513/product/post-01_531ce816078743f194bfb8c2d3708821_master.jpg",
+  "specs": {
+    "mb": "H610",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "NVIDIA GeForce RTX 3050",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8d4475a01a12e2d70e17"
+  },
+  "title": "PC Intel i5-14400F/ VGA RTX 3050",
+  "price": 19290000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/web__2_of_78__2ec235dfa8b04fa2bc981c607541f56e_master.jpg",
+  "specs": {
+    "mb": "B760M",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "NVIDIA GeForce RTX 3050",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8d9675a01a12e2d70e1a"
+  },
+  "title": "PC Intel i5-14400F/ VGA RX 7600",
+  "price": 21590000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27588-250-27588-27018-khung-pc-1.jpg",
+  "specs": {
+    "mb": "H610",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "AMD Radeon RX 7600",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8e4f75a01a12e2d70f34"
+  },
+  "title": "PC GVN Intel i5-14400F/VGA ARC B580",
+  "price": 21990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-26623-26623-pc-do-hoa-50tr-1thumb.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "Intel Arc B580 12GB",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8e9c75a01a12e2d70f37"
+  },
+  "title": "PC AMD R5-5600X/ VGA RX 7600",
+  "price": 21990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/post-09_a9aa11a9d4f54efca61fc89bb3a3c297_master.jpg",
+  "specs": {
+    "mb": "B550",
+    "cpu": "AMD Ryzen 5 5600x",
+    "ram": "8GB",
+    "vga": "AMD Radeon RX 7600",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf8fda75a01a12e2d70f40"
+  },
+  "title": "PC INTEL I5-14400F/VGA RTX 5050",
+  "price": 22490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-26103-250-16201-b----pc-workstation-du.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "RTX 5050",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf902175a01a12e2d70f43"
+  },
+  "title": "PC Intel i5-14400F/ VGA RTX 5060 (Main H)",
+  "price": 22990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27843-pc-server-dual-epyc-7742-ram-512gb-ssd-4tb-vga-5090-32gb-001.jpg",
+  "specs": {
+    "mb": "H610",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "RTX 5060",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf924875a01a12e2d71134"
+  },
+  "title": "PC AMD R5-5600X/ VGA RX 9060 XT 8GB",
+  "price": 24290000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27881-pc-gaming-25251336.jpg",
+  "specs": {
+    "mb": "B550",
+    "cpu": "AMD Ryzen 5 5600x",
+    "ram": "8GB",
+    "vga": "RX 9060 XT (8GB)",
+    "ssd": "256GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf92a775a01a12e2d71137"
+  },
+  "title": "PC Intel i5-14400F/ VGA RTX 5060 Ti",
+  "price": 25990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27953-pc-gaming-ryzen-9-9950x-ram-64gb-rtx-4070-ti-super-btf-white.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "8GB",
+    "vga": "RTX 5060 Ti",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf93b275a01a12e2d711cc"
+  },
+  "title": "PC GVN Intel Ultra 5 225F/VGA ARC B580 (DDR5)",
+  "price": 28490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-29427-ai-top-500-trx50_01.jpg",
+  "specs": {
+    "mb": "B860",
+    "cpu": "Core Ultra 5",
+    "ram": "16GB",
+    "vga": "Intel Arc B580 12GB",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf940575a01a12e2d711cf"
+  },
+  "title": "PC Intel Ultra 5 225F/VGA RTX 5060 (DDR5)",
+  "price": 29490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/d_i_di_n_49473e37ac8a4e219d08cb3d102d3552_master.jpg",
+  "specs": {
+    "mb": "B860",
+    "cpu": "Core Ultra 5",
+    "ram": "16GB",
+    "vga": "RTX 5060",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf944e75a01a12e2d711d2"
+  },
+  "title": "PC Intel i5-14400F/ VGA RTX 5060 (DDR5)",
+  "price": 29990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-25573-pc-gaming-ryzen-5-5500gt-rx-vega-7-ram-16gb-ssd-256gb-01.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i5 14400f",
+    "ram": "16GB",
+    "vga": "RTX 5060",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf949975a01a12e2d711d5"
+  },
+  "title": "PC Intel i7-14700F/ VGA RTX 3050",
+  "price": 31590000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/web__4_of_101__3dd4fddf61544c3ca40c52a89ebabe7e_master.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i7 14700f",
+    "ram": "16GB",
+    "vga": "NVIDIA GeForce RTX 3050",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf94de75a01a12e2d711d8"
+  },
+  "title": "PC Intel i7-14700F/ VGA RTX 5060",
+  "price": 35990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/pc_rtx_5060__2_of_84__ffd3259e58c044a1bffc75b70711b86f_master.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i7 14700f",
+    "ram": "16GB",
+    "vga": "RTX 5060",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf952575a01a12e2d711db"
+  },
+  "title": "PC Intel i7-14700F/ VGA RTX 5060Ti",
+  "price": 37990000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-28608-pc-gaming-amd-ryzen-5-5500-ram-16gb-vga-6gb.jpg",
+  "specs": {
+    "mb": "B760",
+    "cpu": "Intel Core i7 14700f",
+    "ram": "16GB",
+    "vga": "RTX 5060 Ti",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf956575a01a12e2d711de"
+  },
+  "title": "PC Intel Core Ultra 7 265F/ VGA RTX 5060",
+  "price": 42790000,
+  "description": "",
+  "category": "PC",
+  "image": "https://cdn.hstatic.net/products/200000722513/post-01_eb5e59bb229d4a758143ee688a796187_master.jpg",
+  "specs": {
+    "mb": "Z890",
+    "cpu": "Core Ultra 7",
+    "ram": "16GB",
+    "vga": "RTX 5060",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf95a875a01a12e2d711e1"
+  },
+  "title": "PC Intel i7-14700F/ VGA RTX 5070",
+  "price": 55390000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-28111-pc-gaming-amd-ryzen-5-5500-ram-16gb-vga-rx-6500xt-01.jpg",
+  "specs": {
+    "mb": "Z790",
+    "cpu": "Intel Core i7 14700f",
+    "ram": "16GB",
+    "vga": "RTX 5070",
+    "ssd": "1TB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf95f575a01a12e2d711e4"
+  },
+  "title": "PC Intel Core Ultra 7 265F/ VGA RTX 5070",
+  "price": 57690000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27563-pc-gaming-amd-ryzen-5-5500-ram-16gb-rx-7600-8gb.jpg",
+  "specs": {
+    "mb": "Z890",
+    "cpu": "Core Ultra 7",
+    "ram": "16GB",
+    "vga": "RTX 5070",
+    "ssd": "512GB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf964075a01a12e2d711e7"
+  },
+  "title": "PC Intel Core Ultra 7 265F/ VGA RTX 5070Ti",
+  "price": 66690000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-28292-250-28448-pc-gaming-ryzen-5-7500f-ram-16gb-rx-7600-8gb.jpg",
+  "specs": {
+    "mb": "Z890",
+    "cpu": "Core Ultra 7",
+    "ram": "16GB",
+    "vga": "RTX 5070 Ti",
+    "ssd": "1TB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf968275a01a12e2d711ea"
+  },
+  "title": "PC Intel Core Ultra 7 265F/ VGA RTX 5080",
+  "price": 76570000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27426-pc-gaming-25251340.jpg",
+  "specs": {
+    "mb": "Z890",
+    "cpu": "Core Ultra 7",
+    "ram": "16GB",
+    "vga": "RTX 5080",
+    "ssd": "1TB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69cf970a75a01a12e2d711ed"
+  },
+  "title": "PC Intel i7-14700F/ VGA RTX 5080",
+  "price": 77490000,
+  "description": "",
+  "category": "PC",
+  "image": "https://nguyencongpc.vn/media/product/250-27298-pc-gaming-intel-i5-12400f-ram-16gb-ssd-256gb-rx-9060xt-8gb-01.jpg",
+  "specs": {
+    "mb": "Z790",
+    "cpu": "Intel Core i7 14700f",
+    "ram": "32GB",
+    "vga": "RTX 5080",
+    "ssd": "1TB"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d31b151b63deae05eda3d9"
+  },
+  "title": "Màn hình - Monitor Asus TUF GAMING VG249Q3A 24\" Fast IPS 180Hz Gsync chuyên game",
+  "price": 2990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/asus_vg249q3a_gearvn_05c634ab235d40f8baa5a512bf005b16_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "24 inch",
+    "tamnen": "IPS",
+    "tansoquet": "180 Hz",
+    "dophangiai": "Full HD (1920 x 1080)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d32ae61b63deae05edc230"
+  },
+  "title": "Màn hình ASUS-Designer Monitor ProArt PA279CV 27\" IPS 4K chuyên đồ họa",
+  "price": 11490000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/avatar_9b3a8c5c850740eca9b8331453044a2a_49e484c5c2ae47188784571184978577_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d32f421b63deae05edca49"
+  },
+  "title": "Màn hình Acer KG271U W3 27\" IPS 2K 240Hz chuyên game",
+  "price": 4690000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/acer_kg271_z3_gearvn_8c835a5e45d54cd38ad5ab8305c99cd2_master.jpg",
+  "specs": {
+    "hang": "Acer",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d32f731b63deae05edca4c"
+  },
+  "title": "Màn hình AOC Q27G42ZE 27\" Fast IPS 2K 260Hz chuyên game",
+  "price": 4790000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/aoc_q27g42ze_gearvn_4db97f27183242bdb7067d0ccfb9aa19_master.jpg",
+  "specs": {
+    "hang": "AOC",
+    "kichthuoc": "27 inch",
+    "tamnen": "Fast IPS",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d339853911632f3754e95a"
+  },
+  "title": "Màn hình-Monitor Acer VG271U M3 27\" IPS 2K 180Hz chuyên game",
+  "price": 4390000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/acer_vg271u_m3_gearvn_9a36f6ad9acb457594121de26949c60b_master.jpg",
+  "specs": {
+    "hang": "Acer",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "180 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d354d3a649ca294d8790c2"
+  },
+  "title": "Màn hình Asus ROG Strix XG27AQDMG 27\" WOLED 2K 240Hz HDR10 Gsync chuyên game",
+  "price": 15590000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_xg27aqdmg_gearvn_27995da496fd4200a7dcce3b9948bae3_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "tamnen": "WOLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3555ea649ca294d8790c5"
+  },
+  "title": "Màn hình VSP VG24FA18 24\" 180Hz chuyên game",
+  "price": 2290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/man-hinh-vsp-vg24fa18-24-180hz-1_abaf7d9a8da54525a91a54be2f2b63a0_master.jpg",
+  "specs": {
+    "hang": "Vestel",
+    "kichthuoc": "24 inch",
+    "tamnen": "VA",
+    "tansoquet": "180 Hz",
+    "dophangiai": "Full HD (1920 x 1080)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35590a649ca294d8790c8"
+  },
+  "title": "Màn hình MSI MAG 272QP QD-OLED X24 27\" QD-OLED 2K 240Hz",
+  "price": 14990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/man-hinh-msi-mag-272qp-qd-oled-x24-27-qd-oled-2k-240hz-1_4cd3167e397a483fb4d146de0d00145c_master.jpg",
+  "specs": {
+    "hang": "MSI",
+    "kichthuoc": "27 inch",
+    "tamnen": "QD-OLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d355c6a649ca294d8790cb"
+  },
+  "title": "Màn hình ViewSonic VX2757-2K-PRO-4 27\" IPS 2K 425Hz chuyên game",
+  "price": 8990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/man-hinh-viewsonic-vx2757-2k-pro-4-27-ips-2k-425hz-1_1dabecdfa3a9445db8266617d6063620_master.jpg",
+  "specs": {
+    "hang": "ViewSonic",
+    "kichthuoc": "24 inch",
+    "tamnen": "IPS",
+    "tansoquet": "500 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d355f6a649ca294d8790ce"
+  },
+  "title": "Màn hình MSI MAG 274QRFW X32 27\" Rapid IPS 2K 320Hz chuyên game",
+  "price": 6590000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/man-hinh-msi-mag-274qrfw-x32-27-rapid-ips-2k-320hz-1_e1ced4d2b1f3405b93b3b74d1039d8d1_master.jpg",
+  "specs": {
+    "hang": "MSI",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "300 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3563ba649ca294d8790d1"
+  },
+  "title": "Màn hình AOC Q27G4K 27\" Fast IPS 2K 420Hz chuyên game",
+  "price": 9090000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/man-hinh-aoc-q27g4k-27-fast-ips-2k-420hz-1_9731a6f8f22d492f8217d9eafa7c3998_master.jpg",
+  "specs": {
+    "hang": "AOC",
+    "kichthuoc": "27 inch",
+    "tansoquet": "500 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3566aa649ca294d8790d4"
+  },
+  "title": "Màn hình Samsung Odyssey G5 LS27FG502EEXXV 27\" IPS 2K 180Hz chuyên game",
+  "price": 5390000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/samsung_ls27fg502eexxv_gearvn_0e335da399134f0f842b0f32e7a9ec30_master.jpg",
+  "specs": {
+    "hang": "Samsung",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "180 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3568ca649ca294d8790d7"
+  },
+  "title": "Màn hình Samsung LS27DG302EEXXV 27\" 180Hz chuyên game",
+  "price": 3290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/samsung_ls27dg302eexxv_gearvn_72df7ab57165451e8f53a4cdca6ac2ef_master.jpg",
+  "specs": {
+    "hang": "Samsung",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "180 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d356dea649ca294d8790da"
+  },
+  "title": "Màn hình LG 27G610A-B 27\" IPS 2K 200Hz Gsync chuyên game",
+  "price": 5190000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/lg_27g610a-b_gearvn_ca3c0f25f4fc4fc2ac5a891447151588_master.jpg",
+  "specs": {
+    "hang": "LG",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35703a649ca294d8790dd"
+  },
+  "title": "Màn hình Asus ROG Strix XG27ACMS 27\" Fast IPS 2K 320Hz USBC chuyên game",
+  "price": 8590000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_xg27acms_gearvn_48097f543d3b4c68b754d87a96adcef5_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "tamnen": "IPS",
+    "tansoquet": "300 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35759a649ca294d8790e0"
+  },
+  "title": "Màn hình Asus ROG Strix XG27ACMEG-G Hatsune Miku Edition 27\" Fast IPS 2K 260Hz chuyên game",
+  "price": 8990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_xg27acmeg-g_hatsune_miku_gearvn_cff7848d64cf4f3ea95b307f2261bca6_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "tamnen": "Fast IPS",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35791a649ca294d8790e3"
+  },
+  "title": "Màn hình Asus ROG Swift PG27AQWP-W 27\" WOLED 2K 540Hz-HD 720Hz chuyên game",
+  "price": 31990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_pg27aqwp-w_gearvn_ffffe2baa33b4f9092cbe4b7c94a4399_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "tamnen": "WOLED",
+    "tansoquet": "500 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d357baa649ca294d8790e6"
+  },
+  "title": "Màn hình MSI MPG 274URDFW E16M 27\" Rapid IPS 4K 160Hz-FHD 320Hz chuyên game",
+  "price": 12290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/msi_mpg_274urdfw_e16m_gearvn_4819b0decb9a49ae936843a924501ef5_master.jpg",
+  "specs": {
+    "hang": "MSI",
+    "tamnen": "Fast IPS",
+    "tansoquet": "300 Hz",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d357eda649ca294d8790e9"
+  },
+  "title": "Màn hình thông minh LG 39GX90SA-W 39\" OLED 2K 240Hz webOS",
+  "price": 30990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/lg_39gx90sa-w_gearvn_f3ac895e8bdf4afcbac25ee332299616_master.jpg",
+  "specs": {
+    "hang": "LG",
+    "tamnen": "OLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3580da649ca294d8790ec"
+  },
+  "title": "Màn hình LG 27GX704A-B UltraGear 27\" OLED 2K 240Hz G-Sync",
+  "price": 15990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/lg_oled_27gx704_gearvn_5fcc0bf0c6b14d9c8d06211c22811ae2_master.jpg",
+  "specs": {
+    "hang": "LG",
+    "tamnen": "OLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35875a649ca294d8790ef"
+  },
+  "title": "Màn hình GIGABYTE MO27Q28G 27\" WOLED 2K 280Hz chuyên game",
+  "price": 16490000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/giga_mo27q28g_gearvn_02f27fc0fa0040d5965cd1da21a9e2dd_master.jpg",
+  "specs": {
+    "hang": "Gigabyte",
+    "tamnen": "WOLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d358cda649ca294d8790f2"
+  },
+  "title": "Màn hình AORUS FO32U2P 32\" OLED 4K 240Hz chuyên game",
+  "price": 30390000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/aorus_fo32u2p_gearvn_7a3b6df72ed849c2a4b27f40388709ed_master.jpg",
+  "specs": {
+    "hang": "Gigabyte",
+    "kichthuoc": "32 inch",
+    "tamnen": "OLED",
+    "tansoquet": "240 Hz",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3590ca649ca294d8790f5"
+  },
+  "title": "Màn hình Philips 27M2N5800P 27\" Fast IPS 4K 240Hz-FHD 480Hz chuyên game",
+  "price": 14290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/philips_27m2n5800p_gearvn_179e90ff75cf470490798d48e2a20c73_master.jpg",
+  "specs": {
+    "hang": "Philips",
+    "kichthuoc": "27 inch",
+    "tamnen": "Fast IPS",
+    "tansoquet": "500 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3593ca649ca294d8790f8"
+  },
+  "title": "Màn hình ASUS ProArt-Designer Monitor PA247CV 24\" IPS 75Hz USBC chuyên đồ họa",
+  "price": 5050000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/asus_pa247cv_gearvn_d924aeff2e004d6c8186cd6f61f5c54e_29f1ff6ae0f14c8ebe814b1b8170ae9d_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "24 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "75 Hz",
+    "dophangiai": "Full HD (1920 x 1080)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35983a649ca294d87917b"
+  },
+  "title": "Màn hình ViewSonic ColorPro VP2456A 24\" IPS 120Hz USBC chuyên đồ hoạ",
+  "price": 4790000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/view_vp2456a_gearvn_d787d732d11c44938e47df4263d7163b_master.jpg",
+  "specs": {
+    "hang": "ViewSonic",
+    "kichthuoc": "24 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "120 Hz",
+    "dophangiai": "Full HD (1920 x 1080)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d359a4a649ca294d87917e"
+  },
+  "title": "Màn hình ASUS ProArt-Designer Monitor PA278QEV 27\" IPS 2K 75Hz chuyên đồ họa",
+  "price": 7490000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_pa278qev_gearvn_3a45574fb7be41e48b83d4dbe9dc68fb_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "75 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d359d2a649ca294d879181"
+  },
+  "title": "Màn hình ASUS ProArt-Designer Monitor PA278CGRV 27\" IPS 2K 144Hz USBC chuyên đồ họa",
+  "price": 8890000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/asus_pa27cgrv_gearvn_c83dfe4e85b54880a207cc6feab32eec_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "144 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35a03a649ca294d879184"
+  },
+  "title": "https://gearvn.com/products/man-hinh-cong-lg-40u990a-w-40-ips-4k-120hz-usbc",
+  "price": 40990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/lg_40u990a-w_gearvn_36a9abdf452144b6bf4a7b7ff430d291_master.jpg",
+  "specs": {
+    "hang": "LG",
+    "kichthuoc": "32 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "120 Hz",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35a2ca649ca294d879187"
+  },
+  "title": "Màn hình cong ViewSonic VG3820C 38\" 2K 75Hz USBC",
+  "price": 11890000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://cdn.hstatic.net/products/200000722513/view_vg3820c_gearvn_0dff5877eebb4647a9d0ceba2519ad8e_master.jpg",
+  "specs": {
+    "hang": "ViewSonic",
+    "kieumanhinh": "Cong",
+    "kichthuoc": "32 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "75 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35a5ea649ca294d87918a"
+  },
+  "title": "Màn hình Dell UltraSharp-Designer Monitor U2725QE 27\" IPS 4K 120Hz USBC chuyên đồ họa",
+  "price": 16290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/dell_u2725qe_gearvn_91c9acb8d2eb4dcd832242d6126fc652_master.jpg",
+  "specs": {
+    "hang": "Dell",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "120 Hz",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35a8ca649ca294d87918d"
+  },
+  "title": "Màn hình ASUS ProArt-Designer Monitor PA27JCV 27\" IPS 5K USBC chuyên đồ họa",
+  "price": 20290000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/asus_pa27jcv_gearvn_9484e4bd73df435ba454ba5f504fcbc7_master.jpg",
+  "specs": {
+    "hang": "ASUS",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "60 Hz",
+    "dophangiai": "5K (5120 x 2880)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35abba649ca294d879190"
+  },
+  "title": "Màn hình Dell UltraSharp-Designer Monitor U4323QE 43\" IPS 4K chuyên đồ họa",
+  "price": 23990000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/dell_u4323qe_gearvn_83a4a99c4fee4989881f00c910d7d00a_master.jpg",
+  "specs": {
+    "hang": "Dell",
+    "kichthuoc": "32 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "60 Hz",
+    "dophangiai": "4K (3840 x 2160)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35af9a649ca294d879193"
+  },
+  "title": "Màn hình Dell UltraSharp U2724DE 27\" IPS 2K 120Hz USBC",
+  "price": 11690000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/monitor-ultrasharp-u2724de-gy-gallery-2_43a71199e4464da68e8832f87a276333_master.png",
+  "specs": {
+    "hang": "Dell",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "120 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35b6ba649ca294d879216"
+  },
+  "title": "Màn hình AOC-Designer Monitor Q27U3CV 27\" IPS 2K 75Hz USBC chuyên đồ họa",
+  "price": 7890000,
+  "description": "",
+  "category": "Màn hình",
+  "image": "https://product.hstatic.net/200000722513/product/aoc_q27u3cv_gearvn_e9b86bde819b42a6b4bf3617548a7fea_master.jpg",
+  "specs": {
+    "hang": "AOC",
+    "kichthuoc": "27 inch",
+    "nhucausudung": "Màn hình đồ họa",
+    "tamnen": "IPS",
+    "tansoquet": "75 Hz",
+    "dophangiai": "2K (2560 x 1440)"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35f531fd617f628069f92"
+  },
+  "title": "Bàn phím AULA S100 PRO TM (Xanh dương+trắng+tím đậm/ Brown switch) S100PRO02",
+  "price": 790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/download__22_-photoroom_034237d8752e4bb9a6b3cad7fd43edc9_master.png",
+  "specs": {
+    "layout": "80%",
+    "hang": "Aula",
+    "phuongthucketnoi": "Wireless",
+    "chatlieu": "Nhựa"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35fcb1fd617f628069f95"
+  },
+  "title": "Bàn phím FL-Esports CMK75 Không dây Lake Placid Blue FLCMMK Ice Pink",
+  "price": 1490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/fl-esports-cmk75-lake-placid-blue-001-removebg-preview_a8bba20c02d94e1e8941676e0b38cde9_master.png",
+  "specs": {
+    "layout": "75%",
+    "hang": "FL Esports",
+    "phuongthucketnoi": "Wireless",
+    "chatlieu": "Nhựa"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d35ff41fd617f628069f98"
+  },
+  "title": "Bàn phím AULA F99 (Xanh dương + Trắng + Tím đậm/ Grey Wood V3 switch) F9908",
+  "price": 1490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/aula-f99-ban-phim-co-gaming-3-mo-photoroom_93d6f88d65494534bc7c665595977486_master.png",
+  "specs": {
+    "layout": "80%",
+    "hang": "Aula",
+    "phuongthucketnoi": "Wireless",
+    "chatlieu": "Nhựa"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d360561fd617f62806a0a6"
+  },
+  "title": "Bàn phím cơ E-Dra không dây EK398S Red Switch",
+  "price": 790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/imgi_6_672_ek398s__2__8b9652ca48f24fd1a254059b2a97806f_master.jpg",
+  "specs": {
+    "layout": "FULL LAYOUT",
+    "hang": "E-Dra",
+    "phuongthucketnoi": "Wireless",
+    "chatlieu": "Nhựa"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3607b1fd617f62806a0a9"
+  },
+  "title": "https://gearvn.com/products/ban-phim-gaming-keychron-black-myth-wukong-deluxe-gold-pink-switch",
+  "price": 6490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/ban-phim-gaming-keychron-black-myth-wukong-1_f5416cf843204226af3f98eef12855e5_master.jpg",
+  "specs": {
+    "layout": "75%",
+    "hang": "Keychron",
+    "phuongthucketnoi": "Wireless",
+    "chatlieu": "Nhôm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d360991fd617f62806a0ac"
+  },
+  "title": "Bàn phím có dây AULA AG60 PRO (Xám/ Aether magnetic switch - Rapid trigger) AG6001",
+  "price": 3690000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/ban-phim-co-day-aula-ag60-pro-1_f3e2ea3bc2c9447e8fa9c61203e742bc_master.jpg",
+  "specs": {
+    "layout": "60%",
+    "hang": "Aula",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d360b51fd617f62806a0af"
+  },
+  "title": "Bàn phím AKKO ACR Pro Alice Plus Spray Paint White AKKO CS switch",
+  "price": 2990000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/imgi_59_ban-phim-akko-acr-pro-alice-plus-spray-painted-white-01_57c058434a804827bc21d7c6e509d736_master.jpg",
+  "specs": {
+    "layout": "80%",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d360d21fd617f62806a0b2"
+  },
+  "title": "Bàn phím Rapoo NK1500 màu đen",
+  "price": 179000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/ban-phim-van-phong-co-day-rapoo_fbce3f1907a44d26b9594d55814760a6_master.png",
+  "specs": {
+    "layout": "FULL LAYOUT",
+    "hang": "Rapoo",
+    "phuongthucketnoi": "Wired"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d360e71fd617f62806a0b5"
+  },
+  "title": "Bàn phím có dây Razer Huntsman V3 Pro Tenkeyless Counter-Strike 2 Edition",
+  "price": 6490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/him-co-day-razer-huntsman-v3-pro-tenkeyless-counter-strike-2-edition-1_47491334aa144664b23655a79e28e352_master.png",
+  "specs": {
+    "layout": "80%",
+    "hang": "Razer",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3610a1fd617f62806a0b8"
+  },
+  "title": "Bàn phím cơ có dây ASUS TUF Gaming K3 Gen II Hatsune Miku",
+  "price": 2790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/imgi_73_fwebp_d90e5d5d01a54c4090f69562126c4fad_master.png",
+  "specs": {
+    "layout": "FULL LAYOUT",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3612a1fd617f62806a0bb"
+  },
+  "title": "Bàn phím có dây Razer BlackWidow V4 75% Phantom White Edition",
+  "price": 5390000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/imgi_2_1-b22ac77a-af65-4078-8912-c878179eaf95_393abff2e6cf4cea90eed7b3e1837f90_master.png",
+  "specs": {
+    "layout": "60%",
+    "hang": "Razer",
+    "phuongthucketnoi": "Wired"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d361431fd617f62806a0be"
+  },
+  "title": "Bàn phím có dây Logitech G515 RAPID TKL RGB White",
+  "price": 3790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-ban-phim-co-day-logitech-g515-rapid-tkl-rgb-white-1_b7d336ad111943b98b31845ddfdd84cc_master.png",
+  "specs": {
+    "layout": "80%",
+    "hang": "Logitech",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3615f1fd617f62806a0c1"
+  },
+  "title": "Bàn phím có dây Logitech G515 RAPID TKL RGB Black",
+  "price": 3790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-ban-phim-co-day-logitech-g515-rapid-tkl-rgb-black-1_b1736af2a985494682945e3c9267c220_master.png",
+  "specs": {
+    "layout": "80%",
+    "hang": "Logitech",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3617d1fd617f62806a0c4"
+  },
+  "title": "Bàn phím cơ không dây E-Dra EK368RT Triple Mode Magnet Switch",
+  "price": 1290000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-ban-phim-co-khong-day-e-dra-ek368rt-triple-mode-1_dc53097fddf6438984ccaed02799ed29_master.jpg",
+  "specs": {
+    "layout": "60%",
+    "hang": "E-Dra",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3619f1fd617f62806a0c7"
+  },
+  "title": "Bàn phím ASUS ROG Falcata Gaming",
+  "price": 7490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/rog-falcata-01_bcdc863d0cf842f28f3bc3d3076296d7_master.jpg",
+  "specs": {
+    "layout": "60%",
+    "hang": "ASUS",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d361bd1fd617f62806a0ca"
+  },
+  "title": "Bàn phím AKKO 5075B Plus Red World Tour VIET NAM",
+  "price": 1790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/5075b_plus________________c70818daf48842eda7b720a4abfad2a7_master.png",
+  "specs": {
+    "layout": "60%",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d361d61fd617f62806a0cd"
+  },
+  "title": "Bàn phím AKKO 5075B Plus Black World Tour VIET NAM",
+  "price": 1790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/5075b_plus_______________7c263971fdb1419bb5696a7de2023697_master.png",
+  "specs": {
+    "layout": "60%",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d361eb1fd617f62806a0d0"
+  },
+  "title": "Bàn phím AKKO TAC87 3 MODE Matcha Red Bean Stellar Rose switch",
+  "price": 1290000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://cdn.hstatic.net/products/200000722513/earvn-ban-phim-akko-tac87-3-mode-matcha-red-bean-stellar-rose-switch-1_0f1215ea5dad4682a1dec4e1ceb503c9_master.jpg",
+  "specs": {
+    "layout": "75%",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d362101fd617f62806a0d3"
+  },
+  "title": "Bàn phím ASUS M704 ROG AZOTH X NX Snow V2 Switch",
+  "price": 7200000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/ban-phim-co-khong-day-asus-rog-azoth-x-rog-nx-v2-sw-11_a8f40733379f4ae3912dfd80ad1b492f_master.jpg",
+  "specs": {
+    "layout": "75%",
+    "hang": "ASUS",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3622e1fd617f62806a0d6"
+  },
+  "title": "Bàn phím AULA S100 PRO TM (Xanh dương+trắng+tím/ Red switch) S100PRO01",
+  "price": 790000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/download__21_-photoroom_6d1fe13a64614a89a0071158718c0e40_master.png",
+  "specs": {
+    "layout": "75%",
+    "hang": "Aula",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d362631fd617f62806a0d9"
+  },
+  "title": "Bàn phím cơ AKKO 5075B Plus TM Chicago Piano V3 Pro Switch",
+  "price": 1490000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/multi-modes-4-1_71918eb58998485a8f37b214ada1caf0_master.png",
+  "specs": {
+    "layout": "FULL LAYOUT",
+    "hang": "Akko",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d362861fd617f62806a0dc"
+  },
+  "title": "Bàn phím AULA F75 Ice Blue (Xanh nhạt + Trắng + Tím đậm /Ice Vein Switch) F75IBI",
+  "price": 1189000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/aula-f75-ban-phim-co-gaming-phie__6_-photoroom_6d6bb2efd7174f3abb6bbd219083cea4_master.png",
+  "specs": {
+    "layout": "75%",
+    "hang": "Aula",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d362a01fd617f62806a0df"
+  },
+  "title": "Bàn phím Logitech G915 X Lightspeed TKL Low-Profile Wireless Black",
+  "price": 4350000,
+  "description": "",
+  "category": "Bàn phím",
+  "image": "https://product.hstatic.net/200000722513/product/g915-x-tkl-wireless-keyboard-gal_01f16ae8b1b14c8ebcbebb741e85950f_master.png",
+  "specs": {
+    "layout": "FULL LAYOUT",
+    "hang": "Logitech",
+    "phuongthucketnoi": "Wireless"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d363c21fd617f62806a1f2"
+  },
+  "title": "Chuột không dây ASUS TUF Gaming Mini Hatsune Miku",
+  "price": 2490000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/imgi_81_fwebp_8388aefcaed244059f3db9dbc965cb12_master.png",
+  "specs": {
+    "pollingrat": "1000hz",
+    "pin": "134h",
+    "cambien": "Quang học",
+    "ketnoi": "không dây",
+    "hang": "ASUS"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d364891fd617f62806a2fb"
+  },
+  "title": "Chuột Logitech G Pro X Superlight 2 SE White",
+  "price": 2690000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/chuot-logitech-g-pro-x-superlight-2-se-white-1_5025343518594e5fa948d6ac5fe0b011_master.jpg",
+  "specs": {
+    "pollingrat": "1000hz",
+    "pin": "88h",
+    "cambien": "HERO 2 Optical Sensor",
+    "kichthuoc": "125 x 63.5 x 40 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d364e41fd617f62806a33e"
+  },
+  "title": "Chuột Razer Không dây Viper V4 Pro Trắng",
+  "price": 4490000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/chuot-razer-khong-day-viper-v4-pro-trang-2_1f20c6c5819b484f9413fbfd6e6e0507_master.jpg",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "180h",
+    "cambien": "Focus Pro",
+    "kichthuoc": "127.1 x 63.9 x 39.9 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d365081fd617f62806a341"
+  },
+  "title": "Chuột Razer Không dây Viper V4 Pro Đen",
+  "price": 4490000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/chuot-razer-khong-day-viper-v4-pro-den-1_87e1cc28460d4463bf93f4dad931cb86_master.jpg",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "180h",
+    "cambien": "Focus Pro",
+    "kichthuoc": "127.1 x 63.9 x 39.9 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d365281fd617f62806a344"
+  },
+  "title": "Chuột Logitech G Pro X Superlight 2 SE Black",
+  "price": 2690000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/chuot-logitech-g-pro-x-superlight-2-se-black-1_64f70b1f48c04125ad07bf9209f3b0d0_master.jpg",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "88h",
+    "cambien": "HERO 2 Optical Sensor",
+    "kichthuoc": "125 x 63.5 x 40 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3654e1fd617f62806a347"
+  },
+  "title": "Chuột Razer Viper V3 Pro Counter-Strike 2 Edition",
+  "price": 4490000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-chuot-razer-viper-v3-pro-counter-strike-2-edition-1_eb69cad95b424e799ecc91e4239d7431_master.png",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "180h",
+    "cambien": "Focus Pro",
+    "kichthuoc": "127.1 x 63.9 x 39.9 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d365791fd617f62806a34a"
+  },
+  "title": "Chuột ASUS P722 ROG KERIS II Origin WL Black",
+  "price": 3350000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://product.hstatic.net/200000722513/product/h732__3__aa9959d30e2f405da1e88c76734c41ef_master.png",
+  "specs": {
+    "pollingrat": "1000hz",
+    "pin": "192h",
+    "cambien": "Quang học",
+    "kichthuoc": "121 x 67 x 42 mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d365f31fd617f62806a38d"
+  },
+  "title": "WLmouse YING Magnesium - Chuột không dây 8K Magnesium",
+  "price": 4290000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/wlmouse-ying-magnesium-chu-t-khong-day-8k-magnesium-1226726962.jpg?v=1773119288&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "300 mAh",
+    "cambien": "PAW 3950HS",
+    "kichthuoc": "119mmx60mmx37mm"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d366221fd617f62806a3d0"
+  },
+  "title": "Pulsar X2 Crazylight PRX GOLD Edition – Chuột đối xứng kèm dongle 8K",
+  "price": 3960000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/pulsar-x2-crazylight-prx-gold-edition-chu-t-d-i-x-ng-kem-dongle-8k-1224157692.jpg?v=1772082969&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "188h",
+    "cambien": "Focus Pro"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3665c1fd617f62806a413"
+  },
+  "title": "Razer DeathAdder V4 Pro NiKo Edition – Chuột ergonomic kèm dongle 8K",
+  "price": 5190000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/razer-deathadder-v4-pro-niko-edition-chu-t-ergonomic-kem-dongle-8k-1223760463.jpg?v=1772005330&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "188h",
+    "cambien": "Focus Pro"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d366851fd617f62806a416"
+  },
+  "title": "Logitech G PRO X2 Superstrike – Chuột đối xứng switch rung phản hồi",
+  "price": 5190000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/logitech-g-pro-x2-superstrike-chu-t-d-i-x-ng-switch-rung-ph-n-h-i-1220497025.jpg?v=1770808088&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "200h",
+    "cambien": "HERO 2 Optical Sensor"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d366ad1fd617f62806a459"
+  },
+  "title": "WLmouse SwordX – Chuột không dây magnesium",
+  "price": 4180000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/wlmouse-swordx-chu-t-khong-day-magnesium-1219415437.jpg?v=1770282188&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "150h",
+    "cambien": "Quang học"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d366cc1fd617f62806a45c"
+  },
+  "title": "Pulsar X2 Crazylight Medium The Finals Edition – Chuột đối xứng kèm dongle 8K",
+  "price": 3960000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/pulsar-x2-crazylight-medium-the-finals-edition-chu-t-d-i-x-ng-kem-dongle-8k-1210834273.jpg?v=1765436965&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "150h",
+    "cambien": "Quang học"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d366e71fd617f62806a45f"
+  },
+  "title": "Finalmouse UltralightX Frostlord - Chuột Finalmouse ULX phiên bản cuối cùng",
+  "price": 5390000,
+  "description": "",
+  "category": "Chuột",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/finalmouse-ultralightx-frostlord-chu-t-finalmouse-ulx-phien-b-n-cu-i-cung-1211356924.jpg?v=1765861524&width=800",
+  "specs": {
+    "pollingrat": "8000hz",
+    "pin": "120h",
+    "cambien": "Quang học"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36b2f1fd617f62806abfd"
+  },
+  "title": "Vỏ máy tính INWIN Z-Tower Ultra Rare Limited Edition",
+  "price": 99990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/z-tower_gallery_01_80336ac900f34cd8b0fb7aa1ce5f1a64_fb389a69bbfb4684a6fc3cde9e0fbd85_master.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36b4d1fd617f62806ac00"
+  },
+  "title": "Vỏ máy tính Cooler Master SHARK X White (Phiên bản giới hạn)",
+  "price": 93990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/83713_vo_case_cooler_master_shar__12__03856bf3c4784d42ab957f3f809408d6_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36b601fd617f62806ac03"
+  },
+  "title": "Vỏ máy tính InWin H-Frame 2.0 Black/ Amber LED Light",
+  "price": 39990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/h-frame_2.0-002_eddfb560732f4713885d090cafb16c53_b6343d407d2c40368a785bda42393a7e_master.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36b8a1fd617f62806ac06"
+  },
+  "title": "Vỏ máy tính EDRA ECS1105 Micro-ATX",
+  "price": 290000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/542_1105_1_4c4ff69ef8ca4ce69c1c707a0f13bd84_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36b991fd617f62806ac09"
+  },
+  "title": "Vỏ máy tính Corsair 3500X TG Mid Tower White (CC-9011277-WW)",
+  "price": 1990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/3500x_wht_01_b6991d1686b14103b0c9c3d734a0b7a5_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36bac1fd617f62806ac0c"
+  },
+  "title": "Vỏ máy tính Corsair 6500X TG Mid-Tower White (CC-9011258-WW)",
+  "price": 4490000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/6500x_white_hero_01_aa_576ecffc07e341d7963354c273ec64e1_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36bbe1fd617f62806ac0f"
+  },
+  "title": "Vỏ máy tính Corsair 3500X TG Mid Tower Black (CC-9011276-WW)",
+  "price": 1990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/3500x_blk_01_1f55ef1bec404d95be8d62810eb42ac0_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36bce1fd617f62806ac12"
+  },
+  "title": "Vỏ máy tính Jonsbo Z20 White",
+  "price": 1650000,
+  "description": "",
+  "category": "Case",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-vo-may-tinh-jonsbo-z20-white-1_b96e3e68fa834329a7b8e38c56d9bd5a_master.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36bef1fd617f62806ac15"
+  },
+  "title": "Vỏ máy tính Jonsbo TK1 White",
+  "price": 2590000,
+  "description": "",
+  "category": "Case",
+  "image": "https://cdn.hstatic.net/products/200000722513/gearvn-vo-may-tinh-jonsbo-tk1-white-1_433cd80d5974409bb01f178994916f2c_master.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36bfe1fd617f62806ac18"
+  },
+  "title": "Vỏ máy tính Cooler Master ELITE 301 BLACK",
+  "price": 1290000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/smart_768b3f9d41434c2a8f381b397637102f_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36c111fd617f62806ac1b"
+  },
+  "title": "Vỏ máy tính Cooler Master CD600 Black",
+  "price": 1390000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/cd600.4_53bf7a165574406bb47f36cf90bda7aa_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36c251fd617f62806ac1e"
+  },
+  "title": "Vỏ máy tính Lian Li O11D Evo RGB Black",
+  "price": 4290000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/o11dergb-000_43ed36ea1a994db890b0913ba68b4bda_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36c601fd617f62806aca1"
+  },
+  "title": "Vỏ máy tính MSI MAG PANO M100R PZ WHITE",
+  "price": 2990000,
+  "description": "",
+  "category": "Case",
+  "image": "https://product.hstatic.net/200000722513/product/gearvn-vo-may-tinh-msi-mag-pano-m100r-pz-white-1_7b4d31499e7e48d3aa15861a430450ab_master.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36d1d1fd617f62806ad24"
+  },
+  "title": "Laptop ASUS ExpertBook P3405CVA-NZ0077W",
+  "price": 23390000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/laptop-asus-expertbook-p3405cva-nz0077w-1_6f153fd67159427aa3e9378911ade36b_master.jpg",
+  "specs": {
+    "cpu": "Intel Core i5 13620H",
+    "ram": "16GB",
+    "ssd": "512GB",
+    "inch": "14 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36d581fd617f62806ad27"
+  },
+  "title": "Laptop MSI Prestige 16 AI+ Mercedes AMG B2VMG 088VN",
+  "price": 47990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/1024__1__0d667d989d7940c5b9384e3b838608ce_master.png",
+  "specs": {
+    "cpu": "Intel Core i9 13900HX",
+    "ram": "32GB",
+    "ssd": "2TB",
+    "inch": "16 inch",
+    "kg": "1,5kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36d931fd617f62806ad2a"
+  },
+  "title": "Laptop Acer Aspire 5 A515 58P 9841",
+  "price": 21690000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/acer-aspire-5-a515-58p-56rp_3648_cdccb4e993ed48d2b56bd3efef958f25_master.png",
+  "specs": {
+    "cpu": "Intel Core i9 13900H",
+    "ram": "16GB",
+    "ssd": "512GB",
+    "inch": "15 inch",
+    "kg": "1,7kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36dbc1fd617f62806ad2d"
+  },
+  "title": "Laptop Lenovo Yoga Slim 7 14IMH9 83CV00DKVN",
+  "price": 27990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/yoga_slim_7_14imh9_ct2_11_7176ffe26f5e486387131c48bd23e4e6_master.png",
+  "specs": {
+    "cpu": "Intel Core i7 12700H",
+    "ram": "32GB",
+    "ssd": "1TB",
+    "inch": "14 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36dea1fd617f62806ad70"
+  },
+  "title": "Laptop Acer Swift Go SFG14 74 58FJ",
+  "price": 31490000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/laptop-acer-swift-go-sfg14-74-58_8bd66acf4f4b4b289fcadb0429cf0732_master.png",
+  "specs": {
+    "cpu": "Intel Core i5 12600H",
+    "ram": "16GB",
+    "ssd": "1TB",
+    "inch": "14 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36e151fd617f62806ad73"
+  },
+  "title": "Laptop ASUS Vivobook S14 S3407CA LY096WS",
+  "price": 24590000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/laptop_asus_vivobook_s14_s3407ca_ly096ws-1_feb1f352b1074bcb989021be4494e2f2_master.jpg",
+  "specs": {
+    "cpu": "Intel Core i7 12800H",
+    "ram": "16",
+    "ssd": "512GB",
+    "inch": "14 inch",
+    "kg": "1,2kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36e3d1fd617f62806ad76"
+  },
+  "title": "Laptop Acer Swift 14 AI SF14 51 53P9",
+  "price": 28890000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/khung-laptop-23_cd9037919f96427a9c25e318a8a00134_master.png",
+  "specs": {
+    "cpu": "Intel Core i5 1240P",
+    "ram": "16GB",
+    "ssd": "1TB",
+    "inch": "14 inch",
+    "kg": "1,2kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36e6a1fd617f62806ad79"
+  },
+  "title": "Laptop MSI Prestige 14 AI+ Evo C2VMG 020VN",
+  "price": 34990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/1024__1__4ce7108d02d54156b235978be0ab7e5b_master.png",
+  "specs": {
+    "cpu": "Intel Core i7 1460P",
+    "ram": "32GB",
+    "ssd": "2TB",
+    "inch": "14 inch",
+    "kg": "1,8kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36e961fd617f62806adbc"
+  },
+  "title": " Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN   Laptop MSI Prestige 13 AI Evo A1MG 062VN  Laptop MSI Prestige 13 AI Evo A1MG 062VN",
+  "price": 32990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/ava_f4961f3432f84674b7d37c5fbeb3aa17_master.png",
+  "specs": {
+    "cpu": "Intel Core i9 13900",
+    "ram": "16GB",
+    "ssd": "512GB",
+    "inch": "14 inch",
+    "kg": "1kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36ed11fd617f62806adbf"
+  },
+  "title": "Laptop ASUS Zenbook 14 UX3405CA PZ204WS",
+  "price": 35990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://product.hstatic.net/200000722513/product/zenbook_14_ux3405ca_product_photo_3b_ponder_blue_06_65dda53c57804927ba29393748705da8_master.png",
+  "specs": {
+    "cpu": "Intel Core i5 1340P",
+    "ram": "32GB",
+    "ssd": "1TB",
+    "inch": "14 inch",
+    "kg": "1,26kg"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36ef51fd617f62806adc2"
+  },
+  "title": "Laptop MSI PrestigePro 16 AI C3MG 024VN",
+  "price": 56990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/laptop-msi-prestigepro-16-ai-c3mg-024vn-1_15b89801b2d94d499fa7ee6d3c596839_master.jpg",
+  "specs": {
+    "cpu": "Intel Core i9 13900ks",
+    "ram": "32GB",
+    "ssd": "1TB",
+    "inch": "16 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d36f1e1fd617f62806ae05"
+  },
+  "title": "Laptop Dell 15 DC15250 i7U161W11SLU",
+  "price": 20990000,
+  "description": "",
+  "category": "Laptop",
+  "image": "https://cdn.hstatic.net/products/200000722513/29988_laptop_dell_15_dc15250_dc1_07b9006bfd9d4629a1b8c7988f2f0a11_master.png",
+  "specs": {
+    "cpu": "Intel Core i7 1355U",
+    "ram": "16GB",
+    "ssd": "1TB",
+    "inch": "16 inch"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3713523fc4d7f6181540d"
+  },
+  "title": "Herman Miller Aeron Remastered Graphite – Ghế công thái học",
+  "price": 22490000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-aeron-remastered-den-graphite-hang-xach-tay-41115588133109.jpg?v=1718878465&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3715d23fc4d7f61815410"
+  },
+  "title": "Herman Miller Aeron Remastered Onyx – Ghế công thái học Posturefit SL",
+  "price": 27990000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-aeron-remastered-den-onyx-hang-xach-tay-41115764130037.jpg?v=1726319118&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3717523fc4d7f61815413"
+  },
+  "title": "Herman Miller Mirra 2 – Ghế công thái học linh hoạt FlexFront",
+  "price": 26690000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-aeron-remastered-xam-carbon-hang-xach-tay-41115497070837.jpg?v=1718877028&width=800",
+  "__v": 0,
+  "specs": {}
+},
+{
+  "_id": {
+    "$oid": "69d3718923fc4d7f61815416"
+  },
+  "title": "Herman Miller Aeron Remastered Mineral – Ghế công thái học Posturefit SL",
+  "price": 27990000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-aeron-remastered-tr-ng-mineral-hang-xach-tay-41115388969205.jpg?v=1718875051&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d371a623fc4d7f61815419"
+  },
+  "title": "Herman Miller x Logitech G Embody – Ghế công thái học cao cấp",
+  "price": 49990000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-x-logitech-g-embody-hang-xach-tay-41115986460917.jpg?v=1718882781&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d371e023fc4d7f6181541c"
+  },
+  "title": "Herman Miller Sayl – Ghế công thái học full option gọn nhẹ",
+  "price": 15990000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-sayl-hang-xach-tay-41115884257525.jpg?v=1718881525&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d371f723fc4d7f6181541f"
+  },
+  "title": "Herman Miller Mirra 2 – Ghế công thái học linh hoạt FlexFront",
+  "price": 19490000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-mirra-2-hang-xach-tay-41115857256693.jpg?v=1726318939&width=800",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3720d23fc4d7f61815422"
+  },
+  "title": "Herman Miller Cosm – Ghế công thái học tự điều chỉnh High Back",
+  "price": 29990000,
+  "description": "",
+  "category": "Chair",
+  "image": "https://www.phongcachxanh.vn/cdn/shop/files/gh-cong-thai-h-c-herman-miller-cosm-xam-hang-xach-tay-41115825832181.jpg?v=1726319121&width=800",
+  "__v": 0
+}]

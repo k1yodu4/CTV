@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "69cddcf97765a7b8d61345c9"
+  },
+  "fullname": "Mai Ngọc Mai",
+  "email": "mai123@gmail.com",
+  "password": "$2b$10$fP91EyhrqJ70vnOgEOWnbu9ETQmNSA4a9MYctbkBBdrAtUVNK3mlG",
+  "role": "user",
+  "createdAt": {
+    "$date": "2026-04-02T03:05:29.433Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T09:08:43.574Z"
+  },
+  "__v": 0,
+  "birthday": {
+    "day": "17",
+    "month": "4",
+    "year": "2016"
+  },
+  "gender": "Nữ",
+  "phone": "0989564098"
+},
+{
+  "_id": {
+    "$oid": "69ce363e7280dd1e0f928f80"
+  },
+  "fullname": "Bùi Vũ Gia Bảo",
+  "email": "giabao41325@gmail.com",
+  "password": "$2b$10$tlGuVm74kyCuegO9XOQns.HuRW1M9JSv6o8eUXXeIPi8ge9qLRgHS",
+  "role": "admin",
+  "phone": "",
+  "gender": "Nam",
+  "birthday": {
+    "day": "",
+    "month": "",
+    "year": ""
+  },
+  "createdAt": {
+    "$date": "2026-04-02T09:26:22.857Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T09:26:22.857Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69d3799a23fc4d7f618158b4"
+  },
+  "fullname": "admin",
+  "email": "admin123@gmail.com",
+  "password": "$2b$10$4J5YwmGMlBw8PzB4eihOduciAKD9GX9FWQEIj4OyZzeaoQyRdGaeS",
+  "role": "user",
+  "phone": "",
+  "gender": "Nam",
+  "birthday": {
+    "day": "",
+    "month": "",
+    "year": ""
+  },
+  "createdAt": {
+    "$date": "2026-04-06T09:15:06.769Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-06T09:15:06.769Z"
+  },
+  "__v": 0
+}]

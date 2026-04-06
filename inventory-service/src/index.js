@@ -19,6 +19,8 @@ const CategorySpec = require('./models/CategorySpec');
 const Product = require('./models/Product');
 const User = require('./models/User');
 const Order = require('./models/Order');
+const fs = require('fs');
+const path = require('path');
 
 // --- Meilisearch client (tìm kiếm nhanh) ---
 // Trong index.js
@@ -126,6 +128,44 @@ async function syncDataToMeili() {
     }
 }
 
+// --- Hàm nạp dữ liệu mẫu (seed) ---
+async function seedData() {
+    const collectionsToSeed = [
+        { model: Product, file: 'products_seed.json', name: 'Sản phẩm' },
+        { model: User, file: 'users_seed.json', name: 'Người dùng' },
+        { model: CategorySpec, file: 'specs_seed.json', name: 'Cấu hình Specs' },
+        { model: Order, file: 'orders_seed.json', name: 'Đơn hàng' }
+    ];
+
+    try {
+        let isProductSeeded = false;
+
+        for (const item of collectionsToSeed) {
+            const count = await item.model.countDocuments();
+            if (count === 0) {
+                const filePath = path.join(__dirname, item.file);
+                if (fs.existsSync(filePath)) {
+                    const rawData = fs.readFileSync(filePath, 'utf-8');
+                    const jsonData = JSON.parse(rawData);
+                    await item.model.insertMany(jsonData);
+                    console.log(`✅ Đã nạp ${jsonData.length} ${item.name}!`);
+                    if (item.model === Product) isProductSeeded = true;
+                } else {
+                    console.log(`⚠️ Bỏ qua ${item.name}: Không tìm thấy file ${item.file}`);
+                }
+            } else {
+                console.log(`📦 Bảng ${item.name} đã có dữ liệu, bỏ qua.`);
+            }
+        }
+
+        if (isProductSeeded) {
+            await syncDataToMeili();
+        }
+    } catch (err) {
+        console.error("❌ Lỗi khi nạp dữ liệu mẫu:", err.message);
+    }
+}
+
 // Gọi syncDataToMeili() một lần khi server start nếu bạn muốn tự động đẩy dữ liệu.
     //syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
 
@@ -134,10 +174,10 @@ app.get('/test', (req, res) => {
 });
 
 mongoose.connect(MONGO_URI)
-    .then(() => {
-            console.log('✅ Đã kết nối thành công tới MongoDB!');
-            // Sau khi DB kết nối thành công, mới chạy đồng bộ Meilisearch
-            syncDataToMeili();
+    .then(async () => {
+        console.log('✅ Đã kết nối thành công tới MongoDB!');
+        // Sau khi DB kết nối thành công, nạp dữ liệu mẫu nếu cần và đồng bộ Meili
+        await seedData();
     })
     .catch((err) => console.error('❌ Lỗi kết nối MongoDB:', err.message));
 

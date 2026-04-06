@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$oid": "69ce26c24c560e20c35b06e3"
+  },
+  "orderCode": "KVB-898258",
+  "customerInfo": {
+    "fullname": "Mai Ngọc Mai",
+    "phone": "0979541020",
+    "address": "Ngách 29/78/80 khương hạ, Dịch Vọng, Quận 1, Hà Nội",
+    "note": ""
+  },
+  "items": [
+    {
+      "id": "69ccc86b83b810a77f468c88",
+      "title": "Laptop Acer Swift Go 14 SFG14 73 57FZ",
+      "price": 23790000,
+      "image": "https://product.hstatic.net/200000722513/product/wift-go-ai-2024-gen-2-sfg14-73-71zx_1_ccc2cc55cf11451086e09eac92cae064_ed8a6356d9374b53a4c13abaea1658a8_master.png",
+      "quantity": 1,
+      "_id": {
+        "$oid": "69ce26c24c560e20c35b06e4"
+      }
+    }
+  ],
+  "totalAmount": 23790000,
+  "paymentMethod": "COD",
+  "status": "Hoàn tất",
+  "userId": null,
+  "createdAt": {
+    "$date": "2026-04-02T08:20:18.250Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T10:15:29.626Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ce27db4c560e20c35b0704"
+  },
+  "orderCode": "KVB-807549",
+  "customerInfo": {
+    "fullname": "Bùi Vũ Gia Bảo",
+    "phone": "0979541020",
+    "address": "Nhà số 8 Nghĩa Đô, Cầu Giấy, Hà Nội, Dịch Vọng, Quận 1, Hà Nội",
+    "note": ""
+  },
+  "items": [
+    {
+      "id": "69ccc74783b810a77f468c6b",
+      "title": "Laptop gaming Acer Nitro Lite NL16-71G-71FN",
+      "price": 29490000,
+      "image": "https://cdn.hstatic.net/products/200000722513/gearvn-laptop-gaming-acer-nitro-lite-nl16-71g-71fn-1_cebbe117071d42b99f05427cebf47687_master.png",
+      "quantity": 1,
+      "_id": {
+        "$oid": "69ce27db4c560e20c35b0705"
+      }
+    }
+  ],
+  "totalAmount": 29490000,
+  "paymentMethod": "COD",
+  "status": "Chờ xác nhận",
+  "userId": null,
+  "createdAt": {
+    "$date": "2026-04-02T08:24:59.278Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T09:41:25.830Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ce333f7280dd1e0f928f71"
+  },
+  "orderCode": "KVB-433165",
+  "customerInfo": {
+    "fullname": "Mai Ngọc Mai",
+    "phone": "0979541020",
+    "address": "Ngách 29/78/80 khương hạ, Dịch Vọng, Quận 1, Hà Nội",
+    "note": ""
+  },
+  "items": [
+    {
+      "id": "69ccc74783b810a77f468c6b",
+      "title": "Laptop gaming Acer Nitro Lite NL16-71G-71FN",
+      "price": 29490000,
+      "image": "https://cdn.hstatic.net/products/200000722513/gearvn-laptop-gaming-acer-nitro-lite-nl16-71g-71fn-1_cebbe117071d42b99f05427cebf47687_master.png",
+      "quantity": 1,
+      "_id": {
+        "$oid": "69ce333f7280dd1e0f928f72"
+      }
+    }
+  ],
+  "totalAmount": 29490000,
+  "paymentMethod": "COD",
+  "status": "Đã hủy",
+  "userId": {
+    "$oid": "69cddcf97765a7b8d61345c9"
+  },
+  "createdAt": {
+    "$date": "2026-04-02T09:13:35.982Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T09:40:18.799Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69ce39f5cb7d5a5d244047a9"
+  },
+  "orderCode": "KVB-872089",
+  "customerInfo": {
+    "fullname": "Bùi Vũ Gia Bảo",
+    "phone": "0979541020",
+    "address": "Ngách 29/78/80 khương hạ, Phường 1, Quận 1, Hà Nội",
+    "note": ""
+  },
+  "items": [
+    {
+      "id": "69cccd2f83b810a77f468dda",
+      "title": "Laptop Acer Aspire Go 15 AG15-72P-35X9",
+      "price": 12890000,
+      "image": "https://cdn.hstatic.net/products/200000722513/laptop-acer-aspire-go-15-ag15-72p-35x9-1_36da68f1c408407f96facd03e6a0308b_master.jpg",
+      "quantity": 1,
+      "_id": {
+        "$oid": "69ce39f5cb7d5a5d244047aa"
+      }
+    }
+  ],
+  "totalAmount": 12890000,
+  "paymentMethod": "COD",
+  "status": "Đang vận chuyển",
+  "userId": {
+    "$oid": "69ce363e7280dd1e0f928f80"
+  },
+  "createdAt": {
+    "$date": "2026-04-02T09:42:13.958Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-02T10:06:19.120Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,1590 @@
+[{
+  "_id": {
+    "$oid": "69cc732742c5ff99ec70b30e"
+  },
+  "category": "Laptop",
+  "specsConfig": [
+    {
+      "key": "cpu",
+      "label": "CPU",
+      "options": [
+        "Intel Core i3 12100",
+        "Intel Core i3 12100f",
+        "Intel Core i5 12400",
+        "Intel Core i5 12400f",
+        "Intel Core i5 12500",
+        "Intel Core i5 12600",
+        "Intel Core i5 12600k",
+        "Intel Core i5 12600kf",
+        "Intel Core i7 12700",
+        "Intel Core i7 12700f",
+        "Intel Core i7 12700k",
+        "Intel Core i7 12700kf",
+        "Intel Core i9 12900",
+        "Intel Core i9 12900f",
+        "Intel Core i9 12900k",
+        "Intel Core i9 12900kf",
+        "Intel Core i9 12900ks",
+        "Intel Core i3 13100",
+        "Intel Core i3 13100f",
+        "Intel Core i5 13400",
+        "Intel Core i5 13400f",
+        "Intel Core i5 13500",
+        "Intel Core i5 13600",
+        "Intel Core i5 13600k",
+        "Intel Core i5 13600kf",
+        "Intel Core i7 13700",
+        "Intel Core i7 13700f",
+        "Intel Core i7 13700k",
+        "Intel Core i7 13700kf",
+        "Intel Core i9 13900",
+        "Intel Core i9 13900f",
+        "Intel Core i9 13900k",
+        "Intel Core i9 13900kf",
+        "Intel Core i9 13900ks",
+        "Intel Core i3 14100",
+        "Intel Core i3 14100f",
+        "Intel Core i5 14400",
+        "Intel Core i5 14400f",
+        "Intel Core i5 14500",
+        "Intel Core i5 14600",
+        "Intel Core i5 14600k",
+        "Intel Core i5 14600kf",
+        "Intel Core i7 14700",
+        "Intel Core i7 14700f",
+        "Intel Core i7 14700k",
+        "Intel Core i7 14700kf",
+        "Intel Core i9 14900",
+        "Intel Core i9 14900f",
+        "Intel Core i9 14900k",
+        "Intel Core i9 14900kf",
+        "Intel Core i9 14900ks",
+        "Intel Core i3 1215U",
+        "Intel Core i3 1220P",
+        "Intel Core i5 1235U",
+        "Intel Core i5 1240P",
+        "Intel Core i5 1250P",
+        "Intel Core i5 12500H",
+        "Intel Core i5 12600H",
+        "Intel Core i7 1255U",
+        "Intel Core i7 1260P",
+        "Intel Core i7 12700H",
+        "Intel Core i7 12800H",
+        "Intel Core i9 12900H",
+        "Intel Core i9 12900HK",
+        "Intel Core i3 1315U",
+        "Intel Core i5 1335U",
+        "Intel Core i5 1340P",
+        "Intel Core i5 13500H",
+        "Intel Core i5 13620H",
+        "Intel Core i7 1355U",
+        "Intel Core i7 1360P",
+        "Intel Core i7 13700H",
+        "Intel Core i7 13800H",
+        "Intel Core i9 13900H",
+        "Intel Core i9 13900HX",
+        "Intel Core i5 1435U",
+        "Intel Core i5 1440P",
+        "Intel Core i5 14500H",
+        "Intel Core i7 1455U",
+        "Intel Core i7 1460P",
+        "Intel Core i7 14700H",
+        "Intel Core i9 14900H",
+        "Intel Core i9 14900HX",
+        "AMD Ryzen 5 5500",
+        "AMD Ryzen 5 5600",
+        "AMD Ryzen 5 5600x",
+        "AMD Ryzen 7 5700x",
+        "AMD Ryzen 7 5800",
+        "AMD Ryzen 7 5800x",
+        "AMD Ryzen 7 5800x3d",
+        "AMD Ryzen 9 5900",
+        "AMD Ryzen 9 5900x",
+        "AMD Ryzen 9 5950x",
+        "AMD Ryzen 5 7500f",
+        "AMD Ryzen 5 7600",
+        "AMD Ryzen 5 7600x",
+        "AMD Ryzen 7 7700",
+        "AMD Ryzen 7 7700x",
+        "AMD Ryzen 9 7900",
+        "AMD Ryzen 9 7900x",
+        "AMD Ryzen 9 7950x",
+        "AMD Ryzen 7 7800x3d",
+        "AMD Ryzen 9 7900x3d",
+        "AMD Ryzen 9 7950x3d",
+        "AMD Ryzen 5 5500U",
+        "AMD Ryzen 5 5600U",
+        "AMD Ryzen 5 5600H",
+        "AMD Ryzen 7 5700U",
+        "AMD Ryzen 7 5800U",
+        "AMD Ryzen 7 5800H",
+        "AMD Ryzen 9 5900HX",
+        "AMD Ryzen 5 6600U",
+        "AMD Ryzen 5 6600H",
+        "AMD Ryzen 7 6800U",
+        "AMD Ryzen 7 6800H",
+        "AMD Ryzen 9 6900HX",
+        "AMD Ryzen 5 7530U",
+        "AMD Ryzen 5 7535U",
+        "AMD Ryzen 5 7640U",
+        "AMD Ryzen 5 7640HS",
+        "AMD Ryzen 7 7730U",
+        "AMD Ryzen 7 7735U",
+        "AMD Ryzen 7 7840U",
+        "AMD Ryzen 7 7840HS",
+        "AMD Ryzen 9 7940HS",
+        "AMD Ryzen 9 7945HX"
+      ],
+      "_id": {
+        "$oid": "69cc90cd2d4e1c225b4f6c0c"
+      }
+    },
+    {
+      "key": "ram",
+      "label": "RAM",
+      "options": [
+        "8GB",
+        "16GB",
+        "24GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "_id": {
+        "$oid": "69cc90cd2d4e1c225b4f6c0d"
+      }
+    },
+    {
+      "key": "vga",
+      "label": "Card đồ họa (VGA)",
+      "options": [
+        "NVIDIA GeForce RTX 3050",
+        "NVIDIA GeForce RTX 3050 Ti",
+        "NVIDIA GeForce RTX 3060",
+        "NVIDIA GeForce RTX 3060 Ti",
+        "NVIDIA GeForce RTX 3070",
+        "NVIDIA GeForce RTX 3070 Ti",
+        "NVIDIA GeForce RTX 3080",
+        "NVIDIA GeForce RTX 3080 Ti",
+        "NVIDIA GeForce RTX 3090",
+        "NVIDIA GeForce RTX 3090 Ti",
+        "NVIDIA GeForce RTX 4050",
+        "NVIDIA GeForce RTX 4060",
+        "NVIDIA GeForce RTX 4060 Ti",
+        "NVIDIA GeForce RTX 4070",
+        "NVIDIA GeForce RTX 4070 Super",
+        "NVIDIA GeForce RTX 4070 Ti",
+        "NVIDIA GeForce RTX 4070 Ti Super",
+        "NVIDIA GeForce RTX 4080",
+        "NVIDIA GeForce RTX 4080 Super",
+        "NVIDIA GeForce RTX 4090",
+        "NVIDIA GeForce RTX 3050 Laptop GPU",
+        "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "NVIDIA GeForce RTX 3070 Laptop GPU",
+        "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+        "NVIDIA GeForce RTX 3080 Laptop GPU",
+        "NVIDIA GeForce RTX 3080 Ti Laptop GPU",
+        "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "NVIDIA GeForce RTX 4080 Laptop GPU",
+        "NVIDIA GeForce RTX 4090 Laptop GPU",
+        "AMD Radeon RX 6500 XT",
+        "AMD Radeon RX 6600",
+        "AMD Radeon RX 6600 XT",
+        "AMD Radeon RX 6650 XT",
+        "AMD Radeon RX 6700",
+        "AMD Radeon RX 6700 XT",
+        "AMD Radeon RX 6750 XT",
+        "AMD Radeon RX 6800",
+        "AMD Radeon RX 6800 XT",
+        "AMD Radeon RX 6900 XT",
+        "AMD Radeon RX 6950 XT",
+        "AMD Radeon RX 7600",
+        "AMD Radeon RX 7600 XT",
+        "AMD Radeon RX 7700 XT",
+        "AMD Radeon RX 7800 XT",
+        "AMD Radeon RX 7900 GRE",
+        "AMD Radeon RX 7900 XT",
+        "AMD Radeon RX 7900 XTX",
+        "AMD Radeon RX 6500M",
+        "AMD Radeon RX 6600M",
+        "AMD Radeon RX 6700M",
+        "AMD Radeon RX 6800M",
+        "AMD Radeon RX 6850M XT",
+        "AMD Radeon RX 7600M",
+        "AMD Radeon RX 7600M XT",
+        "AMD Radeon RX 7700S",
+        "AMD Radeon RX 7800M",
+        "AMD Radeon RX 7900M"
+      ],
+      "_id": {
+        "$oid": "69cc90cd2d4e1c225b4f6c0e"
+      }
+    },
+    {
+      "key": "ssd",
+      "label": "SSD",
+      "options": [
+        "256GB",
+        "512GB",
+        "1TB",
+        "2TB"
+      ],
+      "_id": {
+        "$oid": "69ccc6d683b810a77f468c2f"
+      }
+    },
+    {
+      "key": "inch",
+      "label": "Kích thước",
+      "options": [
+        "14 inch",
+        "15 inch",
+        "16 inch",
+        "17inch"
+      ],
+      "_id": {
+        "$oid": "69ccc6d683b810a77f468c30"
+      }
+    },
+    {
+      "key": "kg",
+      "label": "Cân nặng",
+      "options": [],
+      "_id": {
+        "$oid": "69ccc6d683b810a77f468c31"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cc8d70530e41d0b4015670"
+  },
+  "category": "Chuột",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "pollingrat",
+      "label": "POLLING RATE",
+      "options": [
+        "1000hz",
+        "2000hz",
+        "4000hz",
+        "8000hz"
+      ],
+      "_id": {
+        "$oid": "69cc8f4f2d4e1c225b4f6be6"
+      }
+    },
+    {
+      "key": "pin",
+      "label": "PIN",
+      "options": [],
+      "_id": {
+        "$oid": "69cc90cc2d4e1c225b4f6c04"
+      }
+    },
+    {
+      "key": "cambien",
+      "label": "CẢM BIẾN",
+      "options": [
+        "HERO 2 Optical Sensor",
+        "Focus Pro",
+        "Quang học"
+      ],
+      "_id": {
+        "$oid": "69cc90cc2d4e1c225b4f6c05"
+      }
+    },
+    {
+      "key": "ketnoi",
+      "label": "KẾT NỐI",
+      "options": [
+        "Có dây",
+        "không dây"
+      ],
+      "_id": {
+        "$oid": "69ccc8dc83b810a77f468c8f"
+      }
+    },
+    {
+      "key": "kichthuoc",
+      "label": "KÍCH THƯỚC",
+      "options": [],
+      "_id": {
+        "$oid": "69ccc94d83b810a77f468cc0"
+      }
+    },
+    {
+      "key": "loaisanpham",
+      "label": "LOẠI SẢN PHẨM",
+      "options": [
+        "Gaming",
+        "Văn phòng"
+      ],
+      "_id": {
+        "$oid": "69cf40cd75a01a12e2d6effe"
+      }
+    },
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Logitech",
+        "Razer",
+        "Corsair",
+        "SteelSeries",
+        "HyperX",
+        "ASUS",
+        "MSI",
+        "Cooler Master",
+        "Roccat",
+        "Glorious",
+        "Zowie",
+        "Xtrfy",
+        "Endgame Gear",
+        "Pulsar",
+        "Finalmouse",
+        "Lamzu",
+        "Ninjutso",
+        "G-Wolves",
+        "Vaxee",
+        "DareU",
+        "Fantech",
+        "Rapoo",
+        "Ajazz",
+        "Aula",
+        "Redragon",
+        "Attack Shark",
+        "Delux",
+        "E-Dra",
+        "Newmen",
+        "Machenike",
+        "Lenovo",
+        "Dell",
+        "HP",
+        "Microsoft",
+        "Apple",
+        "Trust",
+        "Thermaltake",
+        "Bloody",
+        "Lexip",
+        "Tt eSports",
+        "Sharkoon",
+        "Genesis",
+        "Cougar",
+        "Mad Catz"
+      ],
+      "_id": {
+        "$oid": "69cf431c75a01a12e2d6f068"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cc8dcb530e41d0b401569b"
+  },
+  "category": "Bàn phím",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "layout",
+      "label": "Layout",
+      "options": [
+        "60%",
+        "75%",
+        "80%",
+        "FULL LAYOUT"
+      ],
+      "_id": {
+        "$oid": "69cc8dcb2d4e1c225b4f6bd4"
+      }
+    },
+    {
+      "key": "hang",
+      "label": "Hãng ",
+      "options": [
+        "Logitech",
+        "Razer",
+        "Corsair",
+        "SteelSeries",
+        "HyperX",
+        "ASUS",
+        "MSI",
+        "Dell",
+        "HP",
+        "Microsoft",
+        "Apple",
+        "Acer",
+        "Lenovo",
+        "Cooler Master",
+        "Ducky",
+        "Leopold",
+        "Varmilo",
+        "Filco",
+        "HHKB",
+        "Matias",
+        "Keychron",
+        "Akko",
+        "Epomaker",
+        "Royal Kludge",
+        "Redragon",
+        "Aula",
+        "Attack Shark",
+        "Fantech",
+        "DareU",
+        "Rapoo",
+        "Ajazz",
+        "E-Dra",
+        "Pulsar",
+        "Glorious",
+        "Wooting",
+        "Keydous",
+        "MonsGeek",
+        "KBDFans",
+        "KBDcraft",
+        "CIY",
+        "FL Esports",
+        "Yunzii",
+        "Skyloong",
+        "Womier",
+        "IQUNIX",
+        "Nuphy",
+        "Lofree",
+        "Drop",
+        "Mode",
+        "TGR",
+        "Owlab",
+        "Vertex",
+        "Kalam",
+        "GMMK"
+      ],
+      "_id": {
+        "$oid": "69cf446275a01a12e2d6f089"
+      }
+    },
+    {
+      "key": "phuongthucketnoi",
+      "label": "PHƯƠNG THỨC KẾT NỐI",
+      "options": [
+        "Wired",
+        "Wireless",
+        "Blutooth"
+      ],
+      "_id": {
+        "$oid": "69cf446275a01a12e2d6f08a"
+      }
+    },
+    {
+      "key": "chatlieu",
+      "label": "CHẤT LIỆU",
+      "options": [
+        "Nhựa",
+        "Nhôm"
+      ],
+      "_id": {
+        "$oid": "69cf446275a01a12e2d6f08b"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf3f26debb18ebca7222ad"
+  },
+  "category": "PC",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "mb",
+      "label": "Mainboard",
+      "options": [
+        "H610",
+        "H670",
+        "B660",
+        "Z690",
+        "B760",
+        "H770",
+        "Z790",
+        "B860",
+        "Z890",
+        "A520",
+        "B450",
+        "B550",
+        "X570",
+        "A620",
+        "B650",
+        "B650E",
+        "B850",
+        "B850E",
+        "X670",
+        "X670E",
+        "X870",
+        "X870E"
+      ],
+      "_id": {
+        "$oid": "69cf3f2675a01a12e2d6efb1"
+      }
+    },
+    {
+      "key": "cpu",
+      "label": "CPU",
+      "options": [
+        "Intel Core i3 12100",
+        "Intel Core i3 12100f",
+        "Intel Core i5 12400",
+        "Intel Core i5 12400f",
+        "Intel Core i5 12500",
+        "Intel Core i5 12600",
+        "Intel Core i5 12600k",
+        "Intel Core i5 12600kf",
+        "Intel Core i7 12700",
+        "Intel Core i7 12700f",
+        "Intel Core i7 12700k",
+        "Intel Core i7 12700kf",
+        "Intel Core i9 12900",
+        "Intel Core i9 12900f",
+        "Intel Core i9 12900k",
+        "Intel Core i9 12900kf",
+        "Intel Core i9 12900ks",
+        "Intel Core i3 13100",
+        "Intel Core i3 13100f",
+        "Intel Core i5 13400",
+        "Intel Core i5 13400f",
+        "Intel Core i5 13500",
+        "Intel Core i5 13600",
+        "Intel Core i5 13600k",
+        "Intel Core i5 13600kf",
+        "Intel Core i7 13700",
+        "Intel Core i7 13700f",
+        "Intel Core i7 13700k",
+        "Intel Core i7 13700kf",
+        "Intel Core i9 13900",
+        "Intel Core i9 13900f",
+        "Intel Core i9 13900k",
+        "Intel Core i9 13900kf",
+        "Intel Core i9 13900ks",
+        "Intel Core i3 14100",
+        "Intel Core i3 14100f",
+        "Intel Core i5 14400",
+        "Intel Core i5 14400f",
+        "Intel Core i5 14500",
+        "Intel Core i5 14600",
+        "Intel Core i5 14600k",
+        "Intel Core i5 14600kf",
+        "Intel Core i7 14700",
+        "Intel Core i7 14700f",
+        "Intel Core i7 14700k",
+        "Intel Core i7 14700kf",
+        "Intel Core i9 14900",
+        "Intel Core i9 14900f",
+        "Intel Core i9 14900k",
+        "Intel Core i9 14900kf",
+        "Intel Core i9 14900ks",
+        "Intel Core i3 1215U",
+        "Intel Core i3 1220P",
+        "Intel Core i5 1235U",
+        "Intel Core i5 1240P",
+        "Intel Core i5 1250P",
+        "Intel Core i5 12500H",
+        "Intel Core i5 12600H",
+        "Intel Core i7 1255U",
+        "Intel Core i7 1260P",
+        "Intel Core i7 12700H",
+        "Intel Core i7 12800H",
+        "Intel Core i9 12900H",
+        "Intel Core i9 12900HK",
+        "Intel Core i3 1315U",
+        "Intel Core i5 1335U",
+        "Intel Core i5 1340P",
+        "Intel Core i5 13500H",
+        "Intel Core i5 13620H",
+        "Intel Core i7 1355U",
+        "Intel Core i7 1360P",
+        "Intel Core i7 13700H",
+        "Intel Core i7 13800H",
+        "Intel Core i9 13900H",
+        "Intel Core i9 13900HX",
+        "Intel Core i5 1435U",
+        "Intel Core i5 1440P",
+        "Intel Core i5 14500H",
+        "Intel Core i7 1455U",
+        "Intel Core i7 1460P",
+        "Intel Core i7 14700H",
+        "Intel Core i9 14900H",
+        "Intel Core i9 14900HX",
+        "AMD Ryzen 5 5500",
+        "AMD Ryzen 5 5600",
+        "AMD Ryzen 5 5600x",
+        "AMD Ryzen 7 5700x",
+        "AMD Ryzen 7 5800",
+        "AMD Ryzen 7 5800x",
+        "AMD Ryzen 7 5800x3d",
+        "AMD Ryzen 9 5900",
+        "AMD Ryzen 9 5900x",
+        "AMD Ryzen 9 5950x",
+        "AMD Ryzen 5 7500f",
+        "AMD Ryzen 5 7600",
+        "AMD Ryzen 5 7600x",
+        "AMD Ryzen 7 7700",
+        "AMD Ryzen 7 7700x",
+        "AMD Ryzen 9 7900",
+        "AMD Ryzen 9 7900x",
+        "AMD Ryzen 9 7950x",
+        "AMD Ryzen 7 7800x3d",
+        "AMD Ryzen 9 7900x3d",
+        "AMD Ryzen 9 7950x3d",
+        "AMD Ryzen 5 5500U",
+        "AMD Ryzen 5 5600U",
+        "AMD Ryzen 5 5600H",
+        "AMD Ryzen 7 5700U",
+        "AMD Ryzen 7 5800U",
+        "AMD Ryzen 7 5800H",
+        "AMD Ryzen 9 5900HX",
+        "AMD Ryzen 5 6600U",
+        "AMD Ryzen 5 6600H",
+        "AMD Ryzen 7 6800U",
+        "AMD Ryzen 7 6800H",
+        "AMD Ryzen 9 6900HX",
+        "AMD Ryzen 5 7530U",
+        "AMD Ryzen 5 7535U",
+        "AMD Ryzen 5 7640U",
+        "AMD Ryzen 5 7640HS",
+        "AMD Ryzen 7 7730U",
+        "AMD Ryzen 7 7735U",
+        "AMD Ryzen 7 7840U",
+        "AMD Ryzen 7 7840HS",
+        "AMD Ryzen 9 7940HS",
+        "AMD Ryzen 9 7945HX",
+        "Core Ultra 5",
+        "Core Ultra 7",
+        "Core Ultra 9",
+        "Core Ultra 100U",
+        "Core Ultra 100H",
+        "Core Ultra 100HX",
+        "Core Ultra 200U",
+        "Core Ultra 200H",
+        "Core Ultra 200HX",
+        "Core Ultra 200S",
+        "Core Ultra 200K",
+        "Core Ultra 200KF",
+        "Core Ultra 200S Plus",
+        "Core Ultra 200HX Plus",
+        "Ryzen 5 9500F",
+        "Ryzen 5 9600",
+        "Ryzen 5 9600X",
+        "Ryzen 5 9600X3D",
+        "Ryzen 7 9700F",
+        "Ryzen 7 9700X",
+        "Ryzen 7 9700X3D",
+        "Ryzen 7 9800X3D",
+        "Ryzen 7 9850X3D",
+        "Ryzen 9 9900X",
+        "Ryzen 9 9900X3D",
+        "Ryzen 9 9950X",
+        "Ryzen 9 9950X3D",
+        "Ryzen 5 PRO 9645",
+        "Ryzen 7 PRO 9745",
+        "Ryzen 9 PRO 9945"
+      ],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd3"
+      }
+    },
+    {
+      "key": "ram",
+      "label": "RAM",
+      "options": [
+        "8GB",
+        "16GB",
+        "24GB",
+        "32GB",
+        "64GB",
+        "128GB"
+      ],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd4"
+      }
+    },
+    {
+      "key": "vga",
+      "label": "Card đồ họa (VGA)",
+      "options": [
+        "NVIDIA GeForce RTX 3050",
+        "NVIDIA GeForce RTX 3050 Ti",
+        "NVIDIA GeForce RTX 3060",
+        "NVIDIA GeForce RTX 3060 Ti",
+        "NVIDIA GeForce RTX 3070",
+        "NVIDIA GeForce RTX 3070 Ti",
+        "NVIDIA GeForce RTX 3080",
+        "NVIDIA GeForce RTX 3080 Ti",
+        "NVIDIA GeForce RTX 3090",
+        "NVIDIA GeForce RTX 3090 Ti",
+        "NVIDIA GeForce RTX 4050",
+        "NVIDIA GeForce RTX 4060",
+        "NVIDIA GeForce RTX 4060 Ti",
+        "NVIDIA GeForce RTX 4070",
+        "NVIDIA GeForce RTX 4070 Super",
+        "NVIDIA GeForce RTX 4070 Ti",
+        "NVIDIA GeForce RTX 4070 Ti Super",
+        "NVIDIA GeForce RTX 4080",
+        "NVIDIA GeForce RTX 4080 Super",
+        "NVIDIA GeForce RTX 4090",
+        "NVIDIA GeForce RTX 3050 Laptop GPU",
+        "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "NVIDIA GeForce RTX 3070 Laptop GPU",
+        "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+        "NVIDIA GeForce RTX 3080 Laptop GPU",
+        "NVIDIA GeForce RTX 3080 Ti Laptop GPU",
+        "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "NVIDIA GeForce RTX 4080 Laptop GPU",
+        "NVIDIA GeForce RTX 4090 Laptop GPU",
+        "AMD Radeon RX 6500 XT",
+        "AMD Radeon RX 6600",
+        "AMD Radeon RX 6600 XT",
+        "AMD Radeon RX 6650 XT",
+        "AMD Radeon RX 6700",
+        "AMD Radeon RX 6700 XT",
+        "AMD Radeon RX 6750 XT",
+        "AMD Radeon RX 6800",
+        "AMD Radeon RX 6800 XT",
+        "AMD Radeon RX 6900 XT",
+        "AMD Radeon RX 6950 XT",
+        "AMD Radeon RX 7600",
+        "AMD Radeon RX 7600 XT",
+        "AMD Radeon RX 7700 XT",
+        "AMD Radeon RX 7800 XT",
+        "AMD Radeon RX 7900 GRE",
+        "AMD Radeon RX 7900 XT",
+        "AMD Radeon RX 7900 XTX",
+        "AMD Radeon RX 6500M",
+        "AMD Radeon RX 6600M",
+        "AMD Radeon RX 6700M",
+        "AMD Radeon RX 6800M",
+        "AMD Radeon RX 6850M XT",
+        "AMD Radeon RX 7600M",
+        "AMD Radeon RX 7600M XT",
+        "AMD Radeon RX 7700S",
+        "AMD Radeon RX 7800M",
+        "AMD Radeon RX 7900M",
+        "Intel Arc B580 12GB",
+        "RTX 5050",
+        "RTX 5060",
+        "RTX 5060 Ti",
+        "RTX 5070",
+        "RTX 5070 Ti",
+        "RTX 5080",
+        "RTX 5090",
+        "Intel Arc A310",
+        "Intel Arc A380",
+        "Intel Arc A750",
+        "Intel Arc A770",
+        "RX 9060",
+        "RX 9060 XT (8GB)",
+        "RX 9060 XT (16GB)",
+        "RX 9070 GRE",
+        "RX 9070",
+        "RX 9070 XT"
+      ],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd5"
+      }
+    },
+    {
+      "key": "ssd",
+      "label": "SSD",
+      "options": [
+        "256GB",
+        "512GB",
+        "1TB",
+        "2TB"
+      ],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd6"
+      }
+    },
+    {
+      "key": "psu",
+      "label": "PSU",
+      "options": [],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd7"
+      }
+    },
+    {
+      "key": "case",
+      "label": "CASE",
+      "options": [],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd8"
+      }
+    },
+    {
+      "key": "tn",
+      "label": "TẢN NHIỆT",
+      "options": [],
+      "_id": {
+        "$oid": "69cf401475a01a12e2d6efd9"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf4579debb18ebca72255c"
+  },
+  "category": "Case",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "kichco",
+      "label": "KÍCH CỠ",
+      "options": [
+        "Full Tower",
+        "Mid Tower",
+        "Mini Tower",
+        "SFF (Small Form Factor)"
+      ],
+      "_id": {
+        "$oid": "69cf457975a01a12e2d6f0ab"
+      }
+    },
+    {
+      "key": "hotromain",
+      "label": "HỖ TRỢ MAIN",
+      "options": [
+        "E-ATX",
+        "ATX",
+        "Micro-ATX",
+        "Mini-ITX"
+      ],
+      "_id": {
+        "$oid": "69cf7a5075a01a12e2d6f443"
+      }
+    },
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Corsair",
+        "NZXT",
+        "Cooler Master",
+        "Thermaltake",
+        "Lian Li",
+        "Fractal Design",
+        "Phanteks",
+        "Deepcool",
+        "Antec",
+        "be quiet!",
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Xigmatek",
+        "InWin",
+        "SilverStone",
+        "Cougar",
+        "Zalman",
+        "Montech",
+        "Segotep",
+        "Raidmax",
+        "Aerocool"
+      ],
+      "_id": {
+        "$oid": "69cf7a5075a01a12e2d6f444"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf6c7cdebb18ebca723569"
+  },
+  "category": "CPU",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "AMD",
+        "Intel"
+      ],
+      "_id": {
+        "$oid": "69cf6c7c75a01a12e2d6f161"
+      }
+    },
+    {
+      "key": "dongcpu",
+      "label": "DÒNG CPU",
+      "options": [
+        "Intel Core i3",
+        "Intel Core i5",
+        "Intel Core i7",
+        "Intel Core i9",
+        "Intel Pentium",
+        "Intel Celeron",
+        "Intel Xeon",
+        "Intel Xeon W",
+        "Intel Xeon Bronze",
+        "Intel Xeon Silver",
+        "Intel Xeon Gold",
+        "Intel Xeon Platinum",
+        "AMD Ryzen 3",
+        "AMD Ryzen 5",
+        "AMD Ryzen 7",
+        "AMD Ryzen 9",
+        "AMD Ryzen Threadripper",
+        "AMD Ryzen Threadripper PRO",
+        "AMD Athlon",
+        "AMD EPYC"
+      ],
+      "_id": {
+        "$oid": "69cf6c7c75a01a12e2d6f162"
+      }
+    },
+    {
+      "key": "socket",
+      "label": "SOCKET",
+      "options": [
+        "AM4",
+        "AM5",
+        "LGA 1700",
+        "LGA 1851"
+      ],
+      "_id": {
+        "$oid": "69cf6c7c75a01a12e2d6f163"
+      }
+    },
+    {
+      "key": "thehecpu",
+      "label": "THẾ HỆ CPU",
+      "options": [
+        "Intel Gen 10 (Comet Lake)",
+        "Intel Gen 11 (Rocket Lake)",
+        "Intel Gen 12 (Alder Lake)",
+        "Intel Gen 13 (Raptor Lake)",
+        "Intel Gen 14 (Raptor Lake Refresh)",
+        "Intel Core Ultra (Meteor Lake / Arrow Lake)",
+        "AMD Ryzen 3000 (Zen 2)",
+        "AMD Ryzen 5000 (Zen 3)",
+        "AMD Ryzen 7000 (Zen 4)",
+        "AMD Ryzen 8000 (Zen 4 Refresh)",
+        "AMD Ryzen 9000 (Zen 5)"
+      ],
+      "_id": {
+        "$oid": "69cf6c7c75a01a12e2d6f164"
+      }
+    },
+    {
+      "key": "dohoatichhop",
+      "label": "ĐỒ HỌA TÍCH HỢP",
+      "options": [
+        "Có",
+        "Không"
+      ],
+      "_id": {
+        "$oid": "69cf6c7c75a01a12e2d6f165"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf736ddebb18ebca72385c"
+  },
+  "category": "Màn hình",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Dell",
+        "HP",
+        "Lenovo",
+        "ASUS",
+        "Acer",
+        "MSI",
+        "Gigabyte",
+        "Samsung",
+        "LG",
+        "ViewSonic",
+        "AOC",
+        "BenQ",
+        "Philips",
+        "Sony",
+        "Xiaomi",
+        "Huawei",
+        "Apple",
+        "Eizo",
+        "NEC",
+        "Sharp",
+        "Panasonic",
+        "Toshiba",
+        "Hisense",
+        "Skyworth",
+        "TCL",
+        "Alienware",
+        "Corsair",
+        "Cooler Master",
+        "NZXT",
+        "Sceptre",
+        "Viotek",
+        "Pixio",
+        "Monoprice",
+        "HannsG",
+        "iiyama",
+        "Fujitsu",
+        "Grundig",
+        "Vestel",
+        "KTC",
+        "INNOCN",
+        "KOORUI",
+        "Redragon",
+        "Dahua",
+        "Hikvision"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e1"
+      }
+    },
+    {
+      "key": "kieumanhinh",
+      "label": "KIỂU MÀN HÌNH",
+      "options": [
+        "Cong",
+        "Thẳng"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e2"
+      }
+    },
+    {
+      "key": "kichthuoc",
+      "label": "KÍCH THƯỚC",
+      "options": [
+        "16 inch",
+        "24 inch",
+        "27 inch",
+        "32 inch"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e3"
+      }
+    },
+    {
+      "key": "nhucausudung",
+      "label": "NHU CẦU SỬ DỤNG",
+      "options": [
+        "Màn hình gaming",
+        "Màn hình phổ thông",
+        "Màn hình đồ họa"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e4"
+      }
+    },
+    {
+      "key": "tamnen",
+      "label": "TẤM NỀN",
+      "options": [
+        "Fast IPS",
+        "IPS",
+        "OLED",
+        "VA",
+        "TN",
+        "WOLED",
+        "QD-OLED"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e5"
+      }
+    },
+    {
+      "key": "tansoquet",
+      "label": "TẦN SỐ QUÉT",
+      "options": [
+        "60 Hz",
+        "75 Hz",
+        "120 Hz",
+        "144 Hz",
+        "165 Hz",
+        "180 Hz",
+        "240 Hz",
+        "300 Hz",
+        "360 Hz",
+        "500 Hz"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e6"
+      }
+    },
+    {
+      "key": "tuongthichvesa",
+      "label": "TƯƠNG THÍCH VESA",
+      "options": [
+        "Có",
+        "Không"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e7"
+      }
+    },
+    {
+      "key": "dophangiai",
+      "label": "ĐỘ PHÂN GIẢI",
+      "options": [
+        "Full HD (1920 x 1080)",
+        "2K (2560 x 1440)",
+        "2K (3440 x 1440)",
+        "4K (3840 x 2160)",
+        "5K (5120 x 2880)"
+      ],
+      "_id": {
+        "$oid": "69cf736d75a01a12e2d6f2e8"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf7559debb18ebca72392a"
+  },
+  "category": "Mainboard",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "Hãng ",
+      "options": [
+        "Biostar",
+        "ZOTAC",
+        "ASUS",
+        "MSI",
+        "Gigabyte",
+        "ASRock",
+        "EVGA",
+        "ECS (Elitegroup Computer Systems)",
+        "Foxconn",
+        "Pegatron",
+        "Shuttle",
+        "Supermicro",
+        "Tyan",
+        "Advantech",
+        "Intel",
+        "DFI",
+        "Kontron",
+        "IEI Integration",
+        "AAEON",
+        "ABIT",
+        "EPoX",
+        "Chaintech",
+        "Soyo"
+      ],
+      "_id": {
+        "$oid": "69cf755975a01a12e2d6f31a"
+      }
+    },
+    {
+      "key": "chipset",
+      "label": "CHIPSET",
+      "options": [
+        "H610",
+        "B660",
+        "H670",
+        "Z690",
+        "B760",
+        "H770",
+        "Z790",
+        "H510",
+        "B560",
+        "Z590",
+        "H410",
+        "B460",
+        "Z490",
+        "H310",
+        "B360",
+        "Z370",
+        "Z390",
+        "X299"
+      ],
+      "_id": {
+        "$oid": "69cf755975a01a12e2d6f31b"
+      }
+    },
+    {
+      "key": "kichthuoc",
+      "label": "KÍCH THƯỚC",
+      "options": [
+        "ATX",
+        "E-ATX",
+        "mATX"
+      ],
+      "_id": {
+        "$oid": "69cf755975a01a12e2d6f31c"
+      }
+    },
+    {
+      "key": "loairam",
+      "label": "LOẠI RAM",
+      "options": [
+        "DDR4",
+        "DDR5"
+      ],
+      "_id": {
+        "$oid": "69cf755975a01a12e2d6f31d"
+      }
+    },
+    {
+      "key": "socket",
+      "label": "SOCKET",
+      "options": [
+        "AM4",
+        "AM5",
+        "LGA 1700",
+        "LGA 1851"
+      ],
+      "_id": {
+        "$oid": "69cf755975a01a12e2d6f31e"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf7657debb18ebca723995"
+  },
+  "category": "VGA",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "ASUS",
+        "MSI",
+        "Gigabyte",
+        "ASRock",
+        "ZOTAC",
+        "Galax (KFA2)",
+        "Palit",
+        "Colorful",
+        "Inno3D",
+        "Sapphire",
+        "PowerColor",
+        "XFX",
+        "Gainward",
+        "EVGA",
+        "Yeston",
+        "Sparkle"
+      ],
+      "_id": {
+        "$oid": "69cf765775a01a12e2d6f352"
+      }
+    },
+    {
+      "key": "dongvga",
+      "label": "DÒNG VGA",
+      "options": [
+        "RTX 30",
+        "RTX 40",
+        "RTX 50",
+        "HD 7000",
+        "R5",
+        "R7",
+        "R9",
+        "RX 400",
+        "RX 500",
+        "RX Vega",
+        "RX 5000",
+        "RX 6000",
+        "RX 7000",
+        "Intel HD Graphics",
+        "Intel UHD Graphics",
+        "Intel Iris",
+        "Intel Iris Xe",
+        "Intel Arc A-series",
+        "Intel Arc Battlemage"
+      ],
+      "_id": {
+        "$oid": "69cf765775a01a12e2d6f353"
+      }
+    },
+    {
+      "key": "vram",
+      "label": "V-RAM",
+      "options": [
+        "4 GB",
+        "6 GB",
+        "8 GB",
+        "12 GB",
+        "16 GB",
+        "32 GB"
+      ],
+      "_id": {
+        "$oid": "69cf765775a01a12e2d6f354"
+      }
+    },
+    {
+      "key": "nhandohoa",
+      "label": "NHÂN ĐỒ HỌA",
+      "options": [
+        "AMD",
+        "NVIDIA"
+      ],
+      "_id": {
+        "$oid": "69cf765775a01a12e2d6f355"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf7876debb18ebca723a79"
+  },
+  "category": "RAM",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Corsair",
+        "Kingston",
+        "G.Skill",
+        "Crucial",
+        "ADATA",
+        "TeamGroup",
+        "Patriot",
+        "Apacer",
+        "GeIL",
+        "Silicon Power"
+      ],
+      "_id": {
+        "$oid": "69cf787675a01a12e2d6f3be"
+      }
+    },
+    {
+      "key": "busram",
+      "label": "BUS RAM",
+      "options": [
+        "2666Mhz",
+        "3200MHz",
+        "5600MHz",
+        "6000MHz"
+      ],
+      "_id": {
+        "$oid": "69cf787675a01a12e2d6f3bf"
+      }
+    },
+    {
+      "key": "dungluong",
+      "label": "DUNG LƯỢNG",
+      "options": [
+        "16 GB (1 × 16 GB)",
+        "32 GB (2 × 16 GB)",
+        "64 GB (2 × 32 GB)",
+        "8 GB (1 × 8 GB)"
+      ],
+      "_id": {
+        "$oid": "69cf787675a01a12e2d6f3c0"
+      }
+    },
+    {
+      "key": "loairam",
+      "label": "LOẠI RAM",
+      "options": [
+        "DDR4",
+        "DDR5"
+      ],
+      "_id": {
+        "$oid": "69cf787675a01a12e2d6f3c1"
+      }
+    },
+    {
+      "key": "denled",
+      "label": "ĐÈN LED",
+      "options": [
+        "Có",
+        "Không"
+      ],
+      "_id": {
+        "$oid": "69cf787675a01a12e2d6f3c2"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf796cdebb18ebca723ae1"
+  },
+  "category": "SSD",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Samsung",
+        "Western Digital (WD)",
+        "Kingston",
+        "Crucial",
+        "ADATA",
+        "TeamGroup",
+        "Seagate",
+        "Corsair",
+        "Intel",
+        "SK Hynix",
+        "Kioxia (Toshiba)",
+        "Patriot",
+        "Apacer",
+        "Silicon Power",
+        "PNY",
+        "Lexar",
+        "Transcend",
+        "Gigabyte"
+      ],
+      "_id": {
+        "$oid": "69cf796c75a01a12e2d6f3ff"
+      }
+    },
+    {
+      "key": "dungluong",
+      "label": "DUNG LƯỢNG",
+      "options": [
+        "256 GB",
+        "512 GB",
+        "1 TB",
+        "2 TB",
+        "4 TB",
+        "6 TB"
+      ],
+      "_id": {
+        "$oid": "69cf796c75a01a12e2d6f400"
+      }
+    },
+    {
+      "key": "loaiocung",
+      "label": "LOẠI Ổ CỨNG",
+      "options": [
+        "M.2 SATA",
+        "M.2 NVMe PCIe 3.0",
+        "M.2 NVMe PCIe 4.0",
+        "M.2 NVMe PCIe 5.0",
+        "M.2 2230",
+        "M.2 2242",
+        "M.2 2260",
+        "M.2 2280",
+        "M.2 22110",
+        "M.2 Key B",
+        "M.2 Key M",
+        "M.2 Key B+M"
+      ],
+      "_id": {
+        "$oid": "69cf796c75a01a12e2d6f401"
+      }
+    },
+    {
+      "key": "tocdo",
+      "label": "TỐC ĐỘ ",
+      "options": [
+        "5400 RPM",
+        "7200 RPM"
+      ],
+      "_id": {
+        "$oid": "69cf796c75a01a12e2d6f402"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69cf7bbadebb18ebca723bdd"
+  },
+  "category": "TAI NGHE",
+  "__v": 0,
+  "specsConfig": [
+    {
+      "key": "hang",
+      "label": "HÃNG",
+      "options": [
+        "Sony",
+        "Bose",
+        "Sennheiser",
+        "Audio-Technica",
+        "JBL",
+        "AKG",
+        "Beats",
+        "Apple",
+        "Samsung",
+        "Razer",
+        "Logitech",
+        "SteelSeries",
+        "HyperX",
+        "Corsair",
+        "ASUS",
+        "MSI",
+        "Turtle Beach",
+        "Skullcandy",
+        "Edifier",
+        "Marshall",
+        "Bang & Olufsen",
+        "Beyerdynamic",
+        "Shure",
+        "Koss",
+        "Philips"
+      ],
+      "_id": {
+        "$oid": "69cf7bba75a01a12e2d6f485"
+      }
+    },
+    {
+      "key": "ketnoi",
+      "label": "KẾT NỐI",
+      "options": [
+        "Wired",
+        "Wireless",
+        "Blutooth"
+      ],
+      "_id": {
+        "$oid": "69cf7bba75a01a12e2d6f486"
+      }
+    },
+    {
+      "key": "kieutainghe",
+      "label": "KIỂU TAI NGHE",
+      "options": [
+        "In-ear",
+        "Over-ear"
+      ],
+      "_id": {
+        "$oid": "69cf7bba75a01a12e2d6f487"
+      }
+    },
+    {
+      "key": "congketnoi",
+      "label": "CỔNG KẾT NỐI",
+      "options": [
+        "3.5mm",
+        "Type-C",
+        "USB Type-C"
+      ],
+      "_id": {
+        "$oid": "69cf7bba75a01a12e2d6f488"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69d37117cc29c0c709aa1890"
+  },
+  "category": "Chair",
+  "__v": 0,
+  "specsConfig": []
+}]
