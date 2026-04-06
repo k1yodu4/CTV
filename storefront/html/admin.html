@@ -249,7 +249,17 @@
 
         function searchAdminProducts() {
             const keyword = document.getElementById('adminSearchInput').value.toLowerCase();
-            const filteredProducts = allProducts.filter(p => p.title.toLowerCase().includes(keyword));
+            const filteredProducts = allProducts.filter(p => {
+                let normalizedTitle = p.title.toLowerCase().replace(/\s+/g, ' ');
+                let isMatch = normalizedTitle.includes(keyword);
+
+                // Thêm đoạn này để ép từ khóa
+                if (keyword === 'man') {
+                    isMatch = isMatch || normalizedTitle.includes('màn hình') || normalizedTitle.includes('monitor');
+                }
+
+                return isMatch;
+            });
             renderAdminTable(filteredProducts); 
         }
 

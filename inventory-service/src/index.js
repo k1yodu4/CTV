@@ -1,6 +1,7 @@
 require('dotenv').config(); 
 const express = require('express');
 const mongoose = require('mongoose');
+const { Meilisearch } = require('meilisearch');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -19,13 +20,125 @@ const Product = require('./models/Product');
 const User = require('./models/User');
 const Order = require('./models/Order');
 
+// --- Meilisearch client (tìm kiếm nhanh) ---
+// Trong index.js
+const meiliClient = new Meilisearch({
+  // Ưu tiên lấy từ biến môi trường của Docker, nếu không có thì mới dùng localhost (khi chạy node index.js bên ngoài)
+  host: process.env.MEILI_HOST || 'http://localhost:7700', 
+  apiKey: process.env.MEILI_KEY || 'BaoKiet_Meili_Secret_123',
+});
+
+// Hàm đồng bộ dữ liệu sang Meilisearch (gọi 1 lần khi cần)
+async function syncDataToMeili() {
+    try {
+        const allProducts = await Product.find({});
+        const meiliDocuments = allProducts.map(p => {
+            // Tự động tạo chuỗi mô tả từ object specs (ví dụ: "Intel Core i7, 16GB, RTX 4050")
+            let specSummary = "Đang cập nhật cấu hình...";
+            if (p.specs && Object.keys(p.specs).length > 0) {
+                specSummary = Object.values(p.specs).join(', ');
+            }
+
+            return {
+                id: p._id.toString(),
+                title: p.title,
+                price: p.price,
+                category: p.category,
+                image: p.image,
+                description: specSummary
+            };
+        });
+
+        await meiliClient.index('products').addDocuments(meiliDocuments);
+        console.log("⚡ Đã đồng bộ ẢNH và SPECS chuẩn từ MongoDB sang Meilisearch!");
+
+        // 1. Cấu hình Typo (Bao dung lỗi gõ)
+        await meiliClient.index('products').updateTypoTolerance({
+            enabled: true,
+            minWordSizeForTypos: { oneTypo: 3, twoTypos: 5 }
+        });
+
+        // 2. TÍNH NĂNG MỚI: DẠY TỪ ĐỒNG NGHĨA (SYNONYMS)
+        await meiliClient.index('products').updateSynonyms({
+            "pc": ["máy tính bàn", "desktop", "máy bộ"],
+            "máy tính bàn": ["pc", "desktop"],
+            "desktop": ["pc", "máy tính bàn"],
+            "laptop": ["máy tính xách tay", "lap"],
+            "máy tính xách tay": ["laptop", "lap"],
+            "lap": ["laptop", "máy tính xách tay"],
+
+            "main": ["bo mạch chủ", "mainboard"],
+            "bo mạch chủ": ["main", "mainboard"],
+            "mainboard": ["main", "bo mạch chủ"],
+            "cpu": ["chip", "vi xử lý", "processor"],
+            "chip": ["cpu", "vi xử lý"],
+            "vi xử lý": ["cpu", "chip"],
+            "vga": ["card màn hình", "card đồ họa", "gpu"],
+            "card màn hình": ["vga", "card đồ họa", "gpu"],
+            "card đồ họa": ["vga", "card màn hình", "gpu"],
+            "gpu": ["vga", "card màn hình", "card đồ họa"],
+
+            "case": ["thùng máy", "vỏ máy tính"],
+            "thùng máy": ["case", "vỏ máy tính"],
+            "vỏ máy tính": ["case", "thùng máy"],
+            "nguồn": ["psu", "bộ nguồn"],
+            "psu": ["nguồn", "bộ nguồn"],
+            "tản": ["tản nhiệt", "cooling", "quạt tản nhiệt"],
+            "tản nhiệt": ["tản", "cooling"],
+
+            "ram": ["bộ nhớ", "bộ nhớ trong", "memory"],
+            "bộ nhớ trong": ["ram", "memory"],
+            "ổ cứng": ["hdd", "ssd", "ổ đĩa"],
+            "hdd": ["ổ cứng"],
+            "ssd": ["ổ cứng"],
+
+            "màn hình": ["monitor", "màn", "display"],
+            "monitor": ["màn hình", "màn"],
+            "màn": ["màn hình", "monitor"],
+
+            "bàn phím": ["keyboard", "phím"],
+            "keyboard": ["bàn phím", "phím"],
+            "phím": ["bàn phím", "keyboard"],
+            "chuột": ["mouse"],
+            "mouse": ["chuột"],
+            "lót chuột": ["pad", "pad chuột", "mousepad"],
+            "pad": ["lót chuột", "pad chuột", "mousepad"],
+            "mousepad": ["lót chuột", "pad", "pad chuột"],
+
+            "tai nghe": ["headphone", "earphone", "headset"],
+            "headphone": ["tai nghe", "headset"],
+            "loa": ["speaker"],
+            "speaker": ["loa"],
+            "micro": ["mic", "microphone"],
+            "mic": ["micro", "microphone"],
+            "webcam": ["cam", "camera"],
+            "cam": ["webcam", "camera"],
+            "camera": ["webcam", "cam"],
+
+            "ghế": ["chair", "ghế gaming"],
+            "chair": ["ghế", "ghế gaming"],
+            "bàn": ["desk", "table", "bàn gaming"],
+            "desk": ["bàn", "bàn gaming"]
+        });
+    } catch (err) {
+        console.error("Lỗi đồng bộ:", err);
+    }
+}
+
+// Gọi syncDataToMeili() một lần khi server start nếu bạn muốn tự động đẩy dữ liệu.
+    //syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
+
 app.get('/test', (req, res) => {
     res.send("Server đang chạy và nhận diện được Route này!");
 });
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Đã kết nối thành công tới MongoDB!'))
-  .catch((err) => console.error('❌ Lỗi kết nối MongoDB:', err.message));
+    .then(() => {
+            console.log('✅ Đã kết nối thành công tới MongoDB!');
+            // Sau khi DB kết nối thành công, mới chạy đồng bộ Meilisearch
+            syncDataToMeili();
+    })
+    .catch((err) => console.error('❌ Lỗi kết nối MongoDB:', err.message));
 
 // --- 1. API CẤU HÌNH (SPECS) ---
 app.get('/api/specs-config', async (req, res) => {
@@ -54,10 +167,24 @@ app.post('/api/specs-config/update', async (req, res) => {
 // --- 2. API SẢN PHẨM ---
 app.get('/api/products', async (req, res) => {
     try {
+        // TRƯỜNG HỢP 1: CÓ GÕ TÌM KIẾM -> DÙNG MEILISEARCH
+        if (req.query.name) {
+            let keyword = req.query.name;
+            
+            // Nhờ Meilisearch tìm kiếm mờ
+            const searchResult = await meiliClient.index('products').search(keyword, {
+                limit: 20 // Lấy tối đa 20 kết quả
+            });
+
+            // Trả thẳng về cho Frontend hiển thị (Meilisearch trả về 'hits')
+            return res.json(searchResult.hits);
+        }
+
+        // TRƯỜNG HỢP 2: KHÔNG TÌM KIẾM, CHỈ LỌC BÌNH THƯỜNG -> DÙNG MONGODB
         let query = {};
-        if (req.query.name) query.title = { $regex: req.query.name, $options: 'i' };
         if (req.query.category) query.category = req.query.category;
 
+        // Xử lý bộ lọc thông số kỹ thuật (Specs)
         const excludedParams = ['name', 'category', 'sort']; 
         for (const key in req.query) {
             if (!excludedParams.includes(key)) {
@@ -71,8 +198,9 @@ app.get('/api/products', async (req, res) => {
 
         const products = await Product.find(query).sort(sortObj);
         res.json(products);
+
     } catch (error) {
-        res.status(500).json({ error: "Lỗi Server" });
+        res.status(500).json({ message: "Lỗi Server", error });
     }
 });
 
@@ -89,25 +217,62 @@ app.get('/api/products/:id', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
     try {
-        const product = new Product(req.body);
-        await product.save();
-        res.status(201).json({ message: "Thêm thành công!", data: product });
-    } catch (err) {
-        res.status(400).json({ error: err.message });
+        // 1. Cất hàng vào kho: Lưu vào MongoDB
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+
+        // 2. Ghi vào sổ: Đồng bộ sang Meilisearch (Dùng addDocuments)
+        try {
+            let specText = req.body.specs ? Object.values(req.body.specs).join(', ') : "";
+            await meiliClient.index('products').addDocuments([{
+                id: newProduct._id.toString(), // Bắt buộc chuyển ObjectId thành String
+                title: newProduct.title,
+                price: newProduct.price,
+                category: newProduct.category,
+                image: newProduct.image,
+                description: specText
+            }]);
+        } catch (meiliErr) {
+            console.error('Lỗi đồng bộ Meilisearch khi thêm sản phẩm:', meiliErr);
+            // Không chặn response chính nếu Meili thất bại
+        }
+
+        res.status(201).json({ message: "Thêm sản phẩm thành công ở cả 2 nơi!", product: newProduct });
+    } catch (error) {
+        res.status(500).json({ message: "Lỗi khi thêm sản phẩm", error });
     }
 });
 
 // API Cập nhật (Sửa) sản phẩm - ĐÃ FIX LỖI :_id thành :id
 app.put('/api/products/:id', async (req, res) => {
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(
-            req.params.id, 
-            req.body, 
-            { new: true } 
-        );
-        res.json({ message: "Cập nhật thành công!", data: updatedProduct });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+        const productId = req.params.id;
+        const updateData = req.body; // Dữ liệu mới (tên, giá...)
+
+        // 1. Cập nhật vào MongoDB (Nhà kho)
+        const updatedProduct = await Product.findByIdAndUpdate(productId, updateData, { new: true });
+
+        if (!updatedProduct) return res.status(404).json({ message: "Sản phẩm không tồn tại" });
+
+        // 2. TỰ ĐỘNG CẬP NHẬT SANG MEILISEARCH
+        try {
+            let specText = updatedProduct.specs ? Object.values(updatedProduct.specs).join(', ') : "";
+            await meiliClient.index('products').updateDocuments([{
+                id: updatedProduct._id.toString(),
+                title: updatedProduct.title,
+                price: updatedProduct.price,
+                category: updatedProduct.category,
+                image: updatedProduct.image,
+                description: specText
+            }]);
+        } catch (meiliErr) {
+            console.error('Lỗi cập nhật Meilisearch:', meiliErr);
+            // Không chặn response chính nếu Meili lỗi, chỉ log để kiểm tra
+        }
+
+        res.json({ message: "Cập nhật thành công cả 2 nơi!", updatedProduct });
+    } catch (error) {
+        res.status(500).json({ message: "Lỗi cập nhật", error });
     }
 });
 
@@ -115,12 +280,23 @@ app.put('/api/products/:id', async (req, res) => {
 app.delete('/api/products/:id', async (req, res) => {
     try {
         const productId = req.params.id;
+
+        // Xóa khỏi MongoDB
         if (mongoose.Types.ObjectId.isValid(productId)) {
             await Product.findByIdAndDelete(productId);
         } else {
             await Product.findOneAndDelete({ id: productId });
         }
-        res.json({ message: "Xóa sản phẩm thành công!" });
+
+        // Xóa khỏi Meilisearch (nếu index tồn tại)
+        try {
+            await meiliClient.index('products').deleteDocument(productId);
+        } catch (meiliErr) {
+            console.error('Lỗi xóa Meilisearch:', meiliErr);
+            // Không trả lỗi 500 cho client nếu Meili thất bại; log để debug
+        }
+
+        res.json({ message: "Đã xóa sản phẩm ở cả 2 nơi!" });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

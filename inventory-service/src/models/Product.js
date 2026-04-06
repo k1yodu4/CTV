@@ -18,4 +18,7 @@ const productSchema = new mongoose.Schema({
     }
 });
 
+// Đánh chỉ mục Text cho cột title (và cả description nếu muốn)
+productSchema.index({ title: 'text', description: 'text' });
+
 module.exports = mongoose.model('Product', productSchema);

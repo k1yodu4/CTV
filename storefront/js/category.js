@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!category && keyword) {
         const kw = keyword.toLowerCase();
         if (kw.includes('laptop')) category = 'Laptop';
-        else if (kw.includes('màn hình') || kw.includes('man hinh')) category = 'ManHinh';
-        else if (kw.includes('desktop') || kw.includes('pc')) category = 'Desktop';
-        else if (kw.includes('vga') || kw.includes('card')) category = 'VGA';
+        else if (kw.includes('man hinh')) category = 'Màn hình';
+        else if (kw.includes('pc')) category = 'PC';
+        else if (kw.includes('card')) category = 'VGA';
     }
 
     // Cập nhật tiêu đề

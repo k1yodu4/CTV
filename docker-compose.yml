@@ -31,11 +31,28 @@ services:
     environment:
       - NODE_ENV=development
       - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/inventory_db?authSource=admin
+      # --- THÊM 2 DÒNG DƯỚI ĐÂY ---
+      - MEILI_HOST=http://meilisearch:7700
+      - MEILI_KEY=BaoKiet_Meili_Secret_123
     volumes:
       - ./inventory-service/src:/usr/src/app/src 
     depends_on:
       - mongodb
       - redis
+      - meilisearch # Thêm meilisearch vào đây
+
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    container_name: pc_meilisearch
+    restart: always # Nên thêm dòng này
+    ports:
+      - "7700:7700"
+    environment:
+      - MEILI_MASTER_KEY=BaoKiet_Meili_Secret_123 
+      - MEILI_ENV=development # Thêm dòng này để dễ debug
+    volumes:
+      - meili_data:/meili_data
 
 volumes:
   mongo_data:
+  meili_data:
