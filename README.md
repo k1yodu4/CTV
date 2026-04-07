@@ -1,4 +1,5 @@
-Hệ thống này chạy trên nền tảng **Docker**. Docker giúp bạn không phải cài đặt lắt nhắt từng phần mềm (Node, Mongo, Redis...) vào máy, mà nó sẽ tự động tải và chạy mọi thứ trong các "hộp" (container) riêng biệt.
+Yêu cầu IDE: Visual Studio Code (để chạy local server)
+Hệ thống này chạy trên nền tảng **Docker**. Docker giúp bạn không phải cài đặt từng phần mềm (Node, Mongo, Redis...) vào máy, mà nó sẽ tự động tải và chạy mọi thứ trong các "hộp" (container) riêng biệt.
 
 ## 🛠 Bước 1: **Cài đặt Docker Desktop:**
 - [Tải Docker Desktop tại đây](https://www.docker.com/products/docker-desktop/).
@@ -22,5 +23,7 @@ Tại cửa sổ Terminal đang ở thư mục dự án, gõ lệnh:<br>
 docker-compose up --build
 
 ## 🛠 Bước 4:
-Frontend: http://127.0.0.1:5500/storefront/home.html<br>
+Truy cập trang chủ: Vào file storefront/home.html -> ấn "Go Live"<br>
 Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")
+Tài khoản đăng nhập admin: admin123@gmail.com
+Mk: admin123
