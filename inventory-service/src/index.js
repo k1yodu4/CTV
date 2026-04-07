@@ -148,22 +148,19 @@ async function seedData() {
             if (count === 0) {
                 const filePath = path.join(__dirname, item.file);
                 if (fs.existsSync(filePath)) {
-                    const rawData = fs.readFileSync(filePath, 'utf-8');
-                    let jsonData = JSON.parse(rawData); // Lưu ý đổi const thành let ở đây nhé
+                        let rawData = fs.readFileSync(filePath, 'utf-8');
+                    
+                        // --- TUYỆT CHIÊU DỌN RÁC MONGODB COMPASS TOÀN CỤC ---
+                        // 1. Biến {"$oid": "abc"} thành chuỗi "abc"
+                        rawData = rawData.replace(/\{\s*"\$oid"\s*:\s*"([^"]+)"\s*\}/g, '"$1"');
+                    
+                        // 2. Biến {"$date": "2026..."} thành chuỗi "2026..."
+                        rawData = rawData.replace(/\{\s*"\$date"\s*:\s*"([^"]+)"\s*\}/g, '"$1"');
+                        // ---------------------------------------------------
 
-                    // --- 4 DÒNG CODE CẦN THÊM BẮT ĐẦU TỪ ĐÂY ---
-                    // Xóa trường _id bị lỗi định dạng $oid của Compass để MongoDB tự cấp ID chuẩn mới
-                    jsonData = jsonData.map(doc => {
-                        delete doc._id;
-                        if (doc.createdAt && doc.createdAt.$date) {
-                            doc.createdAt = doc.createdAt.$date;
-                        }
-                        if (doc.updatedAt && doc.updatedAt.$date) {
-                            doc.updatedAt = doc.updatedAt.$date;
-                        }
-                        return doc;
-                    });
-                    // -------------------------------------------
+                        const jsonData = JSON.parse(rawData);
+                    
+                        // (Bạn CÓ THỂ XÓA đoạn jsonData.map(...) dài ngoằng hôm trước đi cho code gọn đẹp)
 
                     await item.model.insertMany(jsonData);
                     console.log(`✅ Đã nạp ${jsonData.length} ${item.name}!`);
