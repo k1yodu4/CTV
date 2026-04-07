@@ -155,6 +155,12 @@ async function seedData() {
                     // Xóa trường _id bị lỗi định dạng $oid của Compass để MongoDB tự cấp ID chuẩn mới
                     jsonData = jsonData.map(doc => {
                         delete doc._id;
+                        if (doc.createdAt && doc.createdAt.$date) {
+                            doc.createdAt = doc.createdAt.$date;
+                        }
+                        if (doc.updatedAt && doc.updatedAt.$date) {
+                            doc.updatedAt = doc.updatedAt.$date;
+                        }
                         return doc;
                     });
                     // -------------------------------------------
