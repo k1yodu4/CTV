@@ -9,19 +9,18 @@ Hệ thống này chạy trên nền tảng **Docker**. Docker giúp bạn khôn
 `sudo apt install docker.io docker-compose -y`
 
 ## 🛠 Bước 2: **Tạo file cấu hình môi trường (.env)**
-MONGO_INITDB_ROOT_USERNAME=nhap_ten_user_vao_day
-MONGO_INITDB_ROOT_PASSWORD=nhap_mat_khau_vao_day
-MONGO_URI=mongodb://user:password@mongodb:27017/inventory_db?authSource=admin
-REDIS_PASSWORD=nhap_mat_khau_redis
-PORT=3000
-MEILI_HOST=http://meilisearch:7700
-MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day
+MONGO_INITDB_ROOT_USERNAME=nhap_ten_user_vao_day<br>
+MONGO_INITDB_ROOT_PASSWORD=nhap_mat_khau_vao_day<br>
+MONGO_URI=mongodb://user:password@mongodb:27017/inventory_db?authSource=admin<br>
+REDIS_PASSWORD=nhap_mat_khau_redis<br>
+PORT=3000<br>
+MEILI_HOST=http://meilisearch:7700<br>
+MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day(yêu cầu ít nhất 16 kí tự)<br>
 
 ## 🛠 Bước 3:
-Hãy đảm bảo Docker Desktop đang được mở. Sau đó, tại cửa sổ Terminal (đang ở thư mục dự án), gõ lệnh:
+Tại cửa sổ Terminal đang ở thư mục dự án, gõ lệnh:<br>
 docker-compose up --build
 
 ## 🛠 Bước 4:
-Frontend: http://127.0.0.1:5500/storefront/home.html
-Backend API: http://localhost:3000
+Frontend: http://127.0.0.1:5500/storefront/home.html<br>
 Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")
