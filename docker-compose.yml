@@ -41,7 +41,7 @@ services:
       - meilisearch 
 
   meilisearch:
-    image: getmeili/meilisearch:latest
+    image: getmeili/meilisearch:v1.7
     container_name: pc_meilisearch
     restart: always 
     ports:
