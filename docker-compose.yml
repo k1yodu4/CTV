@@ -33,7 +33,7 @@ services:
       - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/inventory_db?authSource=admin
       # --- THÊM 2 DÒNG DƯỚI ĐÂY ---
       - MEILI_HOST=http://meilisearch:7700
-      - MEILI_KEY=BaoKiet_Meili_Secret_123
+      - MEILI_KEY=${MEILI_KEY}
     volumes:
       - ./inventory-service/src:/usr/src/app/src 
     depends_on:
@@ -48,7 +48,7 @@ services:
     ports:
       - "7700:7700"
     environment:
-      - MEILI_MASTER_KEY=BaoKiet_Meili_Secret_123 
+      - MEILI_MASTER_KEY=${MEILI_KEY}
       - MEILI_ENV=development # Thêm dòng này để dễ debug
     volumes:
       - meili_data:/meili_data

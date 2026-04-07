@@ -26,8 +26,8 @@ const path = require('path');
 // Trong index.js
 const meiliClient = new Meilisearch({
   // Ưu tiên lấy từ biến môi trường của Docker, nếu không có thì mới dùng localhost (khi chạy node index.js bên ngoài)
-  host: process.env.MEILI_HOST || 'http://localhost:7700', 
-  apiKey: process.env.MEILI_KEY || 'BaoKiet_Meili_Secret_123',
+  host: process.env.MEILI_HOST, 
+  apiKey: process.env.MEILI_KEY,
 });
 
 // Hàm đồng bộ dữ liệu sang Meilisearch (gọi 1 lần khi cần)
