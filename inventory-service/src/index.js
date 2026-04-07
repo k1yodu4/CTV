@@ -7,6 +7,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const app = express();
+app.get('/', (req, res) => {
+    res.send('Chào mừng đến với API Quản lý Kho hàng!');
+});
 
 app.use(cors());
 app.use(express.json());
@@ -146,7 +149,16 @@ async function seedData() {
                 const filePath = path.join(__dirname, item.file);
                 if (fs.existsSync(filePath)) {
                     const rawData = fs.readFileSync(filePath, 'utf-8');
-                    const jsonData = JSON.parse(rawData);
+                    let jsonData = JSON.parse(rawData); // Lưu ý đổi const thành let ở đây nhé
+
+                    // --- 4 DÒNG CODE CẦN THÊM BẮT ĐẦU TỪ ĐÂY ---
+                    // Xóa trường _id bị lỗi định dạng $oid của Compass để MongoDB tự cấp ID chuẩn mới
+                    jsonData = jsonData.map(doc => {
+                        delete doc._id;
+                        return doc;
+                    });
+                    // -------------------------------------------
+
                     await item.model.insertMany(jsonData);
                     console.log(`✅ Đã nạp ${jsonData.length} ${item.name}!`);
                     if (item.model === Product) isProductSeeded = true;
@@ -167,7 +179,7 @@ async function seedData() {
 }
 
 // Gọi syncDataToMeili() một lần khi server start nếu bạn muốn tự động đẩy dữ liệu.
-    //syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
+    syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
 
 app.get('/test', (req, res) => {
     res.send("Server đang chạy và nhận diện được Route này!");
