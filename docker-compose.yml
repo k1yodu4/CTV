@@ -59,7 +59,53 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - inventory-service
+  
+  # --- HỆ THỐNG GIÁM SÁT (MONITORING) ---
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: pc_prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - inventory-service
+
+  loki:
+    image: grafana/loki:3.2.0
+    container_name: pc_loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  promtail:
+    image: grafana/promtail:3.2.0
+    container_name: pc_promtail
+    volumes:
+      - /var/log:/var/log
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./monitoring/promtail-config.yml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: pc_grafana
+    ports:
+      - "3001:3000" # Cổng 3000 bên trong đã bận, ta dùng cổng 3001 ở ngoài
+    volumes:
+      # Mount các file cấu hình tự động
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+      # Mount các file JSON biểu đồ
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
+      - loki
 
 volumes:
   mongo_data:
   meili_data:
+
+  

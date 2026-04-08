@@ -246,7 +246,7 @@ window.submitOrder = async function() {
             headers['Authorization'] = `Bearer ${token}`;
         }
         
-        const response = await fetch('http://localhost:3000/api/orders', {
+        const response = await fetch('http://localhost/api/orders', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({

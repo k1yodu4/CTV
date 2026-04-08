@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 1. LẤY TÊN NHÃN TỪ DB (Để dịch key 'cpu' -> 'CPU')
     let specsConfigMap = {};
     try {
-        const resConfig = await fetch('http://localhost:3000/api/specs-config');
+        const resConfig = await fetch('http://localhost/api/specs-config');
         const allSpecsConfig = await resConfig.json();
         Object.values(allSpecsConfig).forEach(catSpecs => {
             catSpecs.forEach(spec => {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadAndFilter() {
         try {
             // Chỉ gọi API backend dựa trên Tìm kiếm (name) và Danh mục (category)
-            let baseUrl = 'http://localhost:3000/api/products?';
+            let baseUrl = 'http://localhost/api/products?';
             if (keyword) baseUrl += `name=${encodeURIComponent(keyword)}&`;
             if (category) baseUrl += `category=${encodeURIComponent(category)}&`;
 

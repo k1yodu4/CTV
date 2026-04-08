@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const fullName = e.target[0].value, email = e.target[1].value, password = e.target[2].value;
             try {
-                const res = await fetch('http://localhost:3000/api/register', {
+                const res = await fetch('http://localhost/api/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ fullname: fullName, email, password })
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const email = e.target[0].value, password = e.target[1].value;
             try {
-                const res = await fetch('http://localhost:3000/api/login', {
+                const res = await fetch('http://localhost/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })

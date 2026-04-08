@@ -54,7 +54,7 @@ window.loadMyOrders = async function() {
     const token = localStorage.getItem('token');
     
     try {
-        const res = await fetch('http://localhost:3000/api/orders/my-orders', {
+        const res = await fetch('http://localhost/api/orders/my-orders', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -162,7 +162,7 @@ async function loadUserProfile() {
     const token = localStorage.getItem('token');
     
     try {
-        const res = await fetch('http://localhost:3000/api/user/profile', {
+        const res = await fetch('http://localhost/api/user/profile', {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -230,7 +230,7 @@ window.updateUserProfile = async function() {
     if (!fullname) return alert("Họ tên không được để trống!");
 
     try {
-        const res = await fetch('http://localhost:3000/api/user/profile', {
+        const res = await fetch('http://localhost/api/user/profile', {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',

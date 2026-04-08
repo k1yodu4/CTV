@@ -209,7 +209,7 @@
 
         async function fetchSpecsConfig() {
             try {
-                const response = await fetch('http://localhost:3000/api/specs-config');
+                const response = await fetch('http://localhost/api/specs-config');
                 categorySpecsConfig = await response.json();
                 
                 const categorySelect = document.getElementById('category');
@@ -241,7 +241,7 @@
 
         async function fetchAdminProducts() {
             try {
-                const res = await fetch('http://localhost:3000/api/products');
+                const res = await fetch('http://localhost/api/products');
                 allProducts = await res.json();
                 renderAdminTable(allProducts); 
             } catch (error) { console.error("Lỗi tải SP:", error); }
@@ -294,7 +294,7 @@
         async function deleteProduct(id) {
             if (!confirm("⚠️ Chắc chắn xóa sản phẩm này khỏi Database?")) return;
             try {
-                const res = await fetch(`http://localhost:3000/api/products/${id}`, { method: 'DELETE' });
+                const res = await fetch(`http://localhost/api/products/${id}`, { method: 'DELETE' });
                 if (res.ok) fetchAdminProducts(); 
                 else alert("Xóa thất bại!");
             } catch (err) { alert("Lỗi Server"); }
@@ -350,7 +350,7 @@
 
             const editId = document.getElementById('editProductId').value;
             const method = editId ? 'PUT' : 'POST';
-            const url = editId ? `http://localhost:3000/api/products/${editId}` : 'http://localhost:3000/api/products';
+            const url = editId ? `http://localhost/api/products/${editId}` : 'http://localhost/api/products';
 
             try {
                 const response = await fetch(url, {
@@ -379,7 +379,7 @@
             tbodyHistory.innerHTML = '';
 
             try {
-                const res = await fetch('http://localhost:3000/api/admin/orders');
+                const res = await fetch('http://localhost/api/admin/orders');
                 const orders = await res.json();
 
                 if (orders.length === 0) {
@@ -445,7 +445,7 @@
         window.updateOrderStatus = async function(orderId) {
             const newStatus = document.getElementById(`status-${orderId}`).value;
             try {
-                const res = await fetch(`http://localhost:3000/api/admin/orders/${orderId}/status`, {
+                const res = await fetch(`http://localhost/api/admin/orders/${orderId}/status`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ status: newStatus })

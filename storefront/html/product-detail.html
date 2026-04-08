@@ -102,7 +102,7 @@
 
             try {
                 // 1. Tải từ điển Cấu hình
-                const resConfig = await fetch('http://localhost:3000/api/specs-config');
+                const resConfig = await fetch('http://localhost/api/specs-config');
                 const allSpecsConfig = await resConfig.json();
                 
                 let specsMap = {}; 
@@ -111,7 +111,7 @@
                 });
 
                 // 2. Tải dữ liệu Sản phẩm
-                const resProduct = await fetch(`http://localhost:3000/api/products/${productId}`);
+                const resProduct = await fetch(`http://localhost/api/products/${productId}`);
                 if (!resProduct.ok) throw new Error("Sản phẩm không tồn tại");
                 const product = await resProduct.json(); // <-- CHÚNG TA ĐÃ CÓ DATA GỐC Ở ĐÂY
 

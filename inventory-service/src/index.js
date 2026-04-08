@@ -1,5 +1,6 @@
 require('dotenv').config(); 
 const express = require('express');
+const client = require('prom-client');
 const mongoose = require('mongoose');
 const { Meilisearch } = require('meilisearch');
 const cors = require('cors');
@@ -7,12 +8,55 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const app = express();
+// 1. Kích hoạt thu thập các chỉ số mặc định (RAM, CPU, Event Loop...)
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics({ register: client.register });
+
+// --- Custom metrics: product/user gauges and HTTP request counter ---
+const productGauge = new client.Gauge({
+    name: 'inventory_total_products',
+    help: 'Tổng số lượng sản phẩm có trong kho'
+});
+
+const userGauge = new client.Gauge({
+    name: 'inventory_total_users',
+    help: 'Tổng số lượng người dùng hệ thống'
+});
+
+const httpRequestCounter = new client.Counter({
+    name: 'inventory_http_requests_total',
+    help: 'Tổng số request HTTP gửi đến hệ thống',
+    labelNames: ['method', 'route', 'status']
+});
+// 2. Mở một cánh cửa bí mật cho Prometheus vào lấy dữ liệu
+app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', client.register.contentType);
+    res.end(await client.register.metrics());
+});
 app.get('/', (req, res) => {
     res.send('Chào mừng đến với API Quản lý Kho hàng!');
 });
 
 app.use(cors());
 app.use(express.json());
+
+// Middleware để đếm mọi request truy cập vào API
+app.use((req, res, next) => {
+    res.on('finish', () => {
+        // TUYỆT CHIÊU: Lấy đường dẫn gốc (Route pattern) thay vì đường dẫn thực (Raw path)
+        // Nếu req.route tồn tại (VD: /api/products/:id), ta dùng nó.
+        // Nếu không (VD: trang không tồn tại 404), ta mới dùng req.path
+        let routePath = req.route ? req.baseUrl + req.route.path : req.path;
+        
+        // Có thể dọn dẹp thêm nếu routePath bị thiếu baseUrl do cách code Router
+        if (req.route && !routePath.includes('/api/')) {
+             routePath = req.baseUrl || req.path; 
+        }
+
+        httpRequestCounter.labels(req.method, routePath, res.statusCode).inc();
+    });
+    next();
+});
 
 
 const PORT = process.env.PORT || 3000;
@@ -183,6 +227,22 @@ async function seedData() {
 
 // Gọi syncDataToMeili() một lần khi server start nếu bạn muốn tự động đẩy dữ liệu.
     syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
+
+// Hàm cập nhật số lượng từ MongoDB vào Prometheus định kỳ
+const updateMetrics = async () => {
+    try {
+        const productCount = await Product.countDocuments();
+        const userCount = await User.countDocuments();
+        productGauge.set(productCount);
+        userGauge.set(userCount);
+    } catch (err) {
+        console.error("Lỗi cập nhật metrics:", err);
+    }
+};
+
+// Cập nhật metrics ngay khi khởi động và sau đó mỗi 10 giây
+updateMetrics();
+setInterval(updateMetrics, 10000);
 
 app.get('/test', (req, res) => {
     res.send("Server đang chạy và nhận diện được Route này!");
