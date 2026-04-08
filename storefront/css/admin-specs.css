@@ -1,0 +1,14 @@
+.attr-card { 
+    border-left: 5px solid #dc3545; 
+    transition: all 0.3s; 
+}
+
+.attr-card:hover { 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
+.sticky-top-custom { 
+    position: sticky; 
+    top: 20px; 
+    z-index: 100; 
+}

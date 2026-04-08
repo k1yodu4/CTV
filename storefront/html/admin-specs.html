@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>Quản lý & Thêm mới Danh mục Specs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .attr-card { border-left: 5px solid #dc3545; transition: all 0.3s; }
-        .attr-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .sticky-top-custom { position: sticky; top: 20px; z-index: 100; }
-    </style>
+    <link rel="stylesheet" href="../css/admin-specs.css">
 </head>
 <body class="bg-light">
     <div class="container py-5">
@@ -24,7 +20,7 @@
                     <select id="categorySelect" class="form-select mb-3" onchange="handleCategoryChange()">
                         <option value="">-- Chọn danh mục có sẵn --</option>
                         <option value="NEW" class="text-primary fw-bold">+ THÊM DANH MỤC MỚI</option>
-                        </select>
+                    </select>
 
                     <div id="newCategoryWrapper" class="mb-3 d-none">
                         <label class="form-label small text-primary fw-bold">Tên danh mục mới</label>
@@ -44,8 +40,7 @@
                     <p class="text-muted small mt-2">Mẹo: Các tùy chọn viết cách nhau bởi dấu phẩy (VD: Core i5, Core i7...)</p>
                     <hr>
                     
-                    <div id="attribute-list">
-                        </div>
+                    <div id="attribute-list"></div>
 
                     <div class="mt-4 pt-3 border-top">
                         <button class="btn btn-danger btn-lg w-100 fw-bold" onclick="saveConfig()">
@@ -62,152 +57,6 @@
         </div>
     </div>
 
-    <script>
-        let currentSpecs = [];
-        let allConfigs = {};
-
-        // 1. Tải danh sách danh mục khi vừa mở trang
-        async function fetchAllCategories() {
-            try {
-                const res = await fetch('http://localhost/api/specs-config');
-                allConfigs = await res.json();
-                const select = document.getElementById('categorySelect');
-                
-                // Giữ lại 2 option đầu tiên, xóa các option cũ nếu có
-                select.innerHTML = '<option value="">-- Chọn danh mục có sẵn --</option><option value="NEW" class="text-primary fw-bold">+ THÊM DANH MỤC MỚI</option>';
-                
-                Object.keys(allConfigs).forEach(cat => {
-                    select.innerHTML += `<option value="${cat}">${cat}</option>`;
-                });
-            } catch (e) { console.error("Lỗi tải danh mục:", e); }
-        }
-        fetchAllCategories();
-
-        // 2. Xử lý khi đổi lựa chọn ở dropdown
-        function handleCategoryChange() {
-            const select = document.getElementById('categorySelect');
-            const newCatWrapper = document.getElementById('newCategoryWrapper');
-            
-            if (select.value === "NEW") {
-                newCatWrapper.classList.remove('d-none');
-                document.getElementById('btnLoad').innerText = "Tạo mới danh mục này";
-            } else {
-                newCatWrapper.classList.add('d-none');
-                document.getElementById('btnLoad').innerText = "Tải cấu hình hiện tại";
-            }
-        }
-
-        // 3. Load cấu hình để sửa
-        async function loadCurrentConfig() {
-            const select = document.getElementById('categorySelect');
-            let categoryName = select.value;
-
-            if (!categoryName) return alert("Vui lòng chọn danh mục!");
-
-            if (categoryName === "NEW") {
-                categoryName = document.getElementById('newCategoryInput').value.trim();
-                if (!categoryName) return alert("Bạn chưa nhập tên danh mục mới!");
-                currentSpecs = []; // Tạo mới thì danh sách spec trống
-            } else {
-                currentSpecs = allConfigs[categoryName] || [];
-            }
-
-            document.getElementById('editor-title').innerHTML = `Danh mục: <span class="text-danger">${categoryName}</span>`;
-            document.getElementById('editor-container').classList.remove('d-none');
-            document.getElementById('empty-state').classList.add('d-none');
-            renderAttributes();
-        }
-
-        // 4. Vẽ danh sách các thuộc tính
-        function renderAttributes() {
-            const list = document.getElementById('attribute-list');
-            list.innerHTML = '';
-            
-            if (currentSpecs.length === 0) {
-                list.innerHTML = '<div class="alert alert-warning">Danh mục này chưa có thuộc tính nào. Bấm nút "Thêm thuộc tính" để bắt đầu.</div>';
-                return;
-            }
-
-            currentSpecs.forEach((spec, index) => {
-                list.innerHTML += `
-                    <div class="card p-3 mb-3 attr-card bg-white shadow-sm">
-                        <div class="row g-2 mb-2">
-                            <div class="col-md-5">
-                                <label class="small fw-bold">Tên hiển thị (Label)</label>
-                                <input type="text" class="form-control" value="${spec.label}" 
-                                       placeholder="VD: Vi xử lý" onchange="updateAttr(${index}, 'label', this.value)">
-                            </div>
-                            <div class="col-md-5">
-                                <label class="small fw-bold">Mã hệ thống (Key - viết liền)</label>
-                                <input type="text" class="form-control" value="${spec.key}" 
-                                       placeholder="VD: cpu" onchange="updateAttr(${index}, 'key', this.value)">
-                            </div>
-                            <div class="col-md-2 d-flex align-items-end">
-                                <button class="btn btn-outline-danger w-100" onclick="removeAttr(${index})">Xóa</button>
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            <label class="small fw-bold text-success">Các lựa chọn (Options)</label>
-                            <textarea class="form-control" rows="2" 
-                                      placeholder="VD: Core i3, Core i5, Ryzen 5..."
-                                      onchange="updateAttr(${index}, 'options', this.value)">${spec.options.join(', ')}</textarea>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function updateAttr(index, field, value) {
-            if (field === 'options') {
-                currentSpecs[index][field] = value.split(',').map(s => s.trim()).filter(s => s !== "");
-            } else {
-                currentSpecs[index][field] = value;
-            }
-        }
-
-        function addAttribute() {
-            currentSpecs.push({ key: '', label: '', options: [] });
-            renderAttributes();
-        }
-
-        function removeAttr(index) {
-            if(confirm("Xóa thuộc tính này?")) {
-                currentSpecs.splice(index, 1);
-                renderAttributes();
-            }
-        }
-
-        // 5. Lưu vào Database
-        async function saveConfig() {
-            const select = document.getElementById('categorySelect');
-            let categoryName = select.value;
-
-            if (categoryName === "NEW") {
-                categoryName = document.getElementById('newCategoryInput').value.trim();
-            }
-
-            if (!categoryName) return alert("Lỗi tên danh mục!");
-
-            // Kiểm tra dữ liệu trước khi gửi
-            for(let s of currentSpecs) {
-                if(!s.key || !s.label) return alert("Vui lòng điền đầy đủ Label và Key cho các thuộc tính!");
-            }
-
-            try {
-                const res = await fetch('http://localhost/api/specs-config/update', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ category: categoryName, specsConfig: currentSpecs })
-                });
-
-                if (res.ok) {
-                    alert(`✅ Đã lưu cấu hình cho danh mục "${categoryName}" thành công!`);
-                    location.reload(); // Load lại để cập nhật danh sách dropdown
-                }
-            } catch (e) {
-                alert("❌ Lỗi server không lưu được!");
-            }
-        }
-    </script>
+    <script src="../js/admin-specs.js"></script>
 </body>
 </html>
