@@ -24,6 +24,9 @@ docker-compose up --build
 
 ## 🛠 Bước 4:
 Truy cập trang chủ: Vào file storefront/home.html -> ấn "Go Live"<br>
-Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")
+Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")<br>
 Tài khoản đăng nhập admin: admin123@gmail.com
 Mk: admin123
+Địa chỉ monitor: localhost:3001
+tk:admin
+mk:admin
