@@ -8,4 +8,4 @@ providers:
     disableDeletion: false
     editable: true
     options:
-      path: /inventory-service/monitoring/grafana/dashboards
+      path: monitoring/grafana/dashboards
