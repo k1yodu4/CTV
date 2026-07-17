@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 1. Tải từ điển Cấu hình
-        const resConfig = await fetch('http://localhost/api/specs-config');
+        const resConfig = await fetch('/api/specs-config');
         const allSpecsConfig = await resConfig.json();
         
         let specsMap = {}; 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         // 2. Tải dữ liệu Sản phẩm
-        const resProduct = await fetch(`http://localhost/api/products/${productId}`);
+        const resProduct = await fetch(`/api/products/${productId}`);
         if (!resProduct.ok) throw new Error("Sản phẩm không tồn tại");
         const product = await resProduct.json(); 
 
