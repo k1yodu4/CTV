@@ -40,7 +40,7 @@ let allProducts = [];
 
 async function fetchSpecsConfig() {
     try {
-        const response = await fetch('http://localhost/api/specs-config');
+        const response = await fetch('/api/specs-config');
         categorySpecsConfig = await response.json();
         
         const categorySelect = document.getElementById('category');
@@ -72,7 +72,7 @@ function renderAdminTable(dataToRender) {
 
 async function fetchAdminProducts() {
     try {
-        const res = await fetch('http://localhost/api/products');
+        const res = await fetch('/api/products');
         allProducts = await res.json();
         renderAdminTable(allProducts); 
     } catch (error) { console.error("Lỗi tải SP:", error); }
@@ -125,7 +125,7 @@ function renderSpecsFields(categoryName, existingSpecs = {}) {
 async function deleteProduct(id) {
     if (!confirm("⚠️ Chắc chắn xóa sản phẩm này khỏi Database?")) return;
     try {
-        const res = await fetch(`http://localhost/api/products/${id}`, { method: 'DELETE' });
+        const res = await fetch(`/api/products/${id}`, { method: 'DELETE' });
         if (res.ok) fetchAdminProducts(); 
         else alert("Xóa thất bại!");
     } catch (err) { alert("Lỗi Server"); }
@@ -181,7 +181,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
 
     const editId = document.getElementById('editProductId').value;
     const method = editId ? 'PUT' : 'POST';
-    const url = editId ? `http://localhost/api/products/${editId}` : 'http://localhost/api/products';
+    const url = editId ? `/api/products/${editId}` : '/api/products';
 
     try {
         const response = await fetch(url, {
@@ -210,7 +210,7 @@ async function loadAllOrders() {
     tbodyHistory.innerHTML = '';
 
     try {
-        const res = await fetch('http://localhost/api/admin/orders');
+        const res = await fetch('/api/admin/orders');
         const orders = await res.json();
 
         if (orders.length === 0) {
@@ -276,7 +276,7 @@ async function loadAllOrders() {
 window.updateOrderStatus = async function(orderId) {
     const newStatus = document.getElementById(`status-${orderId}`).value;
     try {
-        const res = await fetch(`http://localhost/api/admin/orders/${orderId}/status`, {
+        const res = await fetch(`/api/admin/orders/${orderId}/status`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: newStatus })

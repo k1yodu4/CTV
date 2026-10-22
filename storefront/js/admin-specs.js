@@ -4,7 +4,7 @@ let allConfigs = {};
 // 1. Tải danh sách danh mục khi vừa mở trang
 async function fetchAllCategories() {
     try {
-        const res = await fetch('http://localhost/api/specs-config');
+        const res = await fetch('/api/specs-config');
         allConfigs = await res.json();
         const select = document.getElementById('categorySelect');
         
@@ -133,7 +133,7 @@ async function saveConfig() {
     }
 
     try {
-        const res = await fetch('http://localhost/api/specs-config/update', {
+        const res = await fetch('/api/specs-config/update', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ category: categoryName, specsConfig: currentSpecs })

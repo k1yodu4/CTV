@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: meilisearch
+  namespace: pc-store
+  labels:
+    app: meilisearch
+spec:
+  ports:
+    - port: 7700
+      targetPort: 7700
+  selector:
+    app: meilisearch
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: meilisearch
+  namespace: pc-store
+spec:
+  serviceName: "meilisearch"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meilisearch
+  template:
+    metadata:
+      labels:
+        app: meilisearch
+    spec:
+      containers:
+        - name: meilisearch
+          image: getmeili/meilisearch:v1.6
+          env:
+            - name: MEILI_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: pc-secrets
+                  key: MEILI_KEY
+            - name: MEILI_ENV
+              value: "production"
+          ports:
+            - containerPort: 7700
+          volumeMounts:
+            - name: meili-data
+              mountPath: /meili_data
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+  volumeClaimTemplates:
+    - metadata:
+        name: meili-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 2Gi

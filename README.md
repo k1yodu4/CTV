@@ -1,5 +1,6 @@
 Yêu cầu IDE: Visual Studio Code (để chạy local server)
 Hệ thống này chạy trên nền tảng **Docker**. Docker giúp bạn không phải cài đặt từng phần mềm (Node, Mongo, Redis...) vào máy, mà nó sẽ tự động tải và chạy mọi thứ trong các "hộp" (container) riêng biệt.
+Đồng thời hệ thống đã được tối ưu tự động thêm dữ liệu
 
 ## 🛠 Bước 1: **Cài đặt Docker Desktop:**
 - [Tải Docker Desktop tại đây](https://www.docker.com/products/docker-desktop/).
