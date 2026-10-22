@@ -47,7 +47,7 @@ spec:
       containers:
         - name: inventory-service
           # Thay bằng tên image trên Harbor của bạn (ví dụ: harbor.lab.local/pc-store/pc-inventory:latest)
-          image: harbor.lab.local/library/pc-inventory:latest
+          image: harbor.lab.local/thuctaptotnghiep/pc-inventory:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
