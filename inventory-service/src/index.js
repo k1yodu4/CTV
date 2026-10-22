@@ -604,6 +604,6 @@ app.put('/api/admin/orders/:id/status', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server đang chạy cực mượt tại: http://localhost:${PORT}`);
+app.listen(PORT,'0.0.0.0', () => {
+  console.log(`🚀 Server đang chạy cực mượt tại cong :${PORT}`);
 });

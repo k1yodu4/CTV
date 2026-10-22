@@ -3,8 +3,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm config set registry http://registry.npmjs.org/ && \
-    npm install --network-timeout=100000
+# Đổi http thành https
+RUN npm config set registry https://registry.npmjs.org/ && \
+    npm install --network-timeout=100000 && \
+    npm install -g nodemon
 
 COPY . .
 

@@ -40,7 +40,7 @@ let allProducts = [];
 
 async function fetchSpecsConfig() {
     try {
-        const response = await fetch('/api/specs-config');
+        const response = await fetch('api/specs-config');
         categorySpecsConfig = await response.json();
         
         const categorySelect = document.getElementById('category');
@@ -181,7 +181,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
 
     const editId = document.getElementById('editProductId').value;
     const method = editId ? 'PUT' : 'POST';
-    const url = editId ? `/api/products/${editId}` : '/api/products';
+    const url = editId ? `/products/${editId}` : '/api/products';
 
     try {
         const response = await fetch(url, {
