@@ -226,7 +226,7 @@ async function seedData() {
 }
 
 // Gọi syncDataToMeili() một lần khi server start nếu bạn muốn tự động đẩy dữ liệu.
-    syncDataToMeili(); // (chúng ta sẽ gọi nó sau khi MongoDB kết nối thành công)
+    // syncDataToMeili() được gọi sau khi kết nối MongoDB thành công
 
 // Hàm cập nhật số lượng từ MongoDB vào Prometheus định kỳ
 const updateMetrics = async () => {
@@ -244,6 +244,31 @@ const updateMetrics = async () => {
 updateMetrics();
 setInterval(updateMetrics, 10000);
 
+// Endpoint kiểm tra và kích hoạt nạp lại dữ liệu
+app.get('/api/seed', async (req, res) => {
+    try {
+        await seedData();
+        await syncDataToMeili();
+        await updateMetrics();
+        await syncDataToMeili();
+        await updateMetrics();
+        const productCount = await Product.countDocuments();
+        res.json({ message: 'Đã nạp và đồng bộ dữ liệu thành công!', totalProducts: productCount });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Endpoint đồng bộ MongoDB sang Meilisearch
+app.get('/api/sync-meili', async (req, res) => {
+    try {
+        await syncDataToMeili();
+        res.json({ message: 'Đã đồng bộ sang Meilisearch thành công!' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.get('/test', (req, res) => {
     res.send("Server đang chạy và nhận diện được Route này!");
 });
@@ -253,6 +278,8 @@ mongoose.connect(MONGO_URI)
         console.log('✅ Đã kết nối thành công tới MongoDB!');
         // Sau khi DB kết nối thành công, nạp dữ liệu mẫu nếu cần và đồng bộ Meili
         await seedData();
+        await syncDataToMeili();
+        await updateMetrics();
     })
     .catch((err) => console.error('❌ Lỗi kết nối MongoDB:', err.message));
 
