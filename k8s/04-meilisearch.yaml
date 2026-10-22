@@ -55,7 +55,8 @@ spec:
     - metadata:
         name: meili-data
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: nfs-storage
+        accessModes: [ "ReadWriteMany" ]
         resources:
           requests:
             storage: 2Gi
