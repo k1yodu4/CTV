@@ -50,7 +50,7 @@ spec:
         - name: storefront
           # Thay bằng tên image trên Harbor của bạn (ví dụ: harbor.lab.local/pc-store/pc-storefront:latest)
           image: harbor.lab.local/thuctaptotnghiep/pc-storefront:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           resources:
