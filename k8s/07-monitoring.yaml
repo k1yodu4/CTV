@@ -599,7 +599,7 @@ spec:
     spec:
       containers:
         - name: prometheus
-          image: prom/prometheus:v2.51.2
+          image: harbor.lab.local/thuctaptotnghiep/prom/prometheus:v2.51.2
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
           ports:
@@ -643,7 +643,7 @@ spec:
     spec:
       containers:
         - name: grafana
-          image: grafana/grafana:10.4.2
+          image: harbor.lab.local/thuctaptotnghiep/grafana/grafana:10.4.2
           ports:
             - containerPort: 3000
           env:

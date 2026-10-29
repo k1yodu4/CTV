@@ -28,7 +28,7 @@ const httpRequestCounter = new client.Counter({
     help: 'Tổng số request HTTP gửi đến hệ thống',
     labelNames: ['method', 'route', 'status']
 });
-// 2. Mở một cánh cửa bí mật cho Prometheus vào lấy dữ liệu
+// 2. Mở cửa cho Prometheus vào lấy dữ liệu
 app.get('/metrics', async (req, res) => {
     res.set('Content-Type', client.register.contentType);
     res.end(await client.register.metrics());
