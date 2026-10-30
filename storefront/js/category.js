@@ -194,7 +194,7 @@ products.forEach(p => {
         <div class="col">
             <div class="card h-100 shadow-sm product-card p-2 position-relative">
                 
-                <img src="${p.image}" class="card-img-top p-2" alt="${p.title}">
+                <img src="${p.image}" onerror="this.onerror=null; this.src='/images/no-image.svg';" class="card-img-top p-2" alt="${p.title}">
                 
                 <div class="card-body p-2 d-flex flex-column flex-grow-1">
                     <a href="product-detail.html?id=${productId}" class="product-title mb-2 text-decoration-none text-dark stretched-link">

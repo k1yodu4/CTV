@@ -20,7 +20,7 @@ function renderCart() {
 if (cart.length === 0) {
         cartWrapper.innerHTML = `
             <div class="text-center py-5">
-                <img src="https://img.icons8.com/bubbles/200/shopping-cart.png" style="width: 120px;">
+                <img src="/images/icons/shopping-cart.png" style="width: 120px;">
                 <p class="text-muted mt-2">Giỏ hàng của bạn đang trống</p>
             </div>
         `;
@@ -98,14 +98,14 @@ function initDebugUI() {
                     id: '1',
                     title: 'PC Gaming Pro - Test',
                     price: 15000000,
-                    image: 'https://img.icons8.com/color/96/000000/computer.png',
+                    image: '/images/icons/computer.png',
                     quantity: 1
                 },
                 {
                     id: '2',
                     title: 'Màn hình 4K - Test',
                     price: 8000000,
-                    image: 'https://img.icons8.com/color/96/000000/monitor.png',
+                    image: '/images/icons/monitor.png',
                     quantity: 2
                 }
             ];

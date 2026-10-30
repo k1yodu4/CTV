@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="100%" height="100%" fill="#f1f5f9"/>
+  <g fill="#94a3b8" transform="translate(160, 90)">
+    <path d="M10 20v45h60v-45h-60zm55 40h-50v-35h50v35zM35 70h10v10h-10zM25 80h30v5h-30z"/>
+    <path d="M70 10h-60c-5.5 0-10 4.5-10 10v50c0 5.5 4.5 10 10 10h20v10h-10v5h40v-5h-10v-10h20c5.5 0 10-4.5 10-10v-50c0-5.5-4.5-10-10-10zm5 60c0 2.8-2.2 5-5 5h-60c-2.8 0-5-2.2-5-5v-50c0-2.8 2.2-5 5-5h60c2.8 0 5 2.2 5 5v50z"/>
+  </g>
+  <text x="200" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" fill="#64748b" text-anchor="middle" font-weight="500">Hình ảnh sản phẩm</text>
+  <text x="200" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Chế độ Offline</text>
+</svg>

@@ -300,7 +300,7 @@ window.renderRecentlyViewed = (id) => {
         html += `
             <div class="col">
                 <a href="${h}product-detail.html?id=${p.id}" class="card h-100 shadow-sm text-decoration-none">
-                    <img src="${p.image}" class="card-img-top p-3" style="height: 150px; object-fit: contain;" alt="${p.title}">
+                    <img src="${p.image}" onerror="this.onerror=null; this.src='/images/no-image.svg';" class="card-img-top p-3" style="height: 150px; object-fit: contain;" alt="${p.title}">
                     <div class="card-body d-flex flex-column">
                         <h6 class="card-title text-dark" style="font-size: 14px; overflow: hidden;">${p.title}</h6>
                         <div class="mt-auto text-danger fw-bold">${p.price.toLocaleString('vi-VN')}đ</div>

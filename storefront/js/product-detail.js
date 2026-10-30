@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('bc-category').innerText = product.category;
         document.getElementById('bc-category').href = `category.html?category=${product.category}`;
         
-        document.getElementById('pd-image').src = product.image;
+        const pdImg = document.getElementById('pd-image');
+        pdImg.onerror = function() { this.src = '/images/no-image.svg'; };
+        pdImg.src = product.image;
         document.getElementById('pd-title').innerText = product.title;
         document.getElementById('pd-price').innerText = product.price.toLocaleString('vi-VN') + 'đ';
         document.getElementById('pd-old-price').innerText = (product.price * 1.1).toLocaleString('vi-VN') + 'đ';

@@ -57,7 +57,7 @@ function renderAdminTable(dataToRender) {
     dataToRender.forEach(p => {
         tbody.innerHTML += `
             <tr>
-                <td><img src="${p.image}" class="product-img-sm border rounded"></td>
+                <td><img src="${p.image}" onerror="this.onerror=null; this.src='/images/no-image.svg';" class="product-img-sm border rounded"></td>
                 <td class="fw-bold">${p.title}</td>
                 <td><span class="badge bg-secondary">${p.category}</span></td>
                 <td class="text-danger fw-bold">${p.price.toLocaleString()}đ</td>
