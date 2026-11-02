@@ -1,0 +1,385 @@
+/* ===================================================
+   KVB ASSISTANT CHATBOT CSS
+   =================================================== */
+
+/* Nút bấm mở Chatbot ở góc phải dưới */
+.kvb-chat-launcher {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #e50000 0%, #b30000 100%) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 26px !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 20px rgba(229, 0, 0, 0.4) !important;
+    z-index: 999999 !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    user-select: none !important;
+}
+
+.kvb-chat-launcher:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(229, 0, 0, 0.5);
+    color: #fff;
+}
+
+/* Huy hiệu thông báo nhấp nháy */
+.kvb-chat-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 16px;
+    height: 16px;
+    background-color: #28a745;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Khung cửa sổ Chat */
+.kvb-chat-window {
+    position: fixed !important;
+    bottom: 95px !important;
+    right: 25px !important;
+    width: 380px !important;
+    height: 540px !important;
+    max-height: calc(100vh - 120px) !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18) !important;
+    display: none;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 999999 !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.25s ease-out;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.kvb-chat-window.active {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) scale(1) !important;
+}
+
+/* Header của Chat */
+.kvb-chat-header {
+    background: linear-gradient(135deg, #e50000 0%, #c40000 100%);
+    color: #ffffff;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kvb-chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.kvb-chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #e50000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.kvb-chat-status-dot {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    background-color: #00e676;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.kvb-chat-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.kvb-chat-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+}
+
+.kvb-chat-header-actions button {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 6px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+
+.kvb-chat-header-actions button:hover {
+    opacity: 1;
+}
+
+/* Khu vực tin nhắn */
+.kvb-chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: #f7f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Tin nhắn */
+.kvb-msg {
+    display: flex;
+    gap: 8px;
+    max-width: 85%;
+    animation: msgFadeIn 0.25s ease-out;
+}
+
+@keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.kvb-msg-bot {
+    align-self: flex-start;
+}
+
+.kvb-msg-user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.kvb-msg-bubble {
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    word-break: break-word;
+    position: relative;
+}
+
+.kvb-msg-bot .kvb-msg-bubble {
+    background: #ffffff;
+    color: #2c3e50;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid #edf0f2;
+}
+
+.kvb-msg-user .kvb-msg-bubble {
+    background: #e50000;
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 6px rgba(229, 0, 0, 0.25);
+}
+
+.kvb-msg-time {
+    font-size: 10px;
+    color: #8c9ba5;
+    margin-top: 4px;
+    text-align: right;
+}
+
+/* Nút gợi ý nhanh (Quick suggestion chips) */
+.kvb-chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.kvb-chip {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    color: #c40000;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.kvb-chip:hover {
+    background-color: #fee2e2;
+    border-color: #fca5a5;
+    transform: translateY(-1px);
+}
+
+/* Card sản phẩm gợi ý trong tin nhắn */
+.kvb-chat-product-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #eef2f5;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kvb-chat-product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    color: inherit;
+}
+
+.kvb-chat-product-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.kvb-chat-product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.kvb-chat-product-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.kvb-chat-product-price {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #e50000;
+}
+
+/* Hiệu ứng gõ phím đang trả lời (Typing dots) */
+.kvb-typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border-radius: 14px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid #edf0f2;
+}
+
+.kvb-typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #a0aec0;
+    border-radius: 50%;
+    animation: typingBounce 1.2s infinite ease-in-out;
+}
+
+.kvb-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.kvb-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+}
+
+/* Khung nhập tin nhắn */
+.kvb-chat-footer {
+    padding: 10px 14px;
+    background: #ffffff;
+    border-top: 1px solid #eef2f5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kvb-chat-input {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 9px 16px;
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.kvb-chat-input:focus {
+    border-color: #e50000;
+}
+
+.kvb-chat-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #e50000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.kvb-chat-send-btn:hover {
+    background-color: #c40000;
+    transform: scale(1.05);
+}
+
+.kvb-chat-send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive trên thiết bị di động */
+@media (max-width: 480px) {
+    .kvb-chat-window {
+        right: 10px;
+        bottom: 80px;
+        width: calc(100vw - 20px);
+        height: 75vh;
+    }
+    .kvb-chat-launcher {
+        bottom: 15px;
+        right: 15px;
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+    }
+}

@@ -286,6 +286,14 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     loadHeader(); 
+
+    // Tự động nhúng Chatbot KVB Assistant (nếu trang chưa khai báo thẻ script)
+    if (!window.__KVB_CHATBOT_INITIALIZED__ && !document.getElementById('kvb-chatbot-script') && !document.querySelector('script[src*="chatbot.js"]')) {
+        const botScript = document.createElement('script');
+        botScript.id = 'kvb-chatbot-script';
+        botScript.src = `${isHomePage ? 'js/' : '../js/'}chatbot.js?v=20261102_2`;
+        document.body.appendChild(botScript);
+    }
 });
 
 window.renderRecentlyViewed = (id) => {
