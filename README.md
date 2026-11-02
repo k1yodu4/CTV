@@ -24,7 +24,7 @@ Tại cửa sổ Terminal đang ở thư mục dự án, gõ lệnh:<br>
 docker-compose up --build
 
 ## 🛠 Bước 4:
-Truy cập trang chủ: Vào file storefront/home.html -> ấn "Go Live"<br>
+Bạn có thể truy cập Storefront tại http://localhost:82 và Grafana tại http://localhost:3001<br>
 Giao diện quản lý Tìm kiếm (Meilisearch): http://localhost:7700 (Nếu nó hỏi mật khẩu, hãy nhập "MEILI_KEY=nhap_key_bi_mat_cua_ban_vao_day")<br>
 Tài khoản đăng nhập admin: admin123@gmail.com
 Mk: admin123<br>
