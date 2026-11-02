@@ -310,27 +310,30 @@ app.post('/api/specs-config/update', async (req, res) => {
 // --- 2. API SẢN PHẨM ---
 app.get('/api/products', async (req, res) => {
     try {
-        // TRƯỜNG HỢP 1: CÓ GÕ TÌM KIẾM -> DÙNG MEILISEARCH
+        let query = {};
+
+        // TRƯỜNG HỢP 1: CÓ GÕ TÌM KIẾM -> DÙNG MEILISEARCH LẤY DANH SÁCH ID KHỚP
+        let matchedIds = null;
         if (req.query.name) {
             let keyword = req.query.name;
             
-            // Nhờ Meilisearch tìm kiếm mờ
+            // Tìm kiếm mờ qua Meilisearch để lấy danh sách ID khớp nhất
             const searchResult = await meiliClient.index('products').search(keyword, {
-                limit: 20 // Lấy tối đa 20 kết quả
+                limit: 100
             });
-
-            // Trả thẳng về cho Frontend hiển thị (Meilisearch trả về 'hits')
-            return res.json(searchResult.hits);
+            matchedIds = (searchResult.hits || []).map(h => h.id);
+            query._id = { $in: matchedIds };
         }
 
-        // TRƯỜNG HỢP 2: KHÔNG TÌM KIẾM, CHỈ LỌC BÌNH THƯỜNG -> DÙNG MONGODB
-        let query = {};
-        if (req.query.category) query.category = req.query.category;
+        // Lọc theo Danh mục (hỗ trợ case-insensitive)
+        if (req.query.category) {
+            query.category = { $regex: new RegExp(`^${req.query.category.trim()}$`, 'i') };
+        }
 
         // Xử lý bộ lọc thông số kỹ thuật (Specs)
-        const excludedParams = ['name', 'category', 'sort']; 
+        const excludedParams = ['name', 'category', 'sort', 'minPrice', 'maxPrice']; 
         for (const key in req.query) {
-            if (!excludedParams.includes(key)) {
+            if (!excludedParams.includes(key) && req.query[key]) {
                 query[`specs.${key}`] = req.query[key]; 
             }
         }
@@ -340,10 +343,18 @@ app.get('/api/products', async (req, res) => {
         if (req.query.sort === 'desc') sortObj.price = -1;
 
         const products = await Product.find(query).sort(sortObj);
+
+        // Nếu có tìm kiếm theo tên và không chọn sắp xếp giá, giữ nguyên thứ tự relevance của Meilisearch
+        if (matchedIds && !req.query.sort) {
+            const idMap = new Map(matchedIds.map((id, index) => [id, index]));
+            products.sort((a, b) => (idMap.get(a._id.toString()) ?? 999) - (idMap.get(b._id.toString()) ?? 999));
+        }
+
         res.json(products);
 
     } catch (error) {
-        res.status(500).json({ message: "Lỗi Server", error });
+        console.error("Lỗi API /api/products:", error);
+        res.status(500).json({ message: "Lỗi Server", error: error.message });
     }
 });
 
