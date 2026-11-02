@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <!-- Thư viện SheetJS tải trước trong head -->
+    <script src="../js/xlsx.full.min.js?v=20261102"></script>
 </head>
 <body>
     <div class="admin-container">
@@ -97,7 +99,12 @@
                 <div class="card shadow-sm mx-auto mb-4">
                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Đơn Hàng Cần Xử Lý</h5>
-                        <button class="btn btn-sm btn-light fw-bold" onclick="loadAllOrders()"><i class="fas fa-sync-alt"></i> Làm mới</button>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-success fw-bold text-white shadow-sm btn-export-excel" onclick="exportCompletedOrdersToExcel()" title="Xuất các đơn hàng Hoàn tất ra file Excel">
+                                <i class="fas fa-file-excel me-1"></i> Xuất Excel (Đơn Hoàn tất)
+                            </button>
+                            <button class="btn btn-sm btn-light fw-bold" onclick="loadAllOrders()"><i class="fas fa-sync-alt"></i> Làm mới</button>
+                        </div>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -121,8 +128,11 @@
                 </div>
 
                 <div class="card shadow-sm mx-auto">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"><i class="fas fa-history me-2"></i>Lịch Sử Đơn Hàng (Đã đóng)</h5>
+                        <button class="btn btn-sm btn-success fw-bold text-white shadow-sm btn-export-excel" onclick="exportCompletedOrdersToExcel()" title="Xuất các đơn hàng Hoàn tất ra file Excel">
+                            <i class="fas fa-file-excel me-1"></i> Xuất Excel (Đơn Hoàn tất)
+                        </button>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -149,6 +159,7 @@
         </div>
     </div>
 
-    <script src="../js/admin.js"></script>
+    <!-- Script Admin kèm version để trình duyệt không dùng cache cũ -->
+    <script src="../js/admin.js?v=20261102_2"></script>
 </body>
 </html>

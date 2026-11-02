@@ -293,3 +293,134 @@ window.updateOrderStatus = async function(orderId) {
         alert("❌ Lỗi kết nối Server");
     }
 };
+
+// ==========================================
+// MODULE 3: XUẤT EXCEL ĐƠN HÀNG HOÀN TẤT
+// ==========================================
+window.exportCompletedOrdersToExcel = async function() {
+    console.log("👉 Đã kích hoạt exportCompletedOrdersToExcel()");
+    await exportOrdersToExcel('Hoàn tất');
+};
+
+window.exportOrdersToExcel = async function(filterStatus = 'Hoàn tất') {
+    console.log("👉 Đang xuất đơn hàng trạng thái:", filterStatus);
+
+    // Hiển thị trạng thái đang xử lý trên nút bấm nếu có
+    const exportBtns = document.querySelectorAll('.btn-export-excel');
+    exportBtns.forEach(btn => {
+        btn.disabled = true;
+        btn.dataset.originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Đang xuất...';
+    });
+
+    try {
+        if (typeof XLSX === 'undefined') {
+            throw new Error("Thư viện SheetJS (XLSX) chưa được tải. Vui lòng kiểm tra lại kết nối mạng hoặc làm mới trang!");
+        }
+
+        // Tải danh sách đơn hàng mới nhất từ server
+        const res = await fetch('/api/admin/orders');
+        if (!res.ok) throw new Error("Không thể tải danh sách đơn hàng từ Server (HTTP " + res.status + ")!");
+        const allOrders = await res.json();
+
+        // Lọc các đơn hàng theo trạng thái
+        const targetOrders = filterStatus 
+            ? allOrders.filter(order => order.status === filterStatus)
+            : allOrders;
+
+        if (!targetOrders || targetOrders.length === 0) {
+            alert(`ℹ️ Hiện không có đơn hàng nào ở trạng thái "${filterStatus}" để xuất Excel!`);
+            return;
+        }
+
+        // Chuẩn bị dữ liệu cho file Excel
+        const excelRows = targetOrders.map((order, idx) => {
+            const customer = order.customerInfo || {};
+            const createdAtDate = order.createdAt 
+                ? new Date(order.createdAt).toLocaleString('vi-VN') 
+                : 'N/A';
+
+            // Định dạng chi tiết các sản phẩm trong đơn hàng
+            const itemsText = (order.items || []).map((item, itemIdx) => {
+                const itemPrice = (item.price || 0).toLocaleString('vi-VN') + 'đ';
+                return `${itemIdx + 1}. ${item.title || 'Sản phẩm'} | SL: ${item.quantity || 1} | Đơn giá: ${itemPrice}`;
+            }).join('\n');
+
+            return {
+                "STT": idx + 1,
+                "Mã Đơn Hàng": order.orderCode || 'N/A',
+                "Ngày Đặt": createdAtDate,
+                "Tên Khách Hàng": customer.fullname || 'Khách vãng lai',
+                "Số Điện Thoại": customer.phone ? String(customer.phone) : 'N/A',
+                "Địa Chỉ Giao Hàng": customer.address || 'N/A',
+                "Danh Sách Sản Phẩm": itemsText,
+                "Phương Thức TT": order.paymentMethod || 'COD',
+                "Tổng Tiền (VNĐ)": order.totalAmount || 0,
+                "Trạng Thái": order.status || 'Hoàn tất',
+                "Ghi Chú": customer.note || ''
+            };
+        });
+
+        // Tạo Sheet từ mảng Object
+        const worksheet = XLSX.utils.json_to_sheet(excelRows);
+
+        // Căn chỉnh độ rộng các cột đẹp mắt
+        worksheet['!cols'] = [
+            { wch: 6 },  // STT
+            { wch: 16 }, // Mã Đơn Hàng
+            { wch: 22 }, // Ngày Đặt
+            { wch: 24 }, // Tên Khách Hàng
+            { wch: 15 }, // Số Điện Thoại
+            { wch: 38 }, // Địa Chỉ Giao Hàng
+            { wch: 55 }, // Danh Sách Sản Phẩm
+            { wch: 18 }, // Phương Thức TT
+            { wch: 18 }, // Tổng Tiền (VNĐ)
+            { wch: 14 }, // Trạng Thái
+            { wch: 25 }  // Ghi Chú
+        ];
+
+        // Tạo Workbook và gắn Sheet vào
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Đơn Hàng Hoàn Tất");
+
+        // Đặt tên file theo ngày giờ xuất
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mi = String(now.getMinutes()).padStart(2, '0');
+        const fileName = `Don_Hang_Hoan_Tat_${yyyy}${mm}${dd}_${hh}${mi}.xlsx`;
+
+        // Kích hoạt tải file về máy (có fallback qua Blob)
+        try {
+            XLSX.writeFile(workbook, fileName);
+        } catch (writeErr) {
+            console.warn("XLSX.writeFile gặp sự cố, chuyển sang cơ chế Blob:", writeErr);
+            const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+            const blob = new Blob([wbout], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(downloadUrl);
+            }, 500);
+        }
+
+        alert(`✅ Đã xuất thành công ${targetOrders.length} đơn hàng "Hoàn tất" sang file Excel:\n${fileName}`);
+    } catch (error) {
+        console.error("Lỗi xuất Excel:", error);
+        alert("❌ Đã xảy ra lỗi khi xuất file Excel: " + error.message);
+    } finally {
+        exportBtns.forEach(btn => {
+            btn.disabled = false;
+            if (btn.dataset.originalHtml) {
+                btn.innerHTML = btn.dataset.originalHtml;
+            }
+        });
+    }
+};
