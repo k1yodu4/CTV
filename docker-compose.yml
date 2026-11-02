@@ -1,6 +1,8 @@
+version: '3.8'
+
 services:
   mongodb:
-    image: harbor.lab.local/ctv/mongo:6.0
+    image: harbor.lab.local/thuctaptotnghiep/mongo:6.0
     container_name: pc_mongodb
     restart: always
     environment:
@@ -12,7 +14,7 @@ services:
       - mongo_data:/data/db
 
   redis:
-    image: harbor.lab.local/ctv/redis:7.0-alpine
+    image: harbor.lab.local/thuctaptotnghiep/redis:7.0-alpine
     container_name: pc_redis
     restart: always
     command: redis-server --requirepass ${REDIS_PASSWORD}
@@ -37,7 +39,7 @@ services:
       - meilisearch 
 
   meilisearch:
-    image: harbor.lab.local/ctv/getmeili/meilisearch:v1.6
+    image: harbor.lab.local/thuctaptotnghiep/getmeili/meilisearch:v1.6
     container_name: pc_meilisearch
     restart: always 
     ports:
@@ -49,7 +51,7 @@ services:
       - meili_data:/meili_data
 
   nginx:
-    image: harbor.lab.local/ctv/nginx:alpine
+    image: harbor.lab.local/thuctaptotnghiep/nginx:alpine
     container_name: pc_nginx
     ports:
       - "82:80"
@@ -61,7 +63,7 @@ services:
   
   # --- HỆ THỐNG GIÁM SÁT (MONITORING) ---
   prometheus:
-    image: harbor.lab.local/ctv/prom/prometheus:v2.51.2
+    image: harbor.lab.local/thuctaptotnghiep/prom/prometheus:v2.51.2
     container_name: pc_prometheus
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -71,14 +73,14 @@ services:
       - inventory-service
 
   loki:
-    image: harbor.lab.local/ctv/grafana/loki:3.2.0
+    image: harbor.lab.local/thuctaptotnghiep/grafana/loki:3.2.0
     container_name: pc_loki
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
 
   promtail:
-    image: harbor.lab.local/ctv/grafana/promtail:3.2.0
+    image: harbor.lab.local/thuctaptotnghiep/grafana/promtail:3.2.0
     container_name: pc_promtail
     volumes:
       - /var/log:/var/log
@@ -90,7 +92,7 @@ services:
       - loki
 
   grafana:
-    image: harbor.lab.local/ctv/grafana/grafana:10.4.2
+    image: harbor.lab.local/thuctaptotnghiep/grafana/grafana:10.4.2
     container_name: pc_grafana
     ports:
       - "3001:3000" # Cổng 3000 bên trong đã bận, ta dùng cổng 3001 ở ngoài
